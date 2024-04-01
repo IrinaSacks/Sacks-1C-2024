@@ -26,60 +26,61 @@
 /*==================[inclusions]=============================================*/
 #include <stdio.h>
 #include <stdint.h>
-#include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
-#include "led.h"
-#include "switch.h"
+#include "gpio_mcu.h"
+
 /*==================[macros and definitions]=================================*/
-#define ON 1
-#define OFF 0
-#define TOGGLE 8
+
 /*==================[internal data definition]===============================*/
-struct leds
+typedef struct 
 {
-	uint8_t mode;       //ON, OFF, TOGGLE
-	uint8_t n_led;        //indica el número de led a controlar
-	uint8_t n_ciclos;   //indica la cantidad de ciclos de encendido/apagado
-	uint16_t periodo;    //indica el tiempo de cada ciclo
-}; 
+	gpio_t pin;			/*!< GPIO pin number */
+	io_t dir;			/*!< GPIO digection '0' IN;  '1' OUT*/
+} gpioConf_t;
 
 /*==================[internal functions declaration]=========================*/
-void Control_Led(struct leds *my_leds){
-	switch(my_leds->mode){
-		case ON:
-			LedOn(my_leds->n_led);
-			break;
-		case OFF:
-			LedOff(my_leds->n_led);
-			break;
-		case TOGGLE:
-			int i=0;
-			while(i<my_leds->n_ciclos){
-				LedToggle(my_leds->n_led);
-				for(int j=0; j<my_leds->periodo/100; j++){
-					vTaskDelay(100 / portTICK_PERIOD_MS);
-				}
-				i++;
-			}
-			break;
-		default:
-			break;
-	}
+int8_t convertToBcdArray(uint32_t data, uint8_t digits, uint8_t * bcd_number){
+	for(int i=0; i<digits ; i++){
+		bcd_number[digits-1-i]=data%10;
+		data/=10;
+	};
+	return(0);
 }
+
+void cambiaEstado(int dig_bcd, gpioConf_t *gpi){
+	for(int i=0; i<4; i++){
+		if(dig_bcd & (1<<i)){
+		GPIOOn(gpi[i].pin);
+		}
+		else{
+		GPIOOff(gpi[i].pin);
+		}
+	}
+};
 
 /*==================[external functions definition]==========================*/
 void app_main(void){
-	uint8_t teclas;
-	SwitchesInit();
-	LedsInit();
+	uint32_t numero_bin=123;
+	uint8_t cant_digitos=3;
+	uint8_t num_bcd[cant_digitos];
+	convertToBcdArray(numero_bin, cant_digitos, num_bcd);
 
-	struct leds LED;
-	LED.mode=TOGGLE;
-	LED.n_ciclos=100;
-	LED.periodo=500;
-	LED.n_led=LED_2;
+	gpioConf_t gpio_dig[4];
+	gpio_dig[0].pin=GPIO_20;
+	gpio_dig[1].pin=GPIO_21;
+	gpio_dig[2].pin=GPIO_22;
+	gpio_dig[3].pin=GPIO_23;
 
-	Control_Led(&LED);	
+	for(int i=0; i<4;i++){
+		gpio_dig[i].dir=GPIO_OUTPUT;
+	}
 	
+	for(int i=0; i<4;i++){
+		GPIOInit(gpio_dig[i].pin, gpio_dig[i].dir);
+	}
+
+	for(int i=0; i<cant_digitos; i++){
+		cambiaEstado(num_bcd[i], gpio_dig);
+	}
+
 }
 /*==================[end of file]============================================*/
