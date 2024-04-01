@@ -1,10 +1,9 @@
-/*! @mainpage Template
+/** @mainpage Obtencion por display de un dato de 32 bits
  *
  * @section genDesc General Description
  *
- * This section describes how the program works.
- *
- * <a href="https://drive.google.com/...">Operation Example</a>
+ * Este programa opera con un dato de 32 bits, lo convierte en BCD y lo decodifica a 7 segmentos 
+ * para mostrar por display 3 digitos como maximo.
  *
  * @section hardConn Hardware Connection
  *
@@ -17,7 +16,7 @@
  *
  * |   Date	    | Description                                    |
  * |:----------:|:-----------------------------------------------|
- * | 12/09/2023 | Document creation		                         |
+ * | 22/03/2024 | Document creation		                         |
  *
  * @author Sacks Irina
  *
@@ -31,6 +30,10 @@
 /*==================[macros and definitions]=================================*/
 
 /*==================[internal data definition]===============================*/
+/**
+ * @brief estructura del tipo gpioConf_t
+ * 	asigna el numero de pin y establece si es entrada o salida
+*/
 typedef struct 
 {
 	gpio_t pin;			/*!< GPIO pin number */
@@ -38,6 +41,12 @@ typedef struct
 } gpioConf_t;
 
 /*==================[internal functions declaration]=========================*/
+/** @brief Convierte un dato binario de 32 bits a BCD y almacena cada digito de salida en un arreglo
+ * @param data numero de 32 bits
+ * @param digits cantidad de digitos de salida del numero
+ * @param bcd_number puntero a un arreglo donde se almacenan los n digitos
+ * @return int8_t
+*/
 int8_t convertToBcdArray(uint32_t data, uint8_t digits, uint8_t * bcd_number){
 	for(int i=0; i<digits ; i++){
 		bcd_number[digits-1-i]=data%10;
@@ -45,7 +54,10 @@ int8_t convertToBcdArray(uint32_t data, uint8_t digits, uint8_t * bcd_number){
 	};
 	return(0);
 }
-
+/** @brief Cambia el estado de cada pin según el estado del bit correspondiente en el BCD ingresado
+ * @param dig_bcd digito del numero bcd
+ * @param gpi almacena el estado de cada pin segun los bits del bcd ingresado
+*/
 void cambiaEstado(int dig_bcd, gpioConf_t *gpi){
 	for(int i=0; i<4; i++){
 		if(dig_bcd & (1<<i)){
@@ -57,6 +69,13 @@ void cambiaEstado(int dig_bcd, gpioConf_t *gpi){
 	}
 };
 
+/**
+ * @brief Muestra por display el valor recibido
+ * @param bin_data numero de 32 bits
+ * @param cant_digit cantidad de digitos de salida del numero
+ * @param gpio_dig almacena el estado de cada pin segun los bits del numero ingresado
+ * @param gpio_pos mapea los puertos con el dígito del LCD a donde mostrar un dato
+*/
 void mostrarDisplay(uint32_t bin_data, uint8_t cant_digit, gpioConf_t *gpio_dig, gpioConf_t *gpio_pos){
 	uint8_t num_bcd[cant_digit];
 	convertToBcdArray(bin_data, cant_digit, num_bcd);
