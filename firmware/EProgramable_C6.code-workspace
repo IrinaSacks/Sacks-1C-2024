@@ -37,6 +37,9 @@
         },
         {
             "path": "projects/Guia1_Ejercicio6"
+        },
+        {
+            "path": "projects/P2_1_Medidor_distancia_ultrasonido"
         }
     ],
     "settings": {
