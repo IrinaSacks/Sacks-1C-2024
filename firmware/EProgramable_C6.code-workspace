@@ -40,6 +40,9 @@
         },
         {
             "path": "projects/P2_1_Medidor_distancia_ultrasonido"
+        },
+        {
+            "path": "projects/P2_2_Ultrasonido_interrupciones"
         }
     ],
     "settings": {
