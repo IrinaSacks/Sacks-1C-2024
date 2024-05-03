@@ -1,0 +1,508 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.10.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Proyecto 2 Ejercicio 3: Referencia del archivo C:/Repositorio/Sacks-1C-2024/firmware/projects/P2_3_Ultrasonido_puerto_serie/main/P2_3_Ultrasonido_puerto_serie.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+  $(function() { init_search(); });
+/* @license-end */
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="fiuner.png"/></td>
+  <td id="projectalign">
+   <div id="projectname">Proyecto 2 Ejercicio 3<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Medidor de distancia por ultrasonido y mostrado por display usando interrupciones y puerto serie</div>
+  </td>
+    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect"                onmouseover="return searchBox.OnSearchSelectShow()"                onmouseout="return searchBox.OnSearchSelectHide()">&#160;</span>
+          <input type="text" id="MSearchField" value="" placeholder="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.10.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('_p2__3___ultrasonido__puerto__serie_8c.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#define-members">defines</a> &#124;
+<a href="#func-members">Funciones</a> &#124;
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle"><div class="title">Referencia del archivo P2_3_Ultrasonido_puerto_serie.c</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdint.h&gt;</code><br />
+<code>#include &quot;freertos/FreeRTOS.h&quot;</code><br />
+<code>#include &quot;freertos/task.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="hc__sr04_8h_source.html">hc_sr04.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="switch_8h_source.html">switch.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="led_8h_source.html">led.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="lcditse0803_8h_source.html">lcditse0803.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="timer__mcu_8h_source.html">timer_mcu.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="uart__mcu_8h_source.html">uart_mcu.h</a>&quot;</code><br />
+</div>
+<p><a href="_p2__3___ultrasonido__puerto__serie_8c_source.html">Ir al código fuente de este archivo.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+defines</h2></td></tr>
+<tr class="memitem:a97263a02d52395ae23ccf0cd8d2d3577" id="r_a97263a02d52395ae23ccf0cd8d2d3577"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a97263a02d52395ae23ccf0cd8d2d3577">CONFIG_PERIOD_DIS</a>&#160;&#160;&#160;1000000</td></tr>
+<tr class="memdesc:a97263a02d52395ae23ccf0cd8d2d3577"><td class="mdescLeft">&#160;</td><td class="mdescRight">periodo del timerA en microsegundos  <br /></td></tr>
+<tr class="separator:a97263a02d52395ae23ccf0cd8d2d3577"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Funciones</h2></td></tr>
+<tr class="memitem:aef27a43e143172c03c4209f2bad857d1" id="r_aef27a43e143172c03c4209f2bad857d1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aef27a43e143172c03c4209f2bad857d1">vumetro</a> (uint16_t dis_cm)</td></tr>
+<tr class="memdesc:aef27a43e143172c03c4209f2bad857d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prende o apaga determinados leds segun el valor de la distancia medida en cm a la que esta un objeto.  <br /></td></tr>
+<tr class="separator:aef27a43e143172c03c4209f2bad857d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21e8296937dc62293c71cc29ff0f7e1a" id="r_a21e8296937dc62293c71cc29ff0f7e1a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a21e8296937dc62293c71cc29ff0f7e1a">LeerDistancia</a> (void *pvParameter)</td></tr>
+<tr class="memdesc:a21e8296937dc62293c71cc29ff0f7e1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recibe una notificación, luego lee y almacena la distancia cada 1 segundo.  <br /></td></tr>
+<tr class="separator:a21e8296937dc62293c71cc29ff0f7e1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7802e0644d0810eddc7c9d49c1193308" id="r_a7802e0644d0810eddc7c9d49c1193308"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7802e0644d0810eddc7c9d49c1193308">MostrarDistancia</a> (void *pvParameter)</td></tr>
+<tr class="memdesc:a7802e0644d0810eddc7c9d49c1193308"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recibe una notificación y actualiza cada 1 segundo el display, leds y el puerto serie de la pc. Si el SWITCH 2 fue apretado el display queda no se actualiza.  <br /></td></tr>
+<tr class="separator:a7802e0644d0810eddc7c9d49c1193308"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b60c7eef8918189e1e7dea5714bf9f7" id="r_a9b60c7eef8918189e1e7dea5714bf9f7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9b60c7eef8918189e1e7dea5714bf9f7">LeerTeclaOnOff</a> (void)</td></tr>
+<tr class="memdesc:a9b60c7eef8918189e1e7dea5714bf9f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">cambia el estado de la variable control  <br /></td></tr>
+<tr class="separator:a9b60c7eef8918189e1e7dea5714bf9f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6eb5f4b6a2029c6c783577d7c5827e17" id="r_a6eb5f4b6a2029c6c783577d7c5827e17"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6eb5f4b6a2029c6c783577d7c5827e17">LeerTeclaHold</a> (void)</td></tr>
+<tr class="memdesc:a6eb5f4b6a2029c6c783577d7c5827e17"><td class="mdescLeft">&#160;</td><td class="mdescRight">cambia el estado de la variable pausa  <br /></td></tr>
+<tr class="separator:a6eb5f4b6a2029c6c783577d7c5827e17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ea94281ed83bf8c0f26ecbb5690bc4d" id="r_a2ea94281ed83bf8c0f26ecbb5690bc4d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2ea94281ed83bf8c0f26ecbb5690bc4d">FuncTimerA_Distancia</a> (void *param)</td></tr>
+<tr class="memdesc:a2ea94281ed83bf8c0f26ecbb5690bc4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timer que envia dos notificaciones cada 1 segundo a LeerDistancia y MostrarDistancia.  <br /></td></tr>
+<tr class="separator:a2ea94281ed83bf8c0f26ecbb5690bc4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d5c63ed1cd42c7903e0b0e582e361e7" id="r_a5d5c63ed1cd42c7903e0b0e582e361e7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5d5c63ed1cd42c7903e0b0e582e361e7">controlXTeclado</a> (void *param)</td></tr>
+<tr class="memdesc:a5d5c63ed1cd42c7903e0b0e582e361e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">lee 1 byte del puerto serie e identifica si se apreto la tecla H u O, y llama a una funcion diferente en cada caso  <br /></td></tr>
+<tr class="separator:a5d5c63ed1cd42c7903e0b0e582e361e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a630544a7f0a2cc40d8a7fefab7e2fe70" id="r_a630544a7f0a2cc40d8a7fefab7e2fe70"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a630544a7f0a2cc40d8a7fefab7e2fe70">app_main</a> (void)</td></tr>
+<tr class="separator:a630544a7f0a2cc40d8a7fefab7e2fe70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:afbf6267f8cada61e9a25ec5f775a00b7" id="r_afbf6267f8cada61e9a25ec5f775a00b7"><td class="memItemLeft" align="right" valign="top">TaskHandle_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afbf6267f8cada61e9a25ec5f775a00b7">leer_distancia_handle</a> = <a class="el" href="ili9341_8c.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a></td></tr>
+<tr class="separator:afbf6267f8cada61e9a25ec5f775a00b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afbc133f87b9c89eaf02ca52dd841a493" id="r_afbc133f87b9c89eaf02ca52dd841a493"><td class="memItemLeft" align="right" valign="top">TaskHandle_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afbc133f87b9c89eaf02ca52dd841a493">mostrar_distancia_handle</a> = <a class="el" href="ili9341_8c.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a></td></tr>
+<tr class="separator:afbc133f87b9c89eaf02ca52dd841a493"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec40b15ff3098bdb2425eb4dc9c11a18" id="r_aec40b15ff3098bdb2425eb4dc9c11a18"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aec40b15ff3098bdb2425eb4dc9c11a18">distancia</a></td></tr>
+<tr class="memdesc:aec40b15ff3098bdb2425eb4dc9c11a18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Almacena el valor de la distancia medida por el sensor de ultrasonido en cm.  <br /></td></tr>
+<tr class="separator:aec40b15ff3098bdb2425eb4dc9c11a18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad155fe5a68eb888a7e0eb897a3dfc015" id="r_ad155fe5a68eb888a7e0eb897a3dfc015"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad155fe5a68eb888a7e0eb897a3dfc015">control</a> =false</td></tr>
+<tr class="memdesc:ad155fe5a68eb888a7e0eb897a3dfc015"><td class="mdescLeft">&#160;</td><td class="mdescRight">variable que indica True cuando hay que realizar mediciones y mostrarlas por display de lo contrario es falsa  <br /></td></tr>
+<tr class="separator:ad155fe5a68eb888a7e0eb897a3dfc015"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd9a5b1c677d10988c142bb501f34ab4" id="r_afd9a5b1c677d10988c142bb501f34ab4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afd9a5b1c677d10988c142bb501f34ab4">pausa</a> =false</td></tr>
+<tr class="memdesc:afd9a5b1c677d10988c142bb501f34ab4"><td class="mdescLeft">&#160;</td><td class="mdescRight">variable que indica True si los datos mostrados por display no deben actualizarse  <br /></td></tr>
+<tr class="separator:afd9a5b1c677d10988c142bb501f34ab4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Documentación de «define»</h2>
+<a id="a97263a02d52395ae23ccf0cd8d2d3577" name="a97263a02d52395ae23ccf0cd8d2d3577"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a97263a02d52395ae23ccf0cd8d2d3577">&#9670;&#160;</a></span>CONFIG_PERIOD_DIS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CONFIG_PERIOD_DIS&#160;&#160;&#160;1000000</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>periodo del timerA en microsegundos </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html#l00043">43</a> del archivo <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html">P2_3_Ultrasonido_puerto_serie.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html#l00161">app_main()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentación de funciones</h2>
+<a id="a630544a7f0a2cc40d8a7fefab7e2fe70" name="a630544a7f0a2cc40d8a7fefab7e2fe70"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a630544a7f0a2cc40d8a7fefab7e2fe70">&#9670;&#160;</a></span>app_main()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void app_main </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html#l00161">161</a> del archivo <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html">P2_3_Ultrasonido_puerto_serie.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html#l00043">CONFIG_PERIOD_DIS</a>, <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html#l00147">controlXTeclado()</a>, <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html#l00139">FuncTimerA_Distancia()</a>, <a class="el" href="gpio__mcu_8h_source.html#l00054">GPIO_2</a>, <a class="el" href="gpio__mcu_8h_source.html#l00055">GPIO_3</a>, <a class="el" href="hc__sr04_8c_source.html#l00034">HcSr04Init()</a>, <a class="el" href="lcditse0803_8c_source.html#l00037">LcdItsE0803Init()</a>, <a class="el" href="led_8c_source.html#l00031">LedsInit()</a>, <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html#l00045">leer_distancia_handle</a>, <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html#l00090">LeerDistancia()</a>, <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html#l00132">LeerTeclaHold()</a>, <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html#l00125">LeerTeclaOnOff()</a>, <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html#l00046">mostrar_distancia_handle</a>, <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html#l00102">MostrarDistancia()</a>, <a class="el" href="ili9341_8c_source.html#l00042">NULL</a>, <a class="el" href="uart__mcu_8h_source.html#l00039">serial_config_t::port</a>, <a class="el" href="switch_8h_source.html#l00032">SWITCH_1</a>, <a class="el" href="switch_8h_source.html#l00033">SWITCH_2</a>, <a class="el" href="switch_8c_source.html#l00047">SwitchActivInt()</a>, <a class="el" href="switch_8c_source.html#l00029">SwitchesInit()</a>, <a class="el" href="timer__mcu_8h_source.html#l00040">timer_config_t::timer</a>, <a class="el" href="timer__mcu_8h_source.html#l00032">TIMER_A</a>, <a class="el" href="timer__mcu_8c_source.html#l00055">TimerInit()</a>, <a class="el" href="timer__mcu_8c_source.html#l00110">TimerStart()</a>, <a class="el" href="uart__mcu_8h_source.html#l00032">UART_PC</a> y <a class="el" href="uart__mcu_8c_source.html#l00107">UartInit()</a>.</p>
+
+</div>
+</div>
+<a id="a5d5c63ed1cd42c7903e0b0e582e361e7" name="a5d5c63ed1cd42c7903e0b0e582e361e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d5c63ed1cd42c7903e0b0e582e361e7">&#9670;&#160;</a></span>controlXTeclado()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void controlXTeclado </td>
+          <td>(</td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>param</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>lee 1 byte del puerto serie e identifica si se apreto la tecla H u O, y llama a una funcion diferente en cada caso </p>
+<dl class="section return"><dt>Devuelve</dt><dd>void </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html#l00147">147</a> del archivo <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html">P2_3_Ultrasonido_puerto_serie.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html#l00132">LeerTeclaHold()</a>, <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html#l00125">LeerTeclaOnOff()</a>, <a class="el" href="uart__mcu_8h_source.html#l00032">UART_PC</a> y <a class="el" href="uart__mcu_8c_source.html#l00142">UartReadByte()</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html#l00161">app_main()</a>.</p>
+
+</div>
+</div>
+<a id="a2ea94281ed83bf8c0f26ecbb5690bc4d" name="a2ea94281ed83bf8c0f26ecbb5690bc4d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ea94281ed83bf8c0f26ecbb5690bc4d">&#9670;&#160;</a></span>FuncTimerA_Distancia()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FuncTimerA_Distancia </td>
+          <td>(</td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>param</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Timer que envia dos notificaciones cada 1 segundo a LeerDistancia y MostrarDistancia. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>void </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html#l00139">139</a> del archivo <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html">P2_3_Ultrasonido_puerto_serie.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html#l00045">leer_distancia_handle</a> y <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html#l00046">mostrar_distancia_handle</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html#l00161">app_main()</a>.</p>
+
+</div>
+</div>
+<a id="a21e8296937dc62293c71cc29ff0f7e1a" name="a21e8296937dc62293c71cc29ff0f7e1a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21e8296937dc62293c71cc29ff0f7e1a">&#9670;&#160;</a></span>LeerDistancia()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LeerDistancia </td>
+          <td>(</td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>pvParameter</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Recibe una notificación, luego lee y almacena la distancia cada 1 segundo. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>void </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html#l00090">90</a> del archivo <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html">P2_3_Ultrasonido_puerto_serie.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html#l00054">control</a>, <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html#l00050">distancia</a> y <a class="el" href="hc__sr04_8c_source.html#l00045">HcSr04ReadDistanceInCentimeters()</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html#l00161">app_main()</a>.</p>
+
+</div>
+</div>
+<a id="a6eb5f4b6a2029c6c783577d7c5827e17" name="a6eb5f4b6a2029c6c783577d7c5827e17"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6eb5f4b6a2029c6c783577d7c5827e17">&#9670;&#160;</a></span>LeerTeclaHold()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LeerTeclaHold </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>cambia el estado de la variable pausa </p>
+<dl class="section return"><dt>Devuelve</dt><dd>void </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html#l00132">132</a> del archivo <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html">P2_3_Ultrasonido_puerto_serie.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html#l00058">pausa</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html#l00161">app_main()</a> y <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html#l00147">controlXTeclado()</a>.</p>
+
+</div>
+</div>
+<a id="a9b60c7eef8918189e1e7dea5714bf9f7" name="a9b60c7eef8918189e1e7dea5714bf9f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b60c7eef8918189e1e7dea5714bf9f7">&#9670;&#160;</a></span>LeerTeclaOnOff()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LeerTeclaOnOff </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>cambia el estado de la variable control </p>
+<dl class="section return"><dt>Devuelve</dt><dd>void </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html#l00125">125</a> del archivo <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html">P2_3_Ultrasonido_puerto_serie.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html#l00054">control</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html#l00161">app_main()</a> y <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html#l00147">controlXTeclado()</a>.</p>
+
+</div>
+</div>
+<a id="a7802e0644d0810eddc7c9d49c1193308" name="a7802e0644d0810eddc7c9d49c1193308"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7802e0644d0810eddc7c9d49c1193308">&#9670;&#160;</a></span>MostrarDistancia()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MostrarDistancia </td>
+          <td>(</td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>pvParameter</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Recibe una notificación y actualiza cada 1 segundo el display, leds y el puerto serie de la pc. Si el SWITCH 2 fue apretado el display queda no se actualiza. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>void </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html#l00102">102</a> del archivo <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html">P2_3_Ultrasonido_puerto_serie.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html#l00054">control</a>, <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html#l00050">distancia</a>, <a class="el" href="lcditse0803_8c_source.html#l00087">LcdItsE0803Off()</a>, <a class="el" href="lcditse0803_8c_source.html#l00054">LcdItsE0803Write()</a>, <a class="el" href="led_8c_source.html#l00105">LedsOffAll()</a>, <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html#l00058">pausa</a>, <a class="el" href="uart__mcu_8h_source.html#l00032">UART_PC</a>, <a class="el" href="uart__mcu_8c_source.html#l00222">UartItoa()</a>, <a class="el" href="uart__mcu_8c_source.html#l00193">UartSendString()</a> y <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html#l00064">vumetro()</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html#l00161">app_main()</a>.</p>
+
+</div>
+</div>
+<a id="aef27a43e143172c03c4209f2bad857d1" name="aef27a43e143172c03c4209f2bad857d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef27a43e143172c03c4209f2bad857d1">&#9670;&#160;</a></span>vumetro()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vumetro </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>dis_cm</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Prende o apaga determinados leds segun el valor de la distancia medida en cm a la que esta un objeto. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dis_cm</td><td>distancia en cm medida por sensor de ultrasonido </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>void </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html#l00064">64</a> del archivo <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html">P2_3_Ultrasonido_puerto_serie.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="led_8h_source.html#l00034">LED_1</a>, <a class="el" href="led_8h_source.html#l00033">LED_2</a>, <a class="el" href="led_8h_source.html#l00032">LED_3</a>, <a class="el" href="led_8c_source.html#l00065">LedOff()</a> y <a class="el" href="led_8c_source.html#l00046">LedOn()</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html#l00102">MostrarDistancia()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentación de variables</h2>
+<a id="ad155fe5a68eb888a7e0eb897a3dfc015" name="ad155fe5a68eb888a7e0eb897a3dfc015"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad155fe5a68eb888a7e0eb897a3dfc015">&#9670;&#160;</a></span>control</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool control =false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>variable que indica True cuando hay que realizar mediciones y mostrarlas por display de lo contrario es falsa </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html#l00054">54</a> del archivo <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html">P2_3_Ultrasonido_puerto_serie.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html#l00090">LeerDistancia()</a>, <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html#l00125">LeerTeclaOnOff()</a> y <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html#l00102">MostrarDistancia()</a>.</p>
+
+</div>
+</div>
+<a id="aec40b15ff3098bdb2425eb4dc9c11a18" name="aec40b15ff3098bdb2425eb4dc9c11a18"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec40b15ff3098bdb2425eb4dc9c11a18">&#9670;&#160;</a></span>distancia</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t distancia</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Almacena el valor de la distancia medida por el sensor de ultrasonido en cm. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html#l00050">50</a> del archivo <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html">P2_3_Ultrasonido_puerto_serie.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html#l00090">LeerDistancia()</a> y <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html#l00102">MostrarDistancia()</a>.</p>
+
+</div>
+</div>
+<a id="afbf6267f8cada61e9a25ec5f775a00b7" name="afbf6267f8cada61e9a25ec5f775a00b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afbf6267f8cada61e9a25ec5f775a00b7">&#9670;&#160;</a></span>leer_distancia_handle</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TaskHandle_t leer_distancia_handle = <a class="el" href="ili9341_8c.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html#l00045">45</a> del archivo <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html">P2_3_Ultrasonido_puerto_serie.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html#l00161">app_main()</a> y <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html#l00139">FuncTimerA_Distancia()</a>.</p>
+
+</div>
+</div>
+<a id="afbc133f87b9c89eaf02ca52dd841a493" name="afbc133f87b9c89eaf02ca52dd841a493"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afbc133f87b9c89eaf02ca52dd841a493">&#9670;&#160;</a></span>mostrar_distancia_handle</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TaskHandle_t mostrar_distancia_handle = <a class="el" href="ili9341_8c.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html#l00046">46</a> del archivo <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html">P2_3_Ultrasonido_puerto_serie.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html#l00161">app_main()</a> y <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html#l00139">FuncTimerA_Distancia()</a>.</p>
+
+</div>
+</div>
+<a id="afd9a5b1c677d10988c142bb501f34ab4" name="afd9a5b1c677d10988c142bb501f34ab4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd9a5b1c677d10988c142bb501f34ab4">&#9670;&#160;</a></span>pausa</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool pausa =false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>variable que indica True si los datos mostrados por display no deben actualizarse </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html#l00058">58</a> del archivo <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html">P2_3_Ultrasonido_puerto_serie.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html#l00132">LeerTeclaHold()</a> y <a class="el" href="_p2__3___ultrasonido__puerto__serie_8c_source.html#l00102">MostrarDistancia()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_76557cd4a0608cd174cb3d5100c20ce4.html">Sacks-1C-2024</a></li><li class="navelem"><a class="el" href="dir_4a875605755f3e307511815f0cde7761.html">firmware</a></li><li class="navelem"><a class="el" href="dir_7afb78551d3697caf76e3998a36c8e3e.html">projects</a></li><li class="navelem"><a class="el" href="dir_0c50c7a6f364a5b08eb3de3f12ab7800.html">P2_3_Ultrasonido_puerto_serie</a></li><li class="navelem"><a class="el" href="dir_9fe6328fd1a37d8946b6ee99f8733bc3.html">main</a></li><li class="navelem"><a class="el" href="_p2__3___ultrasonido__puerto__serie_8c.html">P2_3_Ultrasonido_puerto_serie.c</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
+  </ul>
+</div>
+</body>
+</html>
