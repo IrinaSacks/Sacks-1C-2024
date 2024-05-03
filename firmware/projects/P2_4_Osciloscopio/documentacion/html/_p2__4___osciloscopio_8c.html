@@ -1,0 +1,451 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.10.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Proyecto 2 Ejercicio 4: Referencia del archivo C:/Repositorio/Sacks-1C-2024/firmware/projects/P2_4_Osciloscopio/main/P2_4_Osciloscopio.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+  $(function() { init_search(); });
+/* @license-end */
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="fiuner.png"/></td>
+  <td id="projectalign">
+   <div id="projectname">Proyecto 2 Ejercicio 4<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Osciloscopio</div>
+  </td>
+    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect"                onmouseover="return searchBox.OnSearchSelectShow()"                onmouseout="return searchBox.OnSearchSelectHide()">&#160;</span>
+          <input type="text" id="MSearchField" value="" placeholder="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.10.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('_p2__4___osciloscopio_8c.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#define-members">defines</a> &#124;
+<a href="#func-members">Funciones</a> &#124;
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle"><div class="title">Referencia del archivo P2_4_Osciloscopio.c</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdint.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="analog__io__mcu_8h_source.html">analog_io_mcu.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="uart__mcu_8h_source.html">uart_mcu.h</a>&quot;</code><br />
+<code>#include &quot;freertos/FreeRTOS.h&quot;</code><br />
+<code>#include &quot;freertos/task.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="timer__mcu_8h_source.html">timer_mcu.h</a>&quot;</code><br />
+</div>
+<p><a href="_p2__4___osciloscopio_8c_source.html">Ir al código fuente de este archivo.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+defines</h2></td></tr>
+<tr class="memitem:aca618f7d823e54125b8e8ca5cdecd0b2" id="r_aca618f7d823e54125b8e8ca5cdecd0b2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aca618f7d823e54125b8e8ca5cdecd0b2">CONFIG_PERIOD_AD</a>&#160;&#160;&#160;2000</td></tr>
+<tr class="memdesc:aca618f7d823e54125b8e8ca5cdecd0b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">periodo del timerA para la conversion analogico-digital en microsegundos  <br /></td></tr>
+<tr class="separator:aca618f7d823e54125b8e8ca5cdecd0b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe96446c50e0ed8f91d736347a82f91f" id="r_afe96446c50e0ed8f91d736347a82f91f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afe96446c50e0ed8f91d736347a82f91f">CONFIG_PERIOD_DA</a>&#160;&#160;&#160;4000</td></tr>
+<tr class="memdesc:afe96446c50e0ed8f91d736347a82f91f"><td class="mdescLeft">&#160;</td><td class="mdescRight">periodo del timerB para la conversion digital-analogico en microsegundos  <br /></td></tr>
+<tr class="separator:afe96446c50e0ed8f91d736347a82f91f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b20d41d6252e9871430c242cb1a56e7" id="r_a6b20d41d6252e9871430c242cb1a56e7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6b20d41d6252e9871430c242cb1a56e7">BUFFER_SIZE</a>&#160;&#160;&#160;231</td></tr>
+<tr class="memdesc:a6b20d41d6252e9871430c242cb1a56e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">tamaño del arreglo que almacena los valores del ecg  <br /></td></tr>
+<tr class="separator:a6b20d41d6252e9871430c242cb1a56e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Funciones</h2></td></tr>
+<tr class="memitem:a8b8fb8d08504d31d487ba253748dd207" id="r_a8b8fb8d08504d31d487ba253748dd207"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8b8fb8d08504d31d487ba253748dd207">tempAD</a> (void *param)</td></tr>
+<tr class="memdesc:a8b8fb8d08504d31d487ba253748dd207"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timer que envia una notificaciones cada 2000 mseg a conversionAD.  <br /></td></tr>
+<tr class="separator:a8b8fb8d08504d31d487ba253748dd207"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7c1e03c01eec13eb65afaa23a731740" id="r_aa7c1e03c01eec13eb65afaa23a731740"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa7c1e03c01eec13eb65afaa23a731740">tempDA</a> (void *param)</td></tr>
+<tr class="memdesc:aa7c1e03c01eec13eb65afaa23a731740"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timer que envia una notificaciones cada 4000 mseg a conversionDA.  <br /></td></tr>
+<tr class="separator:aa7c1e03c01eec13eb65afaa23a731740"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab25f6c2f588813f1c6bcdcc602c87952" id="r_ab25f6c2f588813f1c6bcdcc602c87952"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab25f6c2f588813f1c6bcdcc602c87952">conversionAD</a> (void *pvParameter)</td></tr>
+<tr class="memdesc:ab25f6c2f588813f1c6bcdcc602c87952"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recibe una notificiacion cada 2000 mseg, lee y almacena la señal de entrada de CH1, convierte el dato a ASCII y lo envia por el puerto serie.  <br /></td></tr>
+<tr class="separator:ab25f6c2f588813f1c6bcdcc602c87952"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8339cb9c53d559b89b0f395bbfb68ce6" id="r_a8339cb9c53d559b89b0f395bbfb68ce6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8339cb9c53d559b89b0f395bbfb68ce6">conversionDA</a> (void *pvParameter)</td></tr>
+<tr class="memdesc:a8339cb9c53d559b89b0f395bbfb68ce6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recibe una notificiacion cada 4000 mseg, lee cada valor del arreglo ecg, lo convierte en analogico y lo envia por el puerto serie.  <br /></td></tr>
+<tr class="separator:a8339cb9c53d559b89b0f395bbfb68ce6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a630544a7f0a2cc40d8a7fefab7e2fe70" id="r_a630544a7f0a2cc40d8a7fefab7e2fe70"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a630544a7f0a2cc40d8a7fefab7e2fe70">app_main</a> (void)</td></tr>
+<tr class="separator:a630544a7f0a2cc40d8a7fefab7e2fe70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:ad25ff4470f47ee5251525e7931c29568" id="r_ad25ff4470f47ee5251525e7931c29568"><td class="memItemLeft" align="right" valign="top">TaskHandle_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad25ff4470f47ee5251525e7931c29568">conversion_AD_handle</a> = <a class="el" href="ili9341_8c.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a></td></tr>
+<tr class="separator:ad25ff4470f47ee5251525e7931c29568"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3611a2a3ee9c8cfc7cfa65fe967f62a4" id="r_a3611a2a3ee9c8cfc7cfa65fe967f62a4"><td class="memItemLeft" align="right" valign="top">TaskHandle_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3611a2a3ee9c8cfc7cfa65fe967f62a4">conversion_DA_handle</a> = <a class="el" href="ili9341_8c.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a></td></tr>
+<tr class="separator:a3611a2a3ee9c8cfc7cfa65fe967f62a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a735ade1010f8a12284340612b025d2ac" id="r_a735ade1010f8a12284340612b025d2ac"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a735ade1010f8a12284340612b025d2ac">contador_auxiliar</a> =0</td></tr>
+<tr class="separator:a735ade1010f8a12284340612b025d2ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2dafb8b8179af8e9f4cc4df3f588e42e" id="r_a2dafb8b8179af8e9f4cc4df3f588e42e"><td class="memItemLeft" align="right" valign="top">const char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2dafb8b8179af8e9f4cc4df3f588e42e">ecg</a> [<a class="el" href="#a6b20d41d6252e9871430c242cb1a56e7">BUFFER_SIZE</a>]</td></tr>
+<tr class="memdesc:a2dafb8b8179af8e9f4cc4df3f588e42e"><td class="mdescLeft">&#160;</td><td class="mdescRight">arreglo de tamaño BUFFER_SIZE que almacena los valores de un ecg  <br /></td></tr>
+<tr class="separator:a2dafb8b8179af8e9f4cc4df3f588e42e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Documentación de «define»</h2>
+<a id="a6b20d41d6252e9871430c242cb1a56e7" name="a6b20d41d6252e9871430c242cb1a56e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b20d41d6252e9871430c242cb1a56e7">&#9670;&#160;</a></span>BUFFER_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BUFFER_SIZE&#160;&#160;&#160;231</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>tamaño del arreglo que almacena los valores del ecg </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_p2__4___osciloscopio_8c_source.html#l00045">45</a> del archivo <a class="el" href="_p2__4___osciloscopio_8c_source.html">P2_4_Osciloscopio.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_p2__4___osciloscopio_8c_source.html#l00102">conversionDA()</a>.</p>
+
+</div>
+</div>
+<a id="aca618f7d823e54125b8e8ca5cdecd0b2" name="aca618f7d823e54125b8e8ca5cdecd0b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca618f7d823e54125b8e8ca5cdecd0b2">&#9670;&#160;</a></span>CONFIG_PERIOD_AD</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CONFIG_PERIOD_AD&#160;&#160;&#160;2000</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>periodo del timerA para la conversion analogico-digital en microsegundos </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_p2__4___osciloscopio_8c_source.html#l00037">37</a> del archivo <a class="el" href="_p2__4___osciloscopio_8c_source.html">P2_4_Osciloscopio.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_p2__4___osciloscopio_8c_source.html#l00115">app_main()</a>.</p>
+
+</div>
+</div>
+<a id="afe96446c50e0ed8f91d736347a82f91f" name="afe96446c50e0ed8f91d736347a82f91f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe96446c50e0ed8f91d736347a82f91f">&#9670;&#160;</a></span>CONFIG_PERIOD_DA</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CONFIG_PERIOD_DA&#160;&#160;&#160;4000</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>periodo del timerB para la conversion digital-analogico en microsegundos </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_p2__4___osciloscopio_8c_source.html#l00041">41</a> del archivo <a class="el" href="_p2__4___osciloscopio_8c_source.html">P2_4_Osciloscopio.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_p2__4___osciloscopio_8c_source.html#l00115">app_main()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentación de funciones</h2>
+<a id="a630544a7f0a2cc40d8a7fefab7e2fe70" name="a630544a7f0a2cc40d8a7fefab7e2fe70"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a630544a7f0a2cc40d8a7fefab7e2fe70">&#9670;&#160;</a></span>app_main()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void app_main </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="_p2__4___osciloscopio_8c_source.html#l00115">115</a> del archivo <a class="el" href="_p2__4___osciloscopio_8c_source.html">P2_4_Osciloscopio.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="analog__io__mcu_8h_source.html#l00038">ADC_SINGLE</a>, <a class="el" href="analog__io__mcu_8c_source.html#l00045">AnalogInputInit()</a>, <a class="el" href="analog__io__mcu_8c_source.html#l00095">AnalogOutputInit()</a>, <a class="el" href="analog__io__mcu_8h_source.html#l00032">CH1</a>, <a class="el" href="_p2__4___osciloscopio_8c_source.html#l00037">CONFIG_PERIOD_AD</a>, <a class="el" href="_p2__4___osciloscopio_8c_source.html#l00041">CONFIG_PERIOD_DA</a>, <a class="el" href="_p2__4___osciloscopio_8c_source.html#l00047">conversion_AD_handle</a>, <a class="el" href="_p2__4___osciloscopio_8c_source.html#l00048">conversion_DA_handle</a>, <a class="el" href="_p2__4___osciloscopio_8c_source.html#l00089">conversionAD()</a>, <a class="el" href="_p2__4___osciloscopio_8c_source.html#l00102">conversionDA()</a>, <a class="el" href="analog__io__mcu_8h_source.html#l00049">analog_input_config_t::input</a>, <a class="el" href="ili9341_8c_source.html#l00042">NULL</a>, <a class="el" href="uart__mcu_8h_source.html#l00039">serial_config_t::port</a>, <a class="el" href="_p2__4___osciloscopio_8c_source.html#l00076">tempAD()</a>, <a class="el" href="_p2__4___osciloscopio_8c_source.html#l00082">tempDA()</a>, <a class="el" href="timer__mcu_8h_source.html#l00040">timer_config_t::timer</a>, <a class="el" href="timer__mcu_8h_source.html#l00032">TIMER_A</a>, <a class="el" href="timer__mcu_8h_source.html#l00033">TIMER_B</a>, <a class="el" href="timer__mcu_8c_source.html#l00055">TimerInit()</a>, <a class="el" href="timer__mcu_8c_source.html#l00110">TimerStart()</a>, <a class="el" href="uart__mcu_8h_source.html#l00032">UART_PC</a> y <a class="el" href="uart__mcu_8c_source.html#l00107">UartInit()</a>.</p>
+
+</div>
+</div>
+<a id="ab25f6c2f588813f1c6bcdcc602c87952" name="ab25f6c2f588813f1c6bcdcc602c87952"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab25f6c2f588813f1c6bcdcc602c87952">&#9670;&#160;</a></span>conversionAD()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void conversionAD </td>
+          <td>(</td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>pvParameter</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Recibe una notificiacion cada 2000 mseg, lee y almacena la señal de entrada de CH1, convierte el dato a ASCII y lo envia por el puerto serie. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>void </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="_p2__4___osciloscopio_8c_source.html#l00089">89</a> del archivo <a class="el" href="_p2__4___osciloscopio_8c_source.html">P2_4_Osciloscopio.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="analog__io__mcu_8c_source.html#l00105">AnalogInputReadSingle()</a>, <a class="el" href="analog__io__mcu_8h_source.html#l00032">CH1</a>, <a class="el" href="uart__mcu_8h_source.html#l00032">UART_PC</a>, <a class="el" href="uart__mcu_8c_source.html#l00222">UartItoa()</a> y <a class="el" href="uart__mcu_8c_source.html#l00193">UartSendString()</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_p2__4___osciloscopio_8c_source.html#l00115">app_main()</a>.</p>
+
+</div>
+</div>
+<a id="a8339cb9c53d559b89b0f395bbfb68ce6" name="a8339cb9c53d559b89b0f395bbfb68ce6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8339cb9c53d559b89b0f395bbfb68ce6">&#9670;&#160;</a></span>conversionDA()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void conversionDA </td>
+          <td>(</td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>pvParameter</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Recibe una notificiacion cada 4000 mseg, lee cada valor del arreglo ecg, lo convierte en analogico y lo envia por el puerto serie. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>void </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="_p2__4___osciloscopio_8c_source.html#l00102">102</a> del archivo <a class="el" href="_p2__4___osciloscopio_8c_source.html">P2_4_Osciloscopio.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="analog__io__mcu_8c_source.html#l00140">AnalogOutputWrite()</a>, <a class="el" href="_p2__4___osciloscopio_8c_source.html#l00045">BUFFER_SIZE</a>, <a class="el" href="_p2__4___osciloscopio_8c_source.html#l00049">contador_auxiliar</a> y <a class="el" href="_p2__4___osciloscopio_8c_source.html#l00053">ecg</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_p2__4___osciloscopio_8c_source.html#l00115">app_main()</a>.</p>
+
+</div>
+</div>
+<a id="a8b8fb8d08504d31d487ba253748dd207" name="a8b8fb8d08504d31d487ba253748dd207"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b8fb8d08504d31d487ba253748dd207">&#9670;&#160;</a></span>tempAD()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void tempAD </td>
+          <td>(</td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>param</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Timer que envia una notificaciones cada 2000 mseg a conversionAD. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>void </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="_p2__4___osciloscopio_8c_source.html#l00076">76</a> del archivo <a class="el" href="_p2__4___osciloscopio_8c_source.html">P2_4_Osciloscopio.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_p2__4___osciloscopio_8c_source.html#l00047">conversion_AD_handle</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_p2__4___osciloscopio_8c_source.html#l00115">app_main()</a>.</p>
+
+</div>
+</div>
+<a id="aa7c1e03c01eec13eb65afaa23a731740" name="aa7c1e03c01eec13eb65afaa23a731740"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7c1e03c01eec13eb65afaa23a731740">&#9670;&#160;</a></span>tempDA()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void tempDA </td>
+          <td>(</td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>param</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Timer que envia una notificaciones cada 4000 mseg a conversionDA. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>void </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="_p2__4___osciloscopio_8c_source.html#l00082">82</a> del archivo <a class="el" href="_p2__4___osciloscopio_8c_source.html">P2_4_Osciloscopio.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_p2__4___osciloscopio_8c_source.html#l00048">conversion_DA_handle</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_p2__4___osciloscopio_8c_source.html#l00115">app_main()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentación de variables</h2>
+<a id="a735ade1010f8a12284340612b025d2ac" name="a735ade1010f8a12284340612b025d2ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a735ade1010f8a12284340612b025d2ac">&#9670;&#160;</a></span>contador_auxiliar</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t contador_auxiliar =0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="_p2__4___osciloscopio_8c_source.html#l00049">49</a> del archivo <a class="el" href="_p2__4___osciloscopio_8c_source.html">P2_4_Osciloscopio.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_p2__4___osciloscopio_8c_source.html#l00102">conversionDA()</a>.</p>
+
+</div>
+</div>
+<a id="ad25ff4470f47ee5251525e7931c29568" name="ad25ff4470f47ee5251525e7931c29568"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad25ff4470f47ee5251525e7931c29568">&#9670;&#160;</a></span>conversion_AD_handle</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TaskHandle_t conversion_AD_handle = <a class="el" href="ili9341_8c.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="_p2__4___osciloscopio_8c_source.html#l00047">47</a> del archivo <a class="el" href="_p2__4___osciloscopio_8c_source.html">P2_4_Osciloscopio.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_p2__4___osciloscopio_8c_source.html#l00115">app_main()</a> y <a class="el" href="_p2__4___osciloscopio_8c_source.html#l00076">tempAD()</a>.</p>
+
+</div>
+</div>
+<a id="a3611a2a3ee9c8cfc7cfa65fe967f62a4" name="a3611a2a3ee9c8cfc7cfa65fe967f62a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3611a2a3ee9c8cfc7cfa65fe967f62a4">&#9670;&#160;</a></span>conversion_DA_handle</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TaskHandle_t conversion_DA_handle = <a class="el" href="ili9341_8c.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="_p2__4___osciloscopio_8c_source.html#l00048">48</a> del archivo <a class="el" href="_p2__4___osciloscopio_8c_source.html">P2_4_Osciloscopio.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_p2__4___osciloscopio_8c_source.html#l00115">app_main()</a> y <a class="el" href="_p2__4___osciloscopio_8c_source.html#l00082">tempDA()</a>.</p>
+
+</div>
+</div>
+<a id="a2dafb8b8179af8e9f4cc4df3f588e42e" name="a2dafb8b8179af8e9f4cc4df3f588e42e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2dafb8b8179af8e9f4cc4df3f588e42e">&#9670;&#160;</a></span>ecg</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char ecg[<a class="el" href="#a6b20d41d6252e9871430c242cb1a56e7">BUFFER_SIZE</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Valor inicial:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">    76, 77, 78, 77, 79, 86, 81, 76, 84, 93, 85, 80,</div>
+<div class="line">    89, 95, 89, 85, 93, 98, 94, 88, 98, 105, 96, 91,</div>
+<div class="line">    99, 105, 101, 96, 102, 106, 101, 96, 100, 107, 101,</div>
+<div class="line">    94, 100, 104, 100, 91, 99, 103, 98, 91, 96, 105, 95,</div>
+<div class="line">    88, 95, 100, 94, 85, 93, 99, 92, 84, 91, 96, 87, 80,</div>
+<div class="line">    83, 92, 86, 78, 84, 89, 79, 73, 81, 83, 78, 70, 80, 82,</div>
+<div class="line">    79, 69, 80, 82, 81, 70, 75, 81, 77, 74, 79, 83, 82, 72,</div>
+<div class="line">    80, 87, 79, 76, 85, 95, 87, 81, 88, 93, 88, 84, 87, 94,</div>
+<div class="line">    86, 82, 85, 94, 85, 82, 85, 95, 86, 83, 92, 99, 91, 88,</div>
+<div class="line">    94, 98, 95, 90, 97, 105, 104, 94, 98, 114, 117, 124, 144,</div>
+<div class="line">    180, 210, 236, 253, 227, 171, 99, 49, 34, 29, 43, 69, 89,</div>
+<div class="line">    89, 90, 98, 107, 104, 98, 104, 110, 102, 98, 103, 111, 101,</div>
+<div class="line">    94, 103, 108, 102, 95, 97, 106, 100, 92, 101, 103, 100, 94, 98,</div>
+<div class="line">    103, 96, 90, 98, 103, 97, 90, 99, 104, 95, 90, 99, 104, 100, 93,</div>
+<div class="line">    100, 106, 101, 93, 101, 105, 103, 96, 105, 112, 105, 99, 103, 108,</div>
+<div class="line">    99, 96, 102, 106, 99, 90, 92, 100, 87, 80, 82, 88, 77, 69, 75, 79,</div>
+<div class="line">    74, 67, 71, 78, 72, 67, 73, 81, 77, 71, 75, 84, 79, 77, 77, 76, 76,</div>
+<div class="line">}</div>
+</div><!-- fragment -->
+<p>arreglo de tamaño BUFFER_SIZE que almacena los valores de un ecg </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_p2__4___osciloscopio_8c_source.html#l00053">53</a> del archivo <a class="el" href="_p2__4___osciloscopio_8c_source.html">P2_4_Osciloscopio.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_p2__4___osciloscopio_8c_source.html#l00102">conversionDA()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_76557cd4a0608cd174cb3d5100c20ce4.html">Sacks-1C-2024</a></li><li class="navelem"><a class="el" href="dir_4a875605755f3e307511815f0cde7761.html">firmware</a></li><li class="navelem"><a class="el" href="dir_7afb78551d3697caf76e3998a36c8e3e.html">projects</a></li><li class="navelem"><a class="el" href="dir_02894764afee4763f83b5ed50310ad1c.html">P2_4_Osciloscopio</a></li><li class="navelem"><a class="el" href="dir_f8b4aa83c964f008c5324c55ef523c42.html">main</a></li><li class="navelem"><a class="el" href="_p2__4___osciloscopio_8c.html">P2_4_Osciloscopio.c</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
+  </ul>
+</div>
+</body>
+</html>
