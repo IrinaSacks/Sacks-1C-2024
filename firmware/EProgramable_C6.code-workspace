@@ -43,6 +43,12 @@
         },
         {
             "path": "projects/P2_2_Ultrasonido_interrupciones"
+        },
+        {
+            "path": "projects/P2_3_Ultrasonido_puerto_serie"
+        },
+        {
+            "path": "projects/P2_4_Osciloscopio"
         }
     ],
     "settings": {
@@ -97,7 +103,16 @@
             "ili9341.h": "c",
             "soc_caps.h": "c",
             "mpu6050.h": "c",
-            "i2c_mcu.h": "c"
+            "i2c_mcu.h": "c",
+            "type_traits": "c",
+            "*.tcc": "c",
+            "optional": "c",
+            "ratio": "c",
+            "system_error": "c",
+            "functional": "c",
+            "regex": "c",
+            "tuple": "c",
+            "utility": "c"
         },
     },
     "tasks": {
