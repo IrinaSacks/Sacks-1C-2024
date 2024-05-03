@@ -1,0 +1,289 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.10.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Proyecto 2 Ejercicio 2: Archivo de código fuente C:/Repositorio/Sacks-1C-2024/firmware/projects/P2_2_Ultrasonido_interrupciones/main/P2_2_Ultrasonido_interrupciones.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+  $(function() { init_search(); });
+/* @license-end */
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="fiuner.png"/></td>
+  <td id="projectalign">
+   <div id="projectname">Proyecto 2 Ejercicio 2<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Medidor de distancia por ultrasonido y mostrado por display usando interrupciones</div>
+  </td>
+    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect"                onmouseover="return searchBox.OnSearchSelectShow()"                onmouseout="return searchBox.OnSearchSelectHide()">&#160;</span>
+          <input type="text" id="MSearchField" value="" placeholder="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.10.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('_p2__2___ultrasonido__interrupciones_8c_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">P2_2_Ultrasonido_interrupciones.c</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="_p2__2___ultrasonido__interrupciones_8c.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment">/*==================[inclusions]=============================================*/</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#include &quot;freertos/FreeRTOS.h&quot;</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#include &quot;freertos/task.h&quot;</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#include &quot;<a class="code" href="hc__sr04_8h.html">hc_sr04.h</a>&quot;</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#include &quot;<a class="code" href="led_8h.html">led.h</a>&quot;</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#include &quot;<a class="code" href="switch_8h.html">switch.h</a>&quot;</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#include &quot;<a class="code" href="lcditse0803_8h.html">lcditse0803.h</a>&quot;</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#include &quot;<a class="code" href="timer__mcu_8h.html">timer_mcu.h</a>&quot;</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment">/*==================[macros and definitions]=================================*/</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="_p2__2___ultrasonido__interrupciones_8c.html#a97263a02d52395ae23ccf0cd8d2d3577">   41</a></span><span class="preprocessor">#define CONFIG_PERIOD_DIS 1000000</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="comment">/*==================[internal data definition]===============================*/</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="_p2__2___ultrasonido__interrupciones_8c.html#afbf6267f8cada61e9a25ec5f775a00b7">   43</a></span>TaskHandle_t <a class="code hl_variable" href="_p2__2___ultrasonido__interrupciones_8c.html#afbf6267f8cada61e9a25ec5f775a00b7">leer_distancia_handle</a> = <a class="code hl_define" href="ili9341_8c.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="_p2__2___ultrasonido__interrupciones_8c.html#afbc133f87b9c89eaf02ca52dd841a493">   44</a></span>TaskHandle_t <a class="code hl_variable" href="_p2__2___ultrasonido__interrupciones_8c.html#afbc133f87b9c89eaf02ca52dd841a493">mostrar_distancia_handle</a> = <a class="code hl_define" href="ili9341_8c.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="_p2__2___ultrasonido__interrupciones_8c.html#aec40b15ff3098bdb2425eb4dc9c11a18">   48</a></span>uint16_t <a class="code hl_variable" href="_p2__2___ultrasonido__interrupciones_8c.html#aec40b15ff3098bdb2425eb4dc9c11a18">distancia</a>;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="_p2__2___ultrasonido__interrupciones_8c.html#ad155fe5a68eb888a7e0eb897a3dfc015">   52</a></span><span class="keywordtype">bool</span> <a class="code hl_variable" href="_p2__2___ultrasonido__interrupciones_8c.html#ad155fe5a68eb888a7e0eb897a3dfc015">control</a>=<span class="keyword">true</span>;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="_p2__2___ultrasonido__interrupciones_8c.html#afd9a5b1c677d10988c142bb501f34ab4">   56</a></span><span class="keywordtype">bool</span> <a class="code hl_variable" href="_p2__2___ultrasonido__interrupciones_8c.html#afd9a5b1c677d10988c142bb501f34ab4">pausa</a>=<span class="keyword">false</span>;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="comment">/*==================[internal functions declaration]=========================*/</span></div>
+<div class="foldopen" id="foldopen00061" data-start="{" data-end="}">
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="_p2__2___ultrasonido__interrupciones_8c.html#a2ea94281ed83bf8c0f26ecbb5690bc4d">   61</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="_p2__2___ultrasonido__interrupciones_8c.html#a2ea94281ed83bf8c0f26ecbb5690bc4d">FuncTimerA_Distancia</a> (<span class="keywordtype">void</span>* param){</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    vTaskNotifyGiveFromISR(<a class="code hl_variable" href="_p2__2___ultrasonido__interrupciones_8c.html#afbf6267f8cada61e9a25ec5f775a00b7">leer_distancia_handle</a>, pdFALSE);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    vTaskNotifyGiveFromISR(<a class="code hl_variable" href="_p2__2___ultrasonido__interrupciones_8c.html#afbc133f87b9c89eaf02ca52dd841a493">mostrar_distancia_handle</a>, pdFALSE);</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>}</div>
+</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="foldopen" id="foldopen00070" data-start="{" data-end="}">
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="_p2__2___ultrasonido__interrupciones_8c.html#aef27a43e143172c03c4209f2bad857d1">   70</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="_p2__2___ultrasonido__interrupciones_8c.html#aef27a43e143172c03c4209f2bad857d1">vumetro</a>(uint16_t dis_cm){</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="keywordflow">if</span>(dis_cm &lt; 10){</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        <a class="code hl_function" href="group___l_e_d.html#ga4fd07c9f7fab15d0d07389a38f4a39d8">LedOff</a>(<a class="code hl_enumvalue" href="group___l_e_d.html#ggab6831a7d06c0a2bc69f9b024f6445a80a11a9adb9054de1fe01d6a6750075f57b">LED_1</a>);</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        <a class="code hl_function" href="group___l_e_d.html#ga4fd07c9f7fab15d0d07389a38f4a39d8">LedOff</a>(<a class="code hl_enumvalue" href="group___l_e_d.html#ggab6831a7d06c0a2bc69f9b024f6445a80a00af6b2437d9982f1f125d2cc2537c41">LED_2</a>);</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        <a class="code hl_function" href="group___l_e_d.html#ga4fd07c9f7fab15d0d07389a38f4a39d8">LedOff</a>(<a class="code hl_enumvalue" href="group___l_e_d.html#ggab6831a7d06c0a2bc69f9b024f6445a80a3e1b1af0f74f675e4eb7bd18229adfd3">LED_3</a>);</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    }</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((dis_cm &gt; 10) &amp;&amp; (dis_cm &lt; 20)){</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        <a class="code hl_function" href="group___l_e_d.html#ga883021aaef65f080a52b1852172ecbc3">LedOn</a>(<a class="code hl_enumvalue" href="group___l_e_d.html#ggab6831a7d06c0a2bc69f9b024f6445a80a11a9adb9054de1fe01d6a6750075f57b">LED_1</a>);</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        <a class="code hl_function" href="group___l_e_d.html#ga4fd07c9f7fab15d0d07389a38f4a39d8">LedOff</a>(<a class="code hl_enumvalue" href="group___l_e_d.html#ggab6831a7d06c0a2bc69f9b024f6445a80a00af6b2437d9982f1f125d2cc2537c41">LED_2</a>);</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        <a class="code hl_function" href="group___l_e_d.html#ga4fd07c9f7fab15d0d07389a38f4a39d8">LedOff</a>(<a class="code hl_enumvalue" href="group___l_e_d.html#ggab6831a7d06c0a2bc69f9b024f6445a80a3e1b1af0f74f675e4eb7bd18229adfd3">LED_3</a>);</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    }</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span>((dis_cm &gt; 20) &amp;&amp; (dis_cm &lt; 30)){</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        <a class="code hl_function" href="group___l_e_d.html#ga883021aaef65f080a52b1852172ecbc3">LedOn</a>(<a class="code hl_enumvalue" href="group___l_e_d.html#ggab6831a7d06c0a2bc69f9b024f6445a80a11a9adb9054de1fe01d6a6750075f57b">LED_1</a>);</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        <a class="code hl_function" href="group___l_e_d.html#ga883021aaef65f080a52b1852172ecbc3">LedOn</a>(<a class="code hl_enumvalue" href="group___l_e_d.html#ggab6831a7d06c0a2bc69f9b024f6445a80a00af6b2437d9982f1f125d2cc2537c41">LED_2</a>);</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        <a class="code hl_function" href="group___l_e_d.html#ga4fd07c9f7fab15d0d07389a38f4a39d8">LedOff</a>(<a class="code hl_enumvalue" href="group___l_e_d.html#ggab6831a7d06c0a2bc69f9b024f6445a80a3e1b1af0f74f675e4eb7bd18229adfd3">LED_3</a>);</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    }</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span>((dis_cm &gt; 30)){</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        <a class="code hl_function" href="group___l_e_d.html#ga883021aaef65f080a52b1852172ecbc3">LedOn</a>(<a class="code hl_enumvalue" href="group___l_e_d.html#ggab6831a7d06c0a2bc69f9b024f6445a80a11a9adb9054de1fe01d6a6750075f57b">LED_1</a>);</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        <a class="code hl_function" href="group___l_e_d.html#ga883021aaef65f080a52b1852172ecbc3">LedOn</a>(<a class="code hl_enumvalue" href="group___l_e_d.html#ggab6831a7d06c0a2bc69f9b024f6445a80a00af6b2437d9982f1f125d2cc2537c41">LED_2</a>);</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        <a class="code hl_function" href="group___l_e_d.html#ga883021aaef65f080a52b1852172ecbc3">LedOn</a>(<a class="code hl_enumvalue" href="group___l_e_d.html#ggab6831a7d06c0a2bc69f9b024f6445a80a3e1b1af0f74f675e4eb7bd18229adfd3">LED_3</a>);</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    }</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>}</div>
+</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="keyword">static</span> <span class="keywordtype">void</span> LeerDistancia(<span class="keywordtype">void</span> *pvParameter){</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    <span class="keywordflow">while</span>(1){</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        ulTaskNotifyTake(pdTRUE, portMAX_DELAY);</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        <span class="keywordflow">if</span>(<a class="code hl_variable" href="_p2__2___ultrasonido__interrupciones_8c.html#ad155fe5a68eb888a7e0eb897a3dfc015">control</a>){</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>            <a class="code hl_variable" href="_p2__2___ultrasonido__interrupciones_8c.html#aec40b15ff3098bdb2425eb4dc9c11a18">distancia</a> = <a class="code hl_function" href="group___h_c___s_r04.html#ga73a5aaa2183e55d104d4e0c2c435e251">HcSr04ReadDistanceInCentimeters</a>();</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        }</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    }</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>}</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span><span class="keyword">static</span> <span class="keywordtype">void</span> MostrarDistancia(<span class="keywordtype">void</span> *pvParameter){</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    <span class="keywordflow">while</span>(1){</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        ulTaskNotifyTake(pdTRUE, portMAX_DELAY);</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        <span class="keywordflow">if</span>(<a class="code hl_variable" href="_p2__2___ultrasonido__interrupciones_8c.html#ad155fe5a68eb888a7e0eb897a3dfc015">control</a>){</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>            <span class="keywordflow">if</span>(!<a class="code hl_variable" href="_p2__2___ultrasonido__interrupciones_8c.html#afd9a5b1c677d10988c142bb501f34ab4">pausa</a>){</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>                <a class="code hl_function" href="group___l_c_d___i_t_s_e0803.html#ga77a9887ee733d3212c3e4996c47f1b9d">LcdItsE0803Write</a>(<a class="code hl_variable" href="_p2__2___ultrasonido__interrupciones_8c.html#aec40b15ff3098bdb2425eb4dc9c11a18">distancia</a>);</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>            }</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>            <a class="code hl_function" href="_p2__2___ultrasonido__interrupciones_8c.html#aef27a43e143172c03c4209f2bad857d1">vumetro</a>(<a class="code hl_variable" href="_p2__2___ultrasonido__interrupciones_8c.html#aec40b15ff3098bdb2425eb4dc9c11a18">distancia</a>);</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        }</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>        <span class="keywordflow">else</span>{</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>            <a class="code hl_function" href="group___l_e_d.html#gafcc4fefa23689ea53feedb349c8a9eb6">LedsOffAll</a>();</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>            <a class="code hl_function" href="group___l_c_d___i_t_s_e0803.html#gae84766fe1e3b5550b1ca4bbc70f00504">LcdItsE0803Off</a>();</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>        }</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    }</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>}</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span> </div>
+<div class="foldopen" id="foldopen00127" data-start="{" data-end="}">
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno"><a class="line" href="_p2__2___ultrasonido__interrupciones_8c.html#a9b60c7eef8918189e1e7dea5714bf9f7">  127</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="_p2__2___ultrasonido__interrupciones_8c.html#a9b60c7eef8918189e1e7dea5714bf9f7">LeerTeclaOnOff</a>(<span class="keywordtype">void</span>){</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    <a class="code hl_variable" href="_p2__2___ultrasonido__interrupciones_8c.html#ad155fe5a68eb888a7e0eb897a3dfc015">control</a>=!<a class="code hl_variable" href="_p2__2___ultrasonido__interrupciones_8c.html#ad155fe5a68eb888a7e0eb897a3dfc015">control</a>;   </div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>}</div>
+</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span> </div>
+<div class="foldopen" id="foldopen00134" data-start="{" data-end="}">
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno"><a class="line" href="_p2__2___ultrasonido__interrupciones_8c.html#a6eb5f4b6a2029c6c783577d7c5827e17">  134</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="_p2__2___ultrasonido__interrupciones_8c.html#a6eb5f4b6a2029c6c783577d7c5827e17">LeerTeclaHold</a>(<span class="keywordtype">void</span>){</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    <a class="code hl_variable" href="_p2__2___ultrasonido__interrupciones_8c.html#afd9a5b1c677d10988c142bb501f34ab4">pausa</a>=!<a class="code hl_variable" href="_p2__2___ultrasonido__interrupciones_8c.html#afd9a5b1c677d10988c142bb501f34ab4">pausa</a>;</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>}</div>
+</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span> </div>
+<div class="foldopen" id="foldopen00142" data-start="{" data-end="}">
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno"><a class="line" href="_p2__2___ultrasonido__interrupciones_8c.html#a859f63c46409355ce24aa8215a5b2d84">  142</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="_p2__2___ultrasonido__interrupciones_8c.html#a859f63c46409355ce24aa8215a5b2d84">LeerTecla</a>(<a class="code hl_typedef" href="group___switch.html#ga7e3732d4e527fda09473b232e502f54e">switch_t</a> tecla){</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    <span class="keywordflow">switch</span>(tecla){</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="group___switch.html#gga8caa2df6d25fea5a14eb4533df1d5cfaa24caa46485c5fec2211b3ebd8a1eee77">SWITCH_1</a>:</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>            <a class="code hl_variable" href="_p2__2___ultrasonido__interrupciones_8c.html#ad155fe5a68eb888a7e0eb897a3dfc015">control</a>=!<a class="code hl_variable" href="_p2__2___ultrasonido__interrupciones_8c.html#ad155fe5a68eb888a7e0eb897a3dfc015">control</a>;</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>        <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="group___switch.html#gga8caa2df6d25fea5a14eb4533df1d5cfaa73fda67835d5d51aa9251fee781a7434">SWITCH_2</a>:</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>            <a class="code hl_variable" href="_p2__2___ultrasonido__interrupciones_8c.html#afd9a5b1c677d10988c142bb501f34ab4">pausa</a>=!<a class="code hl_variable" href="_p2__2___ultrasonido__interrupciones_8c.html#afd9a5b1c677d10988c142bb501f34ab4">pausa</a>;</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>        <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>    }</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>}</div>
+</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span> </div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span><span class="comment">/*==================[external functions definition]==========================*/</span></div>
+<div class="foldopen" id="foldopen00154" data-start="{" data-end="}">
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno"><a class="line" href="_p2__2___ultrasonido__interrupciones_8c.html#a630544a7f0a2cc40d8a7fefab7e2fe70">  154</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="_p2__2___ultrasonido__interrupciones_8c.html#a630544a7f0a2cc40d8a7fefab7e2fe70">app_main</a>(<span class="keywordtype">void</span>){</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    <a class="code hl_function" href="group___l_e_d.html#gacba669c3e8f52e45d1bea50c2e63b250">LedsInit</a>();</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    <a class="code hl_function" href="group___switch.html#ga8eb2865a73bf2d2b9fd6760958a0cc3c">SwitchesInit</a>();</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>    <a class="code hl_function" href="group___l_c_d___i_t_s_e0803.html#ga1c08a1458380c8f0a02a3763d14c8bf3">LcdItsE0803Init</a>();</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    <a class="code hl_function" href="group___h_c___s_r04.html#ga9d26cc017fe45c607d08231ebffb46c4">HcSr04Init</a>(<a class="code hl_enumvalue" href="group___g_i_o_p.html#ggaf65604147d0244c9b13cfdc865ad5393a426d08ab85ab3aebbb53eed1a32dfb71">GPIO_3</a>, <a class="code hl_enumvalue" href="group___g_i_o_p.html#ggaf65604147d0244c9b13cfdc865ad5393abbea21b656f1917800d9d279b685f38e">GPIO_2</a>);</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span> </div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    <a class="code hl_struct" href="structtimer__config__t.html">timer_config_t</a> timer_distancia = {</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>        .<a class="code hl_variable" href="structtimer__config__t.html#ab83043b8038c5e630f6a2a05ea007e49">timer</a> = <a class="code hl_enumvalue" href="group___timer.html#ggacc4e64394d03a6e790f8e52c674534d9a179b1231f027eba52fa4ef94ec174598">TIMER_A</a>,</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>        .period = <a class="code hl_define" href="_p2__2___ultrasonido__interrupciones_8c.html#a97263a02d52395ae23ccf0cd8d2d3577">CONFIG_PERIOD_DIS</a>,</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>        .func_p = <a class="code hl_function" href="_p2__2___ultrasonido__interrupciones_8c.html#a2ea94281ed83bf8c0f26ecbb5690bc4d">FuncTimerA_Distancia</a>,</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>        .param_p = <a class="code hl_define" href="ili9341_8c.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a></div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>    };</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span> </div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>    <a class="code hl_function" href="group___timer.html#gae8617c0d176463a60441464ad26563f6">TimerInit</a>(&amp;timer_distancia);</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span> </div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>    <a class="code hl_function" href="group___switch.html#ga9847b9081e3cb39dd3ec01eaee8323b2">SwitchActivInt</a>(<a class="code hl_enumvalue" href="group___switch.html#gga8caa2df6d25fea5a14eb4533df1d5cfaa24caa46485c5fec2211b3ebd8a1eee77">SWITCH_1</a>, &amp;<a class="code hl_function" href="_p2__2___ultrasonido__interrupciones_8c.html#a9b60c7eef8918189e1e7dea5714bf9f7">LeerTeclaOnOff</a>, <a class="code hl_define" href="ili9341_8c.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>);</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>    <a class="code hl_function" href="group___switch.html#ga9847b9081e3cb39dd3ec01eaee8323b2">SwitchActivInt</a>(<a class="code hl_enumvalue" href="group___switch.html#gga8caa2df6d25fea5a14eb4533df1d5cfaa73fda67835d5d51aa9251fee781a7434">SWITCH_2</a>, &amp;<a class="code hl_function" href="_p2__2___ultrasonido__interrupciones_8c.html#a6eb5f4b6a2029c6c783577d7c5827e17">LeerTeclaHold</a>, <a class="code hl_define" href="ili9341_8c.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>);</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>    <span class="comment">//SwitchActivInt(SWITCH_1, &amp;LeerTecla, SWITCH_1); Sirve para hacer una sola funcion, el de abajo igual </span></div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>    <span class="comment">//SwitchActivInt(SWITCH_2, &amp;LeerTecla, SWITCH_2);</span></div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span> </div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>    xTaskCreate(&amp;LeerDistancia, <span class="stringliteral">&quot;LeerDistancia&quot;</span>, 2048, <a class="code hl_define" href="ili9341_8c.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>, 5, &amp;<a class="code hl_variable" href="_p2__2___ultrasonido__interrupciones_8c.html#afbf6267f8cada61e9a25ec5f775a00b7">leer_distancia_handle</a>);</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>    xTaskCreate(&amp;MostrarDistancia, <span class="stringliteral">&quot;MostrarDistancia&quot;</span>, 2048, <a class="code hl_define" href="ili9341_8c.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>, 5, &amp;<a class="code hl_variable" href="_p2__2___ultrasonido__interrupciones_8c.html#afbc133f87b9c89eaf02ca52dd841a493">mostrar_distancia_handle</a>);</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>    </div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>    <a class="code hl_function" href="group___timer.html#ga0b1779c5b8f91cc83c8bfd127071ea2f">TimerStart</a>(timer_distancia.<a class="code hl_variable" href="structtimer__config__t.html#ab83043b8038c5e630f6a2a05ea007e49">timer</a>);</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>}</div>
+</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span><span class="comment">/*==================[end of file]============================================*/</span></div>
+<div class="ttc" id="a_p2__2___ultrasonido__interrupciones_8c_html_a2ea94281ed83bf8c0f26ecbb5690bc4d"><div class="ttname"><a href="_p2__2___ultrasonido__interrupciones_8c.html#a2ea94281ed83bf8c0f26ecbb5690bc4d">FuncTimerA_Distancia</a></div><div class="ttdeci">void FuncTimerA_Distancia(void *param)</div><div class="ttdoc">Timer que envia dos notificaciones cada 1 segundo a LeerDistancia y MostrarDistancia.</div><div class="ttdef"><b>Definition</b> <a href="#l00061">P2_2_Ultrasonido_interrupciones.c:61</a></div></div>
+<div class="ttc" id="a_p2__2___ultrasonido__interrupciones_8c_html_a630544a7f0a2cc40d8a7fefab7e2fe70"><div class="ttname"><a href="_p2__2___ultrasonido__interrupciones_8c.html#a630544a7f0a2cc40d8a7fefab7e2fe70">app_main</a></div><div class="ttdeci">void app_main(void)</div><div class="ttdef"><b>Definition</b> <a href="#l00154">P2_2_Ultrasonido_interrupciones.c:154</a></div></div>
+<div class="ttc" id="a_p2__2___ultrasonido__interrupciones_8c_html_a6eb5f4b6a2029c6c783577d7c5827e17"><div class="ttname"><a href="_p2__2___ultrasonido__interrupciones_8c.html#a6eb5f4b6a2029c6c783577d7c5827e17">LeerTeclaHold</a></div><div class="ttdeci">void LeerTeclaHold(void)</div><div class="ttdoc">cambia el estado de la variable pausa</div><div class="ttdef"><b>Definition</b> <a href="#l00134">P2_2_Ultrasonido_interrupciones.c:134</a></div></div>
+<div class="ttc" id="a_p2__2___ultrasonido__interrupciones_8c_html_a859f63c46409355ce24aa8215a5b2d84"><div class="ttname"><a href="_p2__2___ultrasonido__interrupciones_8c.html#a859f63c46409355ce24aa8215a5b2d84">LeerTecla</a></div><div class="ttdeci">void LeerTecla(switch_t tecla)</div><div class="ttdoc">modifica variables control o pausa segun el switch que fue apretado</div><div class="ttdef"><b>Definition</b> <a href="#l00142">P2_2_Ultrasonido_interrupciones.c:142</a></div></div>
+<div class="ttc" id="a_p2__2___ultrasonido__interrupciones_8c_html_a97263a02d52395ae23ccf0cd8d2d3577"><div class="ttname"><a href="_p2__2___ultrasonido__interrupciones_8c.html#a97263a02d52395ae23ccf0cd8d2d3577">CONFIG_PERIOD_DIS</a></div><div class="ttdeci">#define CONFIG_PERIOD_DIS</div><div class="ttdoc">periodo del timerA en microsegundos</div><div class="ttdef"><b>Definition</b> <a href="#l00041">P2_2_Ultrasonido_interrupciones.c:41</a></div></div>
+<div class="ttc" id="a_p2__2___ultrasonido__interrupciones_8c_html_a9b60c7eef8918189e1e7dea5714bf9f7"><div class="ttname"><a href="_p2__2___ultrasonido__interrupciones_8c.html#a9b60c7eef8918189e1e7dea5714bf9f7">LeerTeclaOnOff</a></div><div class="ttdeci">void LeerTeclaOnOff(void)</div><div class="ttdoc">cambia el estado de la variable control</div><div class="ttdef"><b>Definition</b> <a href="#l00127">P2_2_Ultrasonido_interrupciones.c:127</a></div></div>
+<div class="ttc" id="a_p2__2___ultrasonido__interrupciones_8c_html_ad155fe5a68eb888a7e0eb897a3dfc015"><div class="ttname"><a href="_p2__2___ultrasonido__interrupciones_8c.html#ad155fe5a68eb888a7e0eb897a3dfc015">control</a></div><div class="ttdeci">bool control</div><div class="ttdoc">variable que indica True cuando hay que realizar mediciones y mostrarlas por display de lo contrario ...</div><div class="ttdef"><b>Definition</b> <a href="#l00052">P2_2_Ultrasonido_interrupciones.c:52</a></div></div>
+<div class="ttc" id="a_p2__2___ultrasonido__interrupciones_8c_html_aec40b15ff3098bdb2425eb4dc9c11a18"><div class="ttname"><a href="_p2__2___ultrasonido__interrupciones_8c.html#aec40b15ff3098bdb2425eb4dc9c11a18">distancia</a></div><div class="ttdeci">uint16_t distancia</div><div class="ttdoc">Almacena el valor de la distancia medida por el sensor de ultrasonido en cm.</div><div class="ttdef"><b>Definition</b> <a href="#l00048">P2_2_Ultrasonido_interrupciones.c:48</a></div></div>
+<div class="ttc" id="a_p2__2___ultrasonido__interrupciones_8c_html_aef27a43e143172c03c4209f2bad857d1"><div class="ttname"><a href="_p2__2___ultrasonido__interrupciones_8c.html#aef27a43e143172c03c4209f2bad857d1">vumetro</a></div><div class="ttdeci">void vumetro(uint16_t dis_cm)</div><div class="ttdoc">Prende o apaga determinados leds segun el valor de la distancia medida en cm a la que esta un objeto.</div><div class="ttdef"><b>Definition</b> <a href="#l00070">P2_2_Ultrasonido_interrupciones.c:70</a></div></div>
+<div class="ttc" id="a_p2__2___ultrasonido__interrupciones_8c_html_afbc133f87b9c89eaf02ca52dd841a493"><div class="ttname"><a href="_p2__2___ultrasonido__interrupciones_8c.html#afbc133f87b9c89eaf02ca52dd841a493">mostrar_distancia_handle</a></div><div class="ttdeci">TaskHandle_t mostrar_distancia_handle</div><div class="ttdef"><b>Definition</b> <a href="#l00044">P2_2_Ultrasonido_interrupciones.c:44</a></div></div>
+<div class="ttc" id="a_p2__2___ultrasonido__interrupciones_8c_html_afbf6267f8cada61e9a25ec5f775a00b7"><div class="ttname"><a href="_p2__2___ultrasonido__interrupciones_8c.html#afbf6267f8cada61e9a25ec5f775a00b7">leer_distancia_handle</a></div><div class="ttdeci">TaskHandle_t leer_distancia_handle</div><div class="ttdef"><b>Definition</b> <a href="#l00043">P2_2_Ultrasonido_interrupciones.c:43</a></div></div>
+<div class="ttc" id="a_p2__2___ultrasonido__interrupciones_8c_html_afd9a5b1c677d10988c142bb501f34ab4"><div class="ttname"><a href="_p2__2___ultrasonido__interrupciones_8c.html#afd9a5b1c677d10988c142bb501f34ab4">pausa</a></div><div class="ttdeci">bool pausa</div><div class="ttdoc">variable que indica True si los datos mostrados por display no deben actualizarse</div><div class="ttdef"><b>Definition</b> <a href="#l00056">P2_2_Ultrasonido_interrupciones.c:56</a></div></div>
+<div class="ttc" id="agroup___g_i_o_p_html_ggaf65604147d0244c9b13cfdc865ad5393a426d08ab85ab3aebbb53eed1a32dfb71"><div class="ttname"><a href="group___g_i_o_p.html#ggaf65604147d0244c9b13cfdc865ad5393a426d08ab85ab3aebbb53eed1a32dfb71">GPIO_3</a></div><div class="ttdeci">@ GPIO_3</div><div class="ttdef"><b>Definition</b> <a href="gpio__mcu_8h_source.html#l00055">gpio_mcu.h:55</a></div></div>
+<div class="ttc" id="agroup___g_i_o_p_html_ggaf65604147d0244c9b13cfdc865ad5393abbea21b656f1917800d9d279b685f38e"><div class="ttname"><a href="group___g_i_o_p.html#ggaf65604147d0244c9b13cfdc865ad5393abbea21b656f1917800d9d279b685f38e">GPIO_2</a></div><div class="ttdeci">@ GPIO_2</div><div class="ttdef"><b>Definition</b> <a href="gpio__mcu_8h_source.html#l00054">gpio_mcu.h:54</a></div></div>
+<div class="ttc" id="agroup___h_c___s_r04_html_ga73a5aaa2183e55d104d4e0c2c435e251"><div class="ttname"><a href="group___h_c___s_r04.html#ga73a5aaa2183e55d104d4e0c2c435e251">HcSr04ReadDistanceInCentimeters</a></div><div class="ttdeci">uint16_t HcSr04ReadDistanceInCentimeters(void)</div><div class="ttdoc">Read distance.</div><div class="ttdef"><b>Definition</b> <a href="hc__sr04_8c_source.html#l00045">hc_sr04.c:45</a></div></div>
+<div class="ttc" id="agroup___h_c___s_r04_html_ga9d26cc017fe45c607d08231ebffb46c4"><div class="ttname"><a href="group___h_c___s_r04.html#ga9d26cc017fe45c607d08231ebffb46c4">HcSr04Init</a></div><div class="ttdeci">bool HcSr04Init(gpio_t echo, gpio_t trigger)</div><div class="ttdoc">Driver for reading distance with HC-SR04 module.</div><div class="ttdef"><b>Definition</b> <a href="hc__sr04_8c_source.html#l00034">hc_sr04.c:34</a></div></div>
+<div class="ttc" id="agroup___l_c_d___i_t_s_e0803_html_ga1c08a1458380c8f0a02a3763d14c8bf3"><div class="ttname"><a href="group___l_c_d___i_t_s_e0803.html#ga1c08a1458380c8f0a02a3763d14c8bf3">LcdItsE0803Init</a></div><div class="ttdeci">bool LcdItsE0803Init(void)</div><div class="ttdoc">Driver for using the 3 digits numeric display in ESP-EDU.</div><div class="ttdef"><b>Definition</b> <a href="lcditse0803_8c_source.html#l00037">lcditse0803.c:37</a></div></div>
+<div class="ttc" id="agroup___l_c_d___i_t_s_e0803_html_ga77a9887ee733d3212c3e4996c47f1b9d"><div class="ttname"><a href="group___l_c_d___i_t_s_e0803.html#ga77a9887ee733d3212c3e4996c47f1b9d">LcdItsE0803Write</a></div><div class="ttdeci">bool LcdItsE0803Write(uint16_t value)</div><div class="ttdoc">Function to display value a LCD Module for EDU-CIAA.</div><div class="ttdef"><b>Definition</b> <a href="lcditse0803_8c_source.html#l00054">lcditse0803.c:54</a></div></div>
+<div class="ttc" id="agroup___l_c_d___i_t_s_e0803_html_gae84766fe1e3b5550b1ca4bbc70f00504"><div class="ttname"><a href="group___l_c_d___i_t_s_e0803.html#gae84766fe1e3b5550b1ca4bbc70f00504">LcdItsE0803Off</a></div><div class="ttdeci">void LcdItsE0803Off(void)</div><div class="ttdoc">Turn off display.</div><div class="ttdef"><b>Definition</b> <a href="lcditse0803_8c_source.html#l00087">lcditse0803.c:87</a></div></div>
+<div class="ttc" id="agroup___l_e_d_html_ga4fd07c9f7fab15d0d07389a38f4a39d8"><div class="ttname"><a href="group___l_e_d.html#ga4fd07c9f7fab15d0d07389a38f4a39d8">LedOff</a></div><div class="ttdeci">uint8_t LedOff(led_t led)</div><div class="ttdoc">Turn off a specific LED.</div><div class="ttdef"><b>Definition</b> <a href="led_8c_source.html#l00065">led.c:65</a></div></div>
+<div class="ttc" id="agroup___l_e_d_html_ga883021aaef65f080a52b1852172ecbc3"><div class="ttname"><a href="group___l_e_d.html#ga883021aaef65f080a52b1852172ecbc3">LedOn</a></div><div class="ttdeci">uint8_t LedOn(led_t led)</div><div class="ttdoc">Turn on a specific LED.</div><div class="ttdef"><b>Definition</b> <a href="led_8c_source.html#l00046">led.c:46</a></div></div>
+<div class="ttc" id="agroup___l_e_d_html_gacba669c3e8f52e45d1bea50c2e63b250"><div class="ttname"><a href="group___l_e_d.html#gacba669c3e8f52e45d1bea50c2e63b250">LedsInit</a></div><div class="ttdeci">uint8_t LedsInit(void)</div><div class="ttdoc">ESP-EDU LEDs initialization.</div><div class="ttdef"><b>Definition</b> <a href="led_8c_source.html#l00031">led.c:31</a></div></div>
+<div class="ttc" id="agroup___l_e_d_html_gafcc4fefa23689ea53feedb349c8a9eb6"><div class="ttname"><a href="group___l_e_d.html#gafcc4fefa23689ea53feedb349c8a9eb6">LedsOffAll</a></div><div class="ttdeci">uint8_t LedsOffAll(void)</div><div class="ttdoc">Turn off all LEDs.</div><div class="ttdef"><b>Definition</b> <a href="led_8c_source.html#l00105">led.c:105</a></div></div>
+<div class="ttc" id="agroup___l_e_d_html_ggab6831a7d06c0a2bc69f9b024f6445a80a00af6b2437d9982f1f125d2cc2537c41"><div class="ttname"><a href="group___l_e_d.html#ggab6831a7d06c0a2bc69f9b024f6445a80a00af6b2437d9982f1f125d2cc2537c41">LED_2</a></div><div class="ttdeci">@ LED_2</div><div class="ttdef"><b>Definition</b> <a href="led_8h_source.html#l00033">led.h:33</a></div></div>
+<div class="ttc" id="agroup___l_e_d_html_ggab6831a7d06c0a2bc69f9b024f6445a80a11a9adb9054de1fe01d6a6750075f57b"><div class="ttname"><a href="group___l_e_d.html#ggab6831a7d06c0a2bc69f9b024f6445a80a11a9adb9054de1fe01d6a6750075f57b">LED_1</a></div><div class="ttdeci">@ LED_1</div><div class="ttdef"><b>Definition</b> <a href="led_8h_source.html#l00034">led.h:34</a></div></div>
+<div class="ttc" id="agroup___l_e_d_html_ggab6831a7d06c0a2bc69f9b024f6445a80a3e1b1af0f74f675e4eb7bd18229adfd3"><div class="ttname"><a href="group___l_e_d.html#ggab6831a7d06c0a2bc69f9b024f6445a80a3e1b1af0f74f675e4eb7bd18229adfd3">LED_3</a></div><div class="ttdeci">@ LED_3</div><div class="ttdef"><b>Definition</b> <a href="led_8h_source.html#l00032">led.h:32</a></div></div>
+<div class="ttc" id="agroup___switch_html_ga7e3732d4e527fda09473b232e502f54e"><div class="ttname"><a href="group___switch.html#ga7e3732d4e527fda09473b232e502f54e">switch_t</a></div><div class="ttdeci">enum switches switch_t</div><div class="ttdoc">Switches driver for the ESP-EDU Board.</div></div>
+<div class="ttc" id="agroup___switch_html_ga8eb2865a73bf2d2b9fd6760958a0cc3c"><div class="ttname"><a href="group___switch.html#ga8eb2865a73bf2d2b9fd6760958a0cc3c">SwitchesInit</a></div><div class="ttdeci">int8_t SwitchesInit(void)</div><div class="ttdoc">ESP-EDU switches initialization.</div><div class="ttdef"><b>Definition</b> <a href="switch_8c_source.html#l00029">switch.c:29</a></div></div>
+<div class="ttc" id="agroup___switch_html_ga9847b9081e3cb39dd3ec01eaee8323b2"><div class="ttname"><a href="group___switch.html#ga9847b9081e3cb39dd3ec01eaee8323b2">SwitchActivInt</a></div><div class="ttdeci">void SwitchActivInt(switch_t tec, void *ptrIntFunc, void *args)</div><div class="ttdoc">Enables the interruption of a particular key and assigns a callback function.</div><div class="ttdef"><b>Definition</b> <a href="switch_8c_source.html#l00047">switch.c:47</a></div></div>
+<div class="ttc" id="agroup___switch_html_gga8caa2df6d25fea5a14eb4533df1d5cfaa24caa46485c5fec2211b3ebd8a1eee77"><div class="ttname"><a href="group___switch.html#gga8caa2df6d25fea5a14eb4533df1d5cfaa24caa46485c5fec2211b3ebd8a1eee77">SWITCH_1</a></div><div class="ttdeci">@ SWITCH_1</div><div class="ttdef"><b>Definition</b> <a href="switch_8h_source.html#l00032">switch.h:32</a></div></div>
+<div class="ttc" id="agroup___switch_html_gga8caa2df6d25fea5a14eb4533df1d5cfaa73fda67835d5d51aa9251fee781a7434"><div class="ttname"><a href="group___switch.html#gga8caa2df6d25fea5a14eb4533df1d5cfaa73fda67835d5d51aa9251fee781a7434">SWITCH_2</a></div><div class="ttdeci">@ SWITCH_2</div><div class="ttdef"><b>Definition</b> <a href="switch_8h_source.html#l00033">switch.h:33</a></div></div>
+<div class="ttc" id="agroup___timer_html_ga0b1779c5b8f91cc83c8bfd127071ea2f"><div class="ttname"><a href="group___timer.html#ga0b1779c5b8f91cc83c8bfd127071ea2f">TimerStart</a></div><div class="ttdeci">void TimerStart(timer_mcu_t timer)</div><div class="ttdoc">Start timer count.</div><div class="ttdef"><b>Definition</b> <a href="timer__mcu_8c_source.html#l00110">timer_mcu.c:110</a></div></div>
+<div class="ttc" id="agroup___timer_html_gae8617c0d176463a60441464ad26563f6"><div class="ttname"><a href="group___timer.html#gae8617c0d176463a60441464ad26563f6">TimerInit</a></div><div class="ttdeci">void TimerInit(timer_config_t *timer_ini)</div><div class="ttdoc">Timer initialization.</div><div class="ttdef"><b>Definition</b> <a href="timer__mcu_8c_source.html#l00055">timer_mcu.c:55</a></div></div>
+<div class="ttc" id="agroup___timer_html_ggacc4e64394d03a6e790f8e52c674534d9a179b1231f027eba52fa4ef94ec174598"><div class="ttname"><a href="group___timer.html#ggacc4e64394d03a6e790f8e52c674534d9a179b1231f027eba52fa4ef94ec174598">TIMER_A</a></div><div class="ttdeci">@ TIMER_A</div><div class="ttdef"><b>Definition</b> <a href="timer__mcu_8h_source.html#l00032">timer_mcu.h:32</a></div></div>
+<div class="ttc" id="ahc__sr04_8h_html"><div class="ttname"><a href="hc__sr04_8h.html">hc_sr04.h</a></div></div>
+<div class="ttc" id="aili9341_8c_html_a070d2ce7b6bb7e5c05602aa8c308d0c4"><div class="ttname"><a href="ili9341_8c.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a></div><div class="ttdeci">#define NULL</div><div class="ttdef"><b>Definition</b> <a href="ili9341_8c_source.html#l00042">ili9341.c:42</a></div></div>
+<div class="ttc" id="alcditse0803_8h_html"><div class="ttname"><a href="lcditse0803_8h.html">lcditse0803.h</a></div></div>
+<div class="ttc" id="aled_8h_html"><div class="ttname"><a href="led_8h.html">led.h</a></div></div>
+<div class="ttc" id="astructtimer__config__t_html"><div class="ttname"><a href="structtimer__config__t.html">timer_config_t</a></div><div class="ttdoc">Timer configuration struct.</div><div class="ttdef"><b>Definition</b> <a href="timer__mcu_8h_source.html#l00039">timer_mcu.h:39</a></div></div>
+<div class="ttc" id="astructtimer__config__t_html_ab83043b8038c5e630f6a2a05ea007e49"><div class="ttname"><a href="structtimer__config__t.html#ab83043b8038c5e630f6a2a05ea007e49">timer_config_t::timer</a></div><div class="ttdeci">timer_mcu_t timer</div><div class="ttdef"><b>Definition</b> <a href="timer__mcu_8h_source.html#l00040">timer_mcu.h:40</a></div></div>
+<div class="ttc" id="aswitch_8h_html"><div class="ttname"><a href="switch_8h.html">switch.h</a></div></div>
+<div class="ttc" id="atimer__mcu_8h_html"><div class="ttname"><a href="timer__mcu_8h.html">timer_mcu.h</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_76557cd4a0608cd174cb3d5100c20ce4.html">Sacks-1C-2024</a></li><li class="navelem"><a class="el" href="dir_4a875605755f3e307511815f0cde7761.html">firmware</a></li><li class="navelem"><a class="el" href="dir_7afb78551d3697caf76e3998a36c8e3e.html">projects</a></li><li class="navelem"><a class="el" href="dir_4edfd3c80edeee7ecfafe0cea29f5807.html">P2_2_Ultrasonido_interrupciones</a></li><li class="navelem"><a class="el" href="dir_1dd55cb15883b391fa21fdaaff3e7103.html">main</a></li><li class="navelem"><a class="el" href="_p2__2___ultrasonido__interrupciones_8c.html">P2_2_Ultrasonido_interrupciones.c</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
+  </ul>
+</div>
+</body>
+</html>
