@@ -27,7 +27,6 @@
 #include <stdio.h>
 #include <stdint.h>
 #include "gpio_mcu.h"
-
 /*==================[macros and definitions]=================================*/
 
 /*==================[internal data definition]===============================*/
