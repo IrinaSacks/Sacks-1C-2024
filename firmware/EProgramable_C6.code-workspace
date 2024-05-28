@@ -49,6 +49,9 @@
         },
         {
             "path": "projects/P2_4_Osciloscopio"
+        },
+        {
+            "path": "projects/Proyecto_integrador"
         }
     ],
     "settings": {
@@ -112,7 +115,8 @@
             "functional": "c",
             "regex": "c",
             "tuple": "c",
-            "utility": "c"
+            "utility": "c",
+            "hx711.h": "c"
         },
     },
     "tasks": {
