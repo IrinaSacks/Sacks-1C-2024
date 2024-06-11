@@ -68,6 +68,8 @@
 #define BOMBA_pHB GPIO_22 
 /*==================[internal data definition]===============================*/
 TaskHandle_t control_agua_handle = NULL;
+TaskHandle_t control_ph_handle = NULL;
+TaskHandle_t mostrar_estado_handle = NULL;
 
 float nivel_pH;
 uint8_t agua=false, inicio=false;
@@ -77,6 +79,7 @@ uint8_t agua=false, inicio=false;
 */
 void FuncTimerA_Med (void* param){
 	vTaskNotifyGiveFromISR(control_agua_handle, pdFALSE);
+	vTaskNotifyGiveFromISR(control_ph_handle, pdFALSE);
 }
 
 
@@ -115,6 +118,30 @@ static void ControlAgua(void *pvParameter){
 	}
 }
 
+/** @brief Recibe una notificación cada 3 seg, si el sistema inicio convierte la señal analogica a digital y segun el valor enciende o apaga las bombas de agua con solucion acida o basica.
+ * @return void
+*/
+static void ControlpH(void *pvParameter){ 
+	uint16_t lectura_ph;
+	while(1){
+		ulTaskNotifyTake(pdTRUE, portMAX_DELAY);  
+		if(inicio){   
+			AnalogInputReadSingle(CH1, &lectura_ph);
+			nivel_pH = AnalogRaw2mV(lectura_ph)*14/3000; 
+
+			if(nivel_pH <6){
+				GPIOOn(BOMBA_pHB);
+				GPIOOff(BOMBA_pHA);
+			}else if(nivel_pH>6.7){
+				GPIOOn(BOMBA_pHA);
+				GPIOOff(BOMBA_pHB);
+			}else if(nivel_pH >=6 && nivel_pH<=6.7){
+				GPIOOff(BOMBA_pHB);
+				GPIOOff(BOMBA_pHA);
+			}
+		}
+	}
+}
 /*==================[external functions definition]==========================*/
 void app_main(void){
 	SwitchesInit();
@@ -132,8 +159,16 @@ void app_main(void){
     };
 	TimerInit(&timer_medicion);
 
+	analog_input_config_t senal_analogica = {			
+		.input= CH1,			
+		.mode= ADC_SINGLE,		
+		.func_p= NULL,			
+		.param_p=NULL	
+	};	
+	AnalogInputInit(&senal_analogica);
 
 	xTaskCreate(&ControlAgua, "Control_Agua", 2048, NULL, 5, &control_agua_handle);
+	xTaskCreate(&ControlpH, "Control_pH", 2048, NULL, 5, &control_ph_handle);
 
 	SwitchActivInt(SWITCH_1, &LeerTeclaOn, NULL);
 	SwitchActivInt(SWITCH_2, &LeerTeclaOff, NULL);
