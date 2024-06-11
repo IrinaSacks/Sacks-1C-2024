@@ -81,7 +81,12 @@ void FuncTimerA_Med (void* param){
 	vTaskNotifyGiveFromISR(control_agua_handle, pdFALSE);
 	vTaskNotifyGiveFromISR(control_ph_handle, pdFALSE);
 }
-
+/** @brief Timer que envia una notificaciones cada 5seg a MostrarEstado
+ * @return void
+*/
+void FuncTimerB_Mostrar (void* param){
+	vTaskNotifyGiveFromISR(mostrar_estado_handle, pdFALSE);
+}
 
 /** @brief Interrupcion que cambia el estado de la variable inicio al apretar SWITCH 1
  * @return void
@@ -142,6 +147,42 @@ static void ControlpH(void *pvParameter){
 		}
 	}
 }
+
+/** @brief Recibe una notificación cada 5 seg, si el sistema inicio informa por puerto serie sobre el estado del sistema, nivel pH, bombas activadas. 
+ * @return void
+*/
+static void MostrarEstado(void *pvParameter){
+	uint16_t mensaje;
+	while(1){
+		ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+		if(inicio){
+			UartSendString(UART_PC, "pH: ");
+			UartSendString(UART_PC, (const char*)UartItoa(nivel_pH, 10)); 
+
+			if(nivel_pH >= 6 && nivel_pH <=6.7){
+				UartSendString(UART_PC, ", humedad correcta");
+			}else if(nivel_pH >6.7){
+				UartSendString(UART_PC, ", humedad incorrecta");
+				UartSendString(UART_PC, "\r\n");
+				UartSendString(UART_PC, " Bomba de pHA encendida");
+				UartSendString(UART_PC, "\r\n");
+				if(agua){
+					UartSendString(UART_PC, " Bomba de agua encendida");
+					UartSendString(UART_PC, "\r\n");
+				}
+			}else if(nivel_pH<6){
+				UartSendString(UART_PC, ", humedad incorrecta");
+				UartSendString(UART_PC, "\r\n");
+				UartSendString(UART_PC, " Bomba de pHB encendida");
+				UartSendString(UART_PC, "\r\n");
+				if(agua){
+					UartSendString(UART_PC, " Bomba de agua encendida");
+					UartSendString(UART_PC, "\r\n");
+				}
+			}
+		}
+}
+
 /*==================[external functions definition]==========================*/
 void app_main(void){
 	SwitchesInit();
@@ -159,6 +200,22 @@ void app_main(void){
     };
 	TimerInit(&timer_medicion);
 
+	timer_config_t timer_puertoserie = {
+        .timer = TIMER_B,
+        .period = CONFIG_PERIOD_MOSTRAR,
+        .func_p = FuncTimerB_Mostrar,
+        .param_p = NULL  
+    };
+	TimerInit(&timer_puertoserie);
+
+	serial_config_t serial_puerto_pc ={
+		.port = UART_PC,
+		.baud_rate = 115200,
+		.func_p = NULL,
+		.param_p = NULL
+	};
+	UartInit(&serial_puerto_pc);
+
 	analog_input_config_t senal_analogica = {			
 		.input= CH1,			
 		.mode= ADC_SINGLE,		
@@ -169,10 +226,12 @@ void app_main(void){
 
 	xTaskCreate(&ControlAgua, "Control_Agua", 2048, NULL, 5, &control_agua_handle);
 	xTaskCreate(&ControlpH, "Control_pH", 2048, NULL, 5, &control_ph_handle);
+	xTaskCreate(&MostrarEstado, "Mostrar_estado", 2048, NULL, 5, &mostrar_estado_handle);
 
 	SwitchActivInt(SWITCH_1, &LeerTeclaOn, NULL);
 	SwitchActivInt(SWITCH_2, &LeerTeclaOff, NULL);
 
 	TimerStart(timer_medicion.timer);
+	TimerStart(timer_puertoserie.timer);
 }
 /*==================[end of file]============================================*/
