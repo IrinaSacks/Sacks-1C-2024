@@ -1,0 +1,494 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.10.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Irrigacion automatica de planta: Referencia del archivo C:/Repositorio/Sacks-1C-2024/firmware/projects/examen/main/Control_irrigacion_planta.c</title>
+<link rel="icon" href="icon.ico" type="image/x-icon" />
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+  $(function() { init_search(); });
+/* @license-end */
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="fiuner.png"/></td>
+  <td id="projectalign">
+   <div id="projectname">Irrigacion automatica de planta<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Control de pH y Humedad de una planta</div>
+  </td>
+    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect"                onmouseover="return searchBox.OnSearchSelectShow()"                onmouseout="return searchBox.OnSearchSelectHide()">&#160;</span>
+          <input type="text" id="MSearchField" value="" placeholder="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.10.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('_control__irrigacion__planta_8c.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#define-members">defines</a> &#124;
+<a href="#func-members">Funciones</a> &#124;
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle"><div class="title">Referencia del archivo Control_irrigacion_planta.c</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdint.h&gt;</code><br />
+<code>#include &quot;freertos/FreeRTOS.h&quot;</code><br />
+<code>#include &quot;freertos/task.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="gpio__mcu_8h_source.html">gpio_mcu.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="analog__io__mcu_8h_source.html">analog_io_mcu.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="uart__mcu_8h_source.html">uart_mcu.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="switch_8h_source.html">switch.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="timer__mcu_8h_source.html">timer_mcu.h</a>&quot;</code><br />
+</div>
+<p><a href="_control__irrigacion__planta_8c_source.html">Ir al código fuente de este archivo.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+defines</h2></td></tr>
+<tr class="memitem:a4bfe7886ecc3420b74ad9f53118340e1" id="r_a4bfe7886ecc3420b74ad9f53118340e1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4bfe7886ecc3420b74ad9f53118340e1">CONFIG_PERIOD_MEDICION</a>&#160;&#160;&#160;3000000</td></tr>
+<tr class="memdesc:a4bfe7886ecc3420b74ad9f53118340e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">periodo del timerA en microseg, para la medicion de pH y humedad  <br /></td></tr>
+<tr class="separator:a4bfe7886ecc3420b74ad9f53118340e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03f0afe6330c84584584df6f263b8c3f" id="r_a03f0afe6330c84584584df6f263b8c3f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a03f0afe6330c84584584df6f263b8c3f">CONFIG_PERIOD_MOSTRAR</a>&#160;&#160;&#160;5000000</td></tr>
+<tr class="memdesc:a03f0afe6330c84584584df6f263b8c3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">periodo del timerB en microseg, para mostrar por puerto serie el estado del sistema  <br /></td></tr>
+<tr class="separator:a03f0afe6330c84584584df6f263b8c3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06e646d1fd3953e71bc679f2781dc806" id="r_a06e646d1fd3953e71bc679f2781dc806"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a06e646d1fd3953e71bc679f2781dc806">SENSOR_H</a>&#160;&#160;&#160;<a class="el" href="group___g_i_o_p.html#ggaf65604147d0244c9b13cfdc865ad5393a4f3bac8a4733f9e96aa952fb1d9b0a7f">GPIO_23</a></td></tr>
+<tr class="memdesc:a06e646d1fd3953e71bc679f2781dc806"><td class="mdescLeft">&#160;</td><td class="mdescRight">definicion GPIO para el Sensor de humedad  <br /></td></tr>
+<tr class="separator:a06e646d1fd3953e71bc679f2781dc806"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37c141bbea841ff9df6cdf4d2222e07f" id="r_a37c141bbea841ff9df6cdf4d2222e07f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a37c141bbea841ff9df6cdf4d2222e07f">BOMBA_A</a>&#160;&#160;&#160;<a class="el" href="group___g_i_o_p.html#ggaf65604147d0244c9b13cfdc865ad5393af5c2b7f44743385580550aa81e4b4f31">GPIO_16</a></td></tr>
+<tr class="memdesc:a37c141bbea841ff9df6cdf4d2222e07f"><td class="mdescLeft">&#160;</td><td class="mdescRight">definicion GPIO para la bomba peristaltica de agua  <br /></td></tr>
+<tr class="separator:a37c141bbea841ff9df6cdf4d2222e07f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80ab7e5b9bc628187981e8aa66553c6d" id="r_a80ab7e5b9bc628187981e8aa66553c6d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a80ab7e5b9bc628187981e8aa66553c6d">BOMBA_pHA</a>&#160;&#160;&#160;<a class="el" href="group___g_i_o_p.html#ggaf65604147d0244c9b13cfdc865ad5393a272b8d60ca888339e5095000b50ba5b1">GPIO_17</a></td></tr>
+<tr class="memdesc:a80ab7e5b9bc628187981e8aa66553c6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">definicion GPIO para la bomba peristaltica de solucion de pH acida  <br /></td></tr>
+<tr class="separator:a80ab7e5b9bc628187981e8aa66553c6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56f9cbc96f46f552d2edd2f70f09ecaf" id="r_a56f9cbc96f46f552d2edd2f70f09ecaf"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a56f9cbc96f46f552d2edd2f70f09ecaf">BOMBA_pHB</a>&#160;&#160;&#160;<a class="el" href="group___g_i_o_p.html#ggaf65604147d0244c9b13cfdc865ad5393aca7c5f2acf755d61b35d05ea921c79eb">GPIO_22</a></td></tr>
+<tr class="memdesc:a56f9cbc96f46f552d2edd2f70f09ecaf"><td class="mdescLeft">&#160;</td><td class="mdescRight">definicion GPIO para la bomba peristaltica de solucion de pH basica  <br /></td></tr>
+<tr class="separator:a56f9cbc96f46f552d2edd2f70f09ecaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Funciones</h2></td></tr>
+<tr class="memitem:a9598b047ee4d84cfa21a564b0359f818" id="r_a9598b047ee4d84cfa21a564b0359f818"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9598b047ee4d84cfa21a564b0359f818">FuncTimerA_Med</a> (void *param)</td></tr>
+<tr class="memdesc:a9598b047ee4d84cfa21a564b0359f818"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timer que envia una notificaciones cada 3seg a ControlAgua y ControlpH.  <br /></td></tr>
+<tr class="separator:a9598b047ee4d84cfa21a564b0359f818"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b55466598987bbba2a79a4223076a8c" id="r_a1b55466598987bbba2a79a4223076a8c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1b55466598987bbba2a79a4223076a8c">FuncTimerB_Mostrar</a> (void *param)</td></tr>
+<tr class="memdesc:a1b55466598987bbba2a79a4223076a8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timer que envia una notificaciones cada 5seg a MostrarEstado.  <br /></td></tr>
+<tr class="separator:a1b55466598987bbba2a79a4223076a8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd822ced014432ea4c65d8ddcaf0376b" id="r_abd822ced014432ea4c65d8ddcaf0376b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abd822ced014432ea4c65d8ddcaf0376b">LeerTeclaOn</a> (void)</td></tr>
+<tr class="memdesc:abd822ced014432ea4c65d8ddcaf0376b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interrupcion que cambia el estado de la variable inicio al apretar SWITCH 1.  <br /></td></tr>
+<tr class="separator:abd822ced014432ea4c65d8ddcaf0376b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa29fa39159632fe8a6f898f0a005ad63" id="r_aa29fa39159632fe8a6f898f0a005ad63"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa29fa39159632fe8a6f898f0a005ad63">LeerTeclaOff</a> (void)</td></tr>
+<tr class="memdesc:aa29fa39159632fe8a6f898f0a005ad63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interrupcion que cambia el estado de la variable inicio al apretar SWITCH 2.  <br /></td></tr>
+<tr class="separator:aa29fa39159632fe8a6f898f0a005ad63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a97d23f743a32819ababf400616c23bc7" id="r_a97d23f743a32819ababf400616c23bc7"><td class="memItemLeft" align="right" valign="top">TaskHandle_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a97d23f743a32819ababf400616c23bc7">control_agua_handle</a> = <a class="el" href="ili9341_8c.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a></td></tr>
+<tr class="separator:a97d23f743a32819ababf400616c23bc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acbbc13fe403ad2417275369bc9a20e38" id="r_acbbc13fe403ad2417275369bc9a20e38"><td class="memItemLeft" align="right" valign="top">TaskHandle_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acbbc13fe403ad2417275369bc9a20e38">control_ph_handle</a> = <a class="el" href="ili9341_8c.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a></td></tr>
+<tr class="separator:acbbc13fe403ad2417275369bc9a20e38"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53bbfcb6a5ff7a3db155b22ccc35d62d" id="r_a53bbfcb6a5ff7a3db155b22ccc35d62d"><td class="memItemLeft" align="right" valign="top">TaskHandle_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a53bbfcb6a5ff7a3db155b22ccc35d62d">mostrar_estado_handle</a> = <a class="el" href="ili9341_8c.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a></td></tr>
+<tr class="separator:a53bbfcb6a5ff7a3db155b22ccc35d62d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55bbd000300e8b5107c7048f30903bbc" id="r_a55bbd000300e8b5107c7048f30903bbc"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a55bbd000300e8b5107c7048f30903bbc">nivel_pH</a></td></tr>
+<tr class="separator:a55bbd000300e8b5107c7048f30903bbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af36228aac83df146252e8069ed98c2e3" id="r_af36228aac83df146252e8069ed98c2e3"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af36228aac83df146252e8069ed98c2e3">agua</a> =false</td></tr>
+<tr class="separator:af36228aac83df146252e8069ed98c2e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1fa75999566f42149589d27a9fca1270" id="r_a1fa75999566f42149589d27a9fca1270"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1fa75999566f42149589d27a9fca1270">inicio</a> =false</td></tr>
+<tr class="separator:a1fa75999566f42149589d27a9fca1270"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Documentación de «define»</h2>
+<a id="a37c141bbea841ff9df6cdf4d2222e07f" name="a37c141bbea841ff9df6cdf4d2222e07f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37c141bbea841ff9df6cdf4d2222e07f">&#9670;&#160;</a></span>BOMBA_A</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BOMBA_A&#160;&#160;&#160;<a class="el" href="group___g_i_o_p.html#ggaf65604147d0244c9b13cfdc865ad5393af5c2b7f44743385580550aa81e4b4f31">GPIO_16</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>definicion GPIO para la bomba peristaltica de agua </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_control__irrigacion__planta_8c_source.html#l00060">60</a> del archivo <a class="el" href="_control__irrigacion__planta_8c_source.html">Control_irrigacion_planta.c</a>.</p>
+
+</div>
+</div>
+<a id="a80ab7e5b9bc628187981e8aa66553c6d" name="a80ab7e5b9bc628187981e8aa66553c6d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a80ab7e5b9bc628187981e8aa66553c6d">&#9670;&#160;</a></span>BOMBA_pHA</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BOMBA_pHA&#160;&#160;&#160;<a class="el" href="group___g_i_o_p.html#ggaf65604147d0244c9b13cfdc865ad5393a272b8d60ca888339e5095000b50ba5b1">GPIO_17</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>definicion GPIO para la bomba peristaltica de solucion de pH acida </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_control__irrigacion__planta_8c_source.html#l00064">64</a> del archivo <a class="el" href="_control__irrigacion__planta_8c_source.html">Control_irrigacion_planta.c</a>.</p>
+
+</div>
+</div>
+<a id="a56f9cbc96f46f552d2edd2f70f09ecaf" name="a56f9cbc96f46f552d2edd2f70f09ecaf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56f9cbc96f46f552d2edd2f70f09ecaf">&#9670;&#160;</a></span>BOMBA_pHB</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BOMBA_pHB&#160;&#160;&#160;<a class="el" href="group___g_i_o_p.html#ggaf65604147d0244c9b13cfdc865ad5393aca7c5f2acf755d61b35d05ea921c79eb">GPIO_22</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>definicion GPIO para la bomba peristaltica de solucion de pH basica </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_control__irrigacion__planta_8c_source.html#l00068">68</a> del archivo <a class="el" href="_control__irrigacion__planta_8c_source.html">Control_irrigacion_planta.c</a>.</p>
+
+</div>
+</div>
+<a id="a4bfe7886ecc3420b74ad9f53118340e1" name="a4bfe7886ecc3420b74ad9f53118340e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4bfe7886ecc3420b74ad9f53118340e1">&#9670;&#160;</a></span>CONFIG_PERIOD_MEDICION</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CONFIG_PERIOD_MEDICION&#160;&#160;&#160;3000000</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>periodo del timerA en microseg, para la medicion de pH y humedad </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_control__irrigacion__planta_8c_source.html#l00048">48</a> del archivo <a class="el" href="_control__irrigacion__planta_8c_source.html">Control_irrigacion_planta.c</a>.</p>
+
+</div>
+</div>
+<a id="a03f0afe6330c84584584df6f263b8c3f" name="a03f0afe6330c84584584df6f263b8c3f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03f0afe6330c84584584df6f263b8c3f">&#9670;&#160;</a></span>CONFIG_PERIOD_MOSTRAR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CONFIG_PERIOD_MOSTRAR&#160;&#160;&#160;5000000</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>periodo del timerB en microseg, para mostrar por puerto serie el estado del sistema </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_control__irrigacion__planta_8c_source.html#l00052">52</a> del archivo <a class="el" href="_control__irrigacion__planta_8c_source.html">Control_irrigacion_planta.c</a>.</p>
+
+</div>
+</div>
+<a id="a06e646d1fd3953e71bc679f2781dc806" name="a06e646d1fd3953e71bc679f2781dc806"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06e646d1fd3953e71bc679f2781dc806">&#9670;&#160;</a></span>SENSOR_H</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SENSOR_H&#160;&#160;&#160;<a class="el" href="group___g_i_o_p.html#ggaf65604147d0244c9b13cfdc865ad5393a4f3bac8a4733f9e96aa952fb1d9b0a7f">GPIO_23</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>definicion GPIO para el Sensor de humedad </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_control__irrigacion__planta_8c_source.html#l00056">56</a> del archivo <a class="el" href="_control__irrigacion__planta_8c_source.html">Control_irrigacion_planta.c</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentación de funciones</h2>
+<a id="a9598b047ee4d84cfa21a564b0359f818" name="a9598b047ee4d84cfa21a564b0359f818"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9598b047ee4d84cfa21a564b0359f818">&#9670;&#160;</a></span>FuncTimerA_Med()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FuncTimerA_Med </td>
+          <td>(</td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>param</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Timer que envia una notificaciones cada 3seg a ControlAgua y ControlpH. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>void </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="_control__irrigacion__planta_8c_source.html#l00080">80</a> del archivo <a class="el" href="_control__irrigacion__planta_8c_source.html">Control_irrigacion_planta.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_control__irrigacion__planta_8c_source.html#l00070">control_agua_handle</a> y <a class="el" href="_control__irrigacion__planta_8c_source.html#l00071">control_ph_handle</a>.</p>
+
+</div>
+</div>
+<a id="a1b55466598987bbba2a79a4223076a8c" name="a1b55466598987bbba2a79a4223076a8c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b55466598987bbba2a79a4223076a8c">&#9670;&#160;</a></span>FuncTimerB_Mostrar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FuncTimerB_Mostrar </td>
+          <td>(</td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>param</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Timer que envia una notificaciones cada 5seg a MostrarEstado. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>void </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="_control__irrigacion__planta_8c_source.html#l00087">87</a> del archivo <a class="el" href="_control__irrigacion__planta_8c_source.html">Control_irrigacion_planta.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_control__irrigacion__planta_8c_source.html#l00072">mostrar_estado_handle</a>.</p>
+
+</div>
+</div>
+<a id="aa29fa39159632fe8a6f898f0a005ad63" name="aa29fa39159632fe8a6f898f0a005ad63"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa29fa39159632fe8a6f898f0a005ad63">&#9670;&#160;</a></span>LeerTeclaOff()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LeerTeclaOff </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Interrupcion que cambia el estado de la variable inicio al apretar SWITCH 2. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>void </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="_control__irrigacion__planta_8c_source.html#l00101">101</a> del archivo <a class="el" href="_control__irrigacion__planta_8c_source.html">Control_irrigacion_planta.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_control__irrigacion__planta_8c_source.html#l00075">inicio</a>.</p>
+
+</div>
+</div>
+<a id="abd822ced014432ea4c65d8ddcaf0376b" name="abd822ced014432ea4c65d8ddcaf0376b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd822ced014432ea4c65d8ddcaf0376b">&#9670;&#160;</a></span>LeerTeclaOn()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LeerTeclaOn </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Interrupcion que cambia el estado de la variable inicio al apretar SWITCH 1. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>void </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="_control__irrigacion__planta_8c_source.html#l00094">94</a> del archivo <a class="el" href="_control__irrigacion__planta_8c_source.html">Control_irrigacion_planta.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_control__irrigacion__planta_8c_source.html#l00075">inicio</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentación de variables</h2>
+<a id="af36228aac83df146252e8069ed98c2e3" name="af36228aac83df146252e8069ed98c2e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af36228aac83df146252e8069ed98c2e3">&#9670;&#160;</a></span>agua</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t agua =false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="_control__irrigacion__planta_8c_source.html#l00075">75</a> del archivo <a class="el" href="_control__irrigacion__planta_8c_source.html">Control_irrigacion_planta.c</a>.</p>
+
+</div>
+</div>
+<a id="a97d23f743a32819ababf400616c23bc7" name="a97d23f743a32819ababf400616c23bc7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a97d23f743a32819ababf400616c23bc7">&#9670;&#160;</a></span>control_agua_handle</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TaskHandle_t control_agua_handle = <a class="el" href="ili9341_8c.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="_control__irrigacion__planta_8c_source.html#l00070">70</a> del archivo <a class="el" href="_control__irrigacion__planta_8c_source.html">Control_irrigacion_planta.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_control__irrigacion__planta_8c_source.html#l00080">FuncTimerA_Med()</a>.</p>
+
+</div>
+</div>
+<a id="acbbc13fe403ad2417275369bc9a20e38" name="acbbc13fe403ad2417275369bc9a20e38"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acbbc13fe403ad2417275369bc9a20e38">&#9670;&#160;</a></span>control_ph_handle</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TaskHandle_t control_ph_handle = <a class="el" href="ili9341_8c.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="_control__irrigacion__planta_8c_source.html#l00071">71</a> del archivo <a class="el" href="_control__irrigacion__planta_8c_source.html">Control_irrigacion_planta.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_control__irrigacion__planta_8c_source.html#l00080">FuncTimerA_Med()</a>.</p>
+
+</div>
+</div>
+<a id="a1fa75999566f42149589d27a9fca1270" name="a1fa75999566f42149589d27a9fca1270"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1fa75999566f42149589d27a9fca1270">&#9670;&#160;</a></span>inicio</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t inicio =false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="_control__irrigacion__planta_8c_source.html#l00075">75</a> del archivo <a class="el" href="_control__irrigacion__planta_8c_source.html">Control_irrigacion_planta.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_control__irrigacion__planta_8c_source.html#l00101">LeerTeclaOff()</a> y <a class="el" href="_control__irrigacion__planta_8c_source.html#l00094">LeerTeclaOn()</a>.</p>
+
+</div>
+</div>
+<a id="a53bbfcb6a5ff7a3db155b22ccc35d62d" name="a53bbfcb6a5ff7a3db155b22ccc35d62d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a53bbfcb6a5ff7a3db155b22ccc35d62d">&#9670;&#160;</a></span>mostrar_estado_handle</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TaskHandle_t mostrar_estado_handle = <a class="el" href="ili9341_8c.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="_control__irrigacion__planta_8c_source.html#l00072">72</a> del archivo <a class="el" href="_control__irrigacion__planta_8c_source.html">Control_irrigacion_planta.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_control__irrigacion__planta_8c_source.html#l00087">FuncTimerB_Mostrar()</a>.</p>
+
+</div>
+</div>
+<a id="a55bbd000300e8b5107c7048f30903bbc" name="a55bbd000300e8b5107c7048f30903bbc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55bbd000300e8b5107c7048f30903bbc">&#9670;&#160;</a></span>nivel_pH</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float nivel_pH</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="_control__irrigacion__planta_8c_source.html#l00074">74</a> del archivo <a class="el" href="_control__irrigacion__planta_8c_source.html">Control_irrigacion_planta.c</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_76557cd4a0608cd174cb3d5100c20ce4.html">Sacks-1C-2024</a></li><li class="navelem"><a class="el" href="dir_4a875605755f3e307511815f0cde7761.html">firmware</a></li><li class="navelem"><a class="el" href="dir_7afb78551d3697caf76e3998a36c8e3e.html">projects</a></li><li class="navelem"><a class="el" href="dir_f7cb9fc4e6d2a9949bf9242ed8b56417.html">examen</a></li><li class="navelem"><a class="el" href="dir_f3446f345625b860b8e0c676193ba437.html">main</a></li><li class="navelem"><a class="el" href="_control__irrigacion__planta_8c.html">Control_irrigacion_planta.c</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
+  </ul>
+</div>
+</body>
+</html>
