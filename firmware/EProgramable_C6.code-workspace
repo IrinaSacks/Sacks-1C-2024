@@ -52,6 +52,9 @@
         },
         {
             "path": "projects/Proyecto_integrador"
+        },
+        {
+            "path": "projects/examen"
         }
     ],
     "settings": {
@@ -116,7 +119,11 @@
             "regex": "c",
             "tuple": "c",
             "utility": "c",
-            "hx711.h": "c"
+            "hx711.h": "c",
+            "fstream": "c",
+            "future": "c",
+            "sstream": "c",
+            "streambuf": "c"
         },
     },
     "tasks": {
