@@ -59,7 +59,7 @@
 #define CONFIG_BLINK_PERIOD 500
 #define DETECTOR_IZQ GPIO_18 //CABLE AZUL
 #define DETECTOR_DER GPIO_19 //CABLE AMARILLO
-#define CONFIG_PERIOD_DET 250000 // 0,25 seg, capaz deberia ser mas chico el tiempo
+#define CONFIG_PERIOD_DET 150000 // 0,25 seg, capaz deberia ser mas chico el tiempo
 #define CONFIG_PERIOD_BAT 20000000 //esta en microseg asi que seria 30 seg, esto es para probar, pero cada cuanto deberia ser 30 000 000
 
 //Motor izquierdo B
@@ -92,6 +92,10 @@ void FuncTimerA_Detector (void* param){
 	vTaskNotifyGiveFromISR(detectar_linea_handle, pdFALSE);
 }
 
+void FuncTimerB_AD (void* param){
+	vTaskNotifyGiveFromISR(control_bateria_handle, pdFALSE);
+	vTaskNotifyGiveFromISR(mostrar_bateria_handle, pdFALSE);
+}
 
 void read_data(uint8_t * data, uint8_t length){
 	//Si el boton esta en On ('O') el robot debe andar (encendido es True)
@@ -165,8 +169,8 @@ void ControlMotores(char direccion_robot){
 			
 			//Seteo la velocidad, el motor izquierdo tiene que girar mas lento y el derecho mas rapido
 			// y asi logra girar a la izquierda
-			PWMSetDutyCycle(pwm_control_motores[0], 80); //rueda izq
-			PWMSetDutyCycle(pwm_control_motores[1], 70); //rueda der	
+			PWMSetDutyCycle(pwm_control_motores[0], 90); //rueda izq
+			PWMSetDutyCycle(pwm_control_motores[1], 30); //rueda der	
 			break;
 		case 'D':
 			//Defino A1B y B1B como HIGH para que vaya para adelante
@@ -179,8 +183,8 @@ void ControlMotores(char direccion_robot){
 			
 			//Seteo la velocidad, el motor izquierdo tiene que girar mas rapido y el derecho mas lento
 			// y asi logra girar a la derecha
-			PWMSetDutyCycle(pwm_control_motores[0], 70); //rueda izq
-			PWMSetDutyCycle(pwm_control_motores[1], 80); //rueda der	
+			PWMSetDutyCycle(pwm_control_motores[0], 30); //rueda izq
+			PWMSetDutyCycle(pwm_control_motores[1], 90); //rueda der	
 			break;
 		case 'F':
 			//Defino A1B y B1B como HIGH para que vaya para adelante
@@ -242,7 +246,42 @@ static void DetectarLinea(void *pvParameter){
 	}
 }
 
-
+static void ControlBateria(void *pvParameter){ 
+	uint16_t nivel_bat_analog;//, nivel_bat_dig; 
+	while(1){
+		ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+		//Agregar linea cuando este con el codigo de bt
+		if(encendido == true){
+			AnalogInputReadSingle(CH1, &nivel_bat_analog);
+			nivel_bat_dig = (AnalogRaw2mV(nivel_bat_analog))*2;
+			nivel_bat_dig = (nivel_bat_dig*100/4000); 
+			sprintf(niv_bateria, "%hu", nivel_bat_dig);
+		}
+	}		
+}
+static void MostrarBateria(void *pvParameter){ 
+	char aux_bat[100];
+	aux_bat[0] = '\0';
+	while(1){
+		ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+		if(encendido == true){
+			strcat(aux_bat, "*B");
+			strcat(aux_bat, "El nivel de bateria es de: ");
+			strcat(aux_bat, niv_bateria);
+			if(nivel_bat_dig >=0 && nivel_bat_dig<=10){
+				strcat(aux_bat, "% \n¡NIVEL BATERIA CRITICO! Cambie las baterias...");
+			}else if(nivel_bat_dig >10 && nivel_bat_dig <=20){
+				strcat(aux_bat, "% \n¡NIVEL DE BATERIA BAJO!");			
+			}else if(nivel_bat_dig >20 && nivel_bat_dig<=50){
+				strcat(aux_bat, "% \nNIVEL DE BATERIA MEDIO");	
+			}else if(nivel_bat_dig>50 && nivel_bat_dig <=100){
+				strcat(aux_bat, "% \nNIVEL DE BATERIA BUENO");	
+			}
+			strcat(aux_bat, "\n*");
+			BleSendString(aux_bat); //Envio el nivel de la bateria en porcentaje al monitor en la app del celular
+		}
+	}		
+}
 
 /*==================[external functions definition]==========================*/
 void app_main(void){
@@ -313,18 +352,23 @@ void app_main(void){
         .func_p = FuncTimerA_Detector,
         .param_p = NULL  
     };
-	//Inicializo el timer para el control de la bateria y conversion a digital
-
+	// //Inicializo el timer para el control de la bateria y conversion a digital
+    timer_config_t timer_bateria = {
+        .timer = TIMER_B,
+        .period = CONFIG_PERIOD_BAT,
+        .func_p = FuncTimerB_AD,
+        .param_p = NULL  
+    };
 
 	TimerInit(&timer_detector);
 	//TimerInit(&timer_bateria);
 	
 	xTaskCreate(&DetectarLinea, "DetectarLinea", 2048, NULL, 5, &detectar_linea_handle); 
-	//xTaskCreate(&ControlBateria, "ControlBateria", 2048, NULL, 5, &control_bateria_handle); 
-	//xTaskCreate(&MostrarBateria, "MostrarBateria", 2048, NULL, 5, &mostrar_bateria_handle); 
+	xTaskCreate(&ControlBateria, "ControlBateria", 2048, NULL, 5, &control_bateria_handle); 
+	xTaskCreate(&MostrarBateria, "MostrarBateria", 2048, NULL, 5, &mostrar_bateria_handle); 
 
 	TimerStart(timer_detector.timer);
-	//TimerStart(timer_bateria.timer);
+	TimerStart(timer_bateria.timer);
 
     //Leds cambian segun el estado del BLE: 
 	//Conectado prende led verde, si se desconecta parpadea el led amarillo y si se apaga el led rojo
