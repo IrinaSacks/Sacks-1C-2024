@@ -1,0 +1,451 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.10.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Robot seguidor de linea: Archivo de código fuente C:/Repositorio/Sacks-1C-2024/firmware/projects/Proyecto_integrador/main/Proyecto_integrador.c</title>
+<link rel="icon" href="icon.ico" type="image/x-icon" />
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+  $(function() { init_search(); });
+/* @license-end */
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="fiuner.png"/></td>
+  <td id="projectalign">
+   <div id="projectname">Robot seguidor de linea<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Robot de guiado automatico activado por bluetooth, que sigue el trayecto de una linea</div>
+  </td>
+    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect"                onmouseover="return searchBox.OnSearchSelectShow()"                onmouseout="return searchBox.OnSearchSelectHide()">&#160;</span>
+          <input type="text" id="MSearchField" value="" placeholder="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.10.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('_proyecto__integrador_8c_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Proyecto_integrador.c</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="_proyecto__integrador_8c.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="comment">/*==================[inclusions]=============================================*/</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="preprocessor">#include &lt;string.h&gt;</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="preprocessor">#include &quot;freertos/FreeRTOS.h&quot;</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="preprocessor">#include &quot;freertos/task.h&quot;</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="preprocessor">#include &quot;<a class="code" href="led_8h.html">led.h</a>&quot;</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="preprocessor">#include &quot;<a class="code" href="ble__mcu_8h.html">ble_mcu.h</a>&quot;</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="preprocessor">#include &quot;<a class="code" href="pwm__mcu_8h.html">pwm_mcu.h</a>&quot;</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="preprocessor">#include &quot;<a class="code" href="gpio__mcu_8h.html">gpio_mcu.h</a>&quot;</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="preprocessor">#include &quot;<a class="code" href="timer__mcu_8h.html">timer_mcu.h</a>&quot;</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="preprocessor">#include &quot;<a class="code" href="analog__io__mcu_8h.html">analog_io_mcu.h</a>&quot;</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="comment">/*==================[macros and definitions]=================================*/</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="_proyecto__integrador_8c.html#aee9fe6e2300c9b7f83db166efc84ce20">   62</a></span><span class="preprocessor">#define CONFIG_PERIOD_DET 150000 </span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="_proyecto__integrador_8c.html#a3df1b4cad09974bfc68858fad7cdc054">   66</a></span><span class="preprocessor">#define CONFIG_BLINK_PERIOD 500</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="_proyecto__integrador_8c.html#a3536d853690dcc3b63b3eb2651f6a771">   70</a></span><span class="preprocessor">#define PERIODO_BAT 5000 </span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="_proyecto__integrador_8c.html#a7265c95115c8bd3e069b047b7bfb12ff">   75</a></span><span class="preprocessor">#define DETECTOR_IZQ GPIO_18 </span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="_proyecto__integrador_8c.html#a6c7973db2c0f9ed66d9efa1bbdead2f5">   79</a></span><span class="preprocessor">#define DETECTOR_DER GPIO_19 </span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="_proyecto__integrador_8c.html#a1e1b4b157642a13cca9d61f800520470">   84</a></span><span class="preprocessor">#define MIA GPIO_16 </span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="_proyecto__integrador_8c.html#a9d11258d2beb9cc8297f7c4eff586868">   88</a></span><span class="preprocessor">#define MIB GPIO_22 </span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="_proyecto__integrador_8c.html#a1da5c1a44b6868aec79aa054b2590671">   92</a></span><span class="preprocessor">#define MDA GPIO_17 </span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno"><a class="line" href="_proyecto__integrador_8c.html#ab3409bba9f64c9215f4c457d0f565adc">   96</a></span><span class="preprocessor">#define MDB GPIO_23 </span></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="comment">/*==================[internal data definition]===============================*/</span></div>
+<div class="foldopen" id="foldopen00102" data-start="{" data-end="};">
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno"><a class="line" href="structgpio_conf__t.html">  102</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span></div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno"><a class="line" href="structgpio_conf__t.html#aca3d4c5920a3f389dfded4a9726473a9">  103</a></span>{   <a class="code hl_typedef" href="group___g_i_o_p.html#gac6f7bd4f7ee306a4519f04641cbf2d67">gpio_t</a> <a class="code hl_variable" href="structgpio_conf__t.html#aca3d4c5920a3f389dfded4a9726473a9">pin</a>;         </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno"><a class="line" href="structgpio_conf__t.html#a8f9801ec3144d1e53252a902330c58a1">  104</a></span>    <a class="code hl_enumeration" href="group___g_i_o_p.html#ga423620ef7d69894833f70cfc395caaa9">io_t</a> <a class="code hl_variable" href="structgpio_conf__t.html#a8f9801ec3144d1e53252a902330c58a1">dir</a>;           </div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>} <a class="code hl_struct" href="structgpio_conf__t.html">gpioConf_t</a>;</div>
+</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno"><a class="line" href="_proyecto__integrador_8c.html#a6d7c87e1d8055dd96e32542a9a1cd629">  107</a></span>TaskHandle_t <a class="code hl_variable" href="_proyecto__integrador_8c.html#a6d7c87e1d8055dd96e32542a9a1cd629">detectar_linea_handle</a> = <a class="code hl_define" href="ili9341_8c.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>;</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno"><a class="line" href="_proyecto__integrador_8c.html#a00b2eacf3f46e79d980dbe7ad2938681">  113</a></span><a class="code hl_struct" href="structgpio_conf__t.html">gpioConf_t</a> <a class="code hl_variable" href="_proyecto__integrador_8c.html#a00b2eacf3f46e79d980dbe7ad2938681">gpio_detector_linea</a>[2]; </div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno"><a class="line" href="_proyecto__integrador_8c.html#a69b91fd4eda0702c367518ea04fb7aac">  118</a></span><a class="code hl_typedef" href="group___p_w_m.html#ga1d363970f0a2cf766d46868c4e88c41a">pwm_out_t</a> <a class="code hl_variable" href="_proyecto__integrador_8c.html#a69b91fd4eda0702c367518ea04fb7aac">pwm_control_motores</a>[2]; </div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno"><a class="line" href="_proyecto__integrador_8c.html#a5332d02d82dacdfb5c6dc01cb428b013">  120</a></span><span class="keywordtype">bool</span> <a class="code hl_variable" href="_proyecto__integrador_8c.html#a5332d02d82dacdfb5c6dc01cb428b013">encendido</a>, <a class="code hl_variable" href="_proyecto__integrador_8c.html#afd9a5b1c677d10988c142bb501f34ab4">pausa</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno"><a class="line" href="_proyecto__integrador_8c.html#a529c38a9734c03135a92e66546ce69ba">  121</a></span><span class="keywordtype">char</span> <a class="code hl_variable" href="_proyecto__integrador_8c.html#a529c38a9734c03135a92e66546ce69ba">direccion</a>=<span class="charliteral">&#39;X&#39;</span>;</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span><span class="comment">/*==================[internal functions declaration]=========================*/</span></div>
+<div class="foldopen" id="foldopen00126" data-start="{" data-end="}">
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno"><a class="line" href="_proyecto__integrador_8c.html#a398c931fdd8a2f8130e4f216c562c875">  126</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="_proyecto__integrador_8c.html#a398c931fdd8a2f8130e4f216c562c875">FuncTimerA_Detector</a> (<span class="keywordtype">void</span>* param){</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    vTaskNotifyGiveFromISR(<a class="code hl_variable" href="_proyecto__integrador_8c.html#a6d7c87e1d8055dd96e32542a9a1cd629">detectar_linea_handle</a>, pdFALSE);</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>}</div>
+</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span> </div>
+<div class="foldopen" id="foldopen00138" data-start="{" data-end="}">
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno"><a class="line" href="_proyecto__integrador_8c.html#ab56e1ff0f71e003f2e08c6ec294528b1">  138</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="_proyecto__integrador_8c.html#ab56e1ff0f71e003f2e08c6ec294528b1">read_data</a>(uint8_t * data, uint8_t length){</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>    <span class="keywordflow">switch</span>(data[0]){</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>        <span class="keywordflow">case</span> <span class="charliteral">&#39;O&#39;</span>:</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>            <a class="code hl_variable" href="_proyecto__integrador_8c.html#a5332d02d82dacdfb5c6dc01cb428b013">encendido</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>            <a class="code hl_function" href="group___b_l_e.html#ga68083cec5599456e78a536031e3b61b8">BleSendString</a>(<span class="stringliteral">&quot;RR0G0B0*&quot;</span>); </div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>            <a class="code hl_function" href="group___b_l_e.html#ga68083cec5599456e78a536031e3b61b8">BleSendString</a>(<span class="stringliteral">&quot;AR0G0B0*&quot;</span>); </div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>            <a class="code hl_function" href="group___b_l_e.html#ga68083cec5599456e78a536031e3b61b8">BleSendString</a>(<span class="stringliteral">&quot;*VR0G255B0*&quot;</span>); </div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>            <a class="code hl_function" href="group___b_l_e.html#ga68083cec5599456e78a536031e3b61b8">BleSendString</a>(<span class="stringliteral">&quot;*MRobot en marcha\n*&quot;</span>); </div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>        <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>        <span class="keywordflow">case</span> <span class="charliteral">&#39;o&#39;</span>:</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>            <a class="code hl_variable" href="_proyecto__integrador_8c.html#a5332d02d82dacdfb5c6dc01cb428b013">encendido</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>            <a class="code hl_function" href="group___b_l_e.html#ga68083cec5599456e78a536031e3b61b8">BleSendString</a>(<span class="stringliteral">&quot;VR0G0B0*&quot;</span>); </div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>            <a class="code hl_function" href="group___b_l_e.html#ga68083cec5599456e78a536031e3b61b8">BleSendString</a>(<span class="stringliteral">&quot;AR0G0B0*&quot;</span>); </div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>            <a class="code hl_function" href="group___b_l_e.html#ga68083cec5599456e78a536031e3b61b8">BleSendString</a>(<span class="stringliteral">&quot;*RR255G0B0*&quot;</span>); </div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>            <a class="code hl_function" href="group___b_l_e.html#ga68083cec5599456e78a536031e3b61b8">BleSendString</a>(<span class="stringliteral">&quot;*MRobot estacionado\n*&quot;</span>); </div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>        <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>        <span class="keywordflow">case</span> <span class="charliteral">&#39;P&#39;</span>:</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>            <span class="keywordflow">if</span>(<a class="code hl_variable" href="_proyecto__integrador_8c.html#a5332d02d82dacdfb5c6dc01cb428b013">encendido</a> == <span class="keyword">true</span>){</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>                <a class="code hl_variable" href="_proyecto__integrador_8c.html#afd9a5b1c677d10988c142bb501f34ab4">pausa</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>                <a class="code hl_function" href="group___b_l_e.html#ga68083cec5599456e78a536031e3b61b8">BleSendString</a>(<span class="stringliteral">&quot;*AR222G206B42*&quot;</span>); </div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>                <a class="code hl_function" href="group___b_l_e.html#ga68083cec5599456e78a536031e3b61b8">BleSendString</a>(<span class="stringliteral">&quot;*MRobot pausado\n*&quot;</span>); </div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>            }</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>        <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>        <span class="keywordflow">case</span> <span class="charliteral">&#39;p&#39;</span>:</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>            <span class="keywordflow">if</span>(<a class="code hl_variable" href="_proyecto__integrador_8c.html#a5332d02d82dacdfb5c6dc01cb428b013">encendido</a> == <span class="keyword">true</span>){</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>                <a class="code hl_variable" href="_proyecto__integrador_8c.html#afd9a5b1c677d10988c142bb501f34ab4">pausa</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>                <a class="code hl_function" href="group___b_l_e.html#ga68083cec5599456e78a536031e3b61b8">BleSendString</a>(<span class="stringliteral">&quot;AR0G0B0*&quot;</span>); </div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>                <a class="code hl_function" href="group___b_l_e.html#ga68083cec5599456e78a536031e3b61b8">BleSendString</a>(<span class="stringliteral">&quot;*MRobot reanudado\n*&quot;</span>);</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>            }</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>        <span class="keywordflow">break</span>;      </div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>        <span class="keywordflow">default</span>:</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>        <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>    }</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>}</div>
+</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span> </div>
+<div class="foldopen" id="foldopen00177" data-start="{" data-end="}">
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno"><a class="line" href="_proyecto__integrador_8c.html#af114a13c7434bd555a00d98a2d3578b8">  177</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="_proyecto__integrador_8c.html#af114a13c7434bd555a00d98a2d3578b8">ControlMotores</a>(){ </div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>    <a class="code hl_function" href="group___g_i_o_p.html#gaba62250f2b0e73a98b6f35fb6078fdb1">GPIOOn</a>(<a class="code hl_define" href="_proyecto__integrador_8c.html#a9d11258d2beb9cc8297f7c4eff586868">MIB</a>);</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>    <a class="code hl_function" href="group___g_i_o_p.html#gaba62250f2b0e73a98b6f35fb6078fdb1">GPIOOn</a>(<a class="code hl_define" href="_proyecto__integrador_8c.html#ab3409bba9f64c9215f4c457d0f565adc">MDB</a>);</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>    <span class="keywordflow">switch</span>(<a class="code hl_variable" href="_proyecto__integrador_8c.html#a529c38a9734c03135a92e66546ce69ba">direccion</a>){</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>        <span class="keywordflow">case</span> <span class="charliteral">&#39;A&#39;</span>:</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>            <a class="code hl_function" href="group___p_w_m.html#ga6fe31ebdc570ccdd776a7d4178566062">PWMOn</a>(<a class="code hl_variable" href="_proyecto__integrador_8c.html#a69b91fd4eda0702c367518ea04fb7aac">pwm_control_motores</a>[0]);</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>            <a class="code hl_function" href="group___p_w_m.html#ga6fe31ebdc570ccdd776a7d4178566062">PWMOn</a>(<a class="code hl_variable" href="_proyecto__integrador_8c.html#a69b91fd4eda0702c367518ea04fb7aac">pwm_control_motores</a>[1]);</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>            </div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>            <a class="code hl_function" href="group___p_w_m.html#ga427d00e7908ad5bc30e8a71dd07159ba">PWMSetDutyCycle</a>(<a class="code hl_variable" href="_proyecto__integrador_8c.html#a69b91fd4eda0702c367518ea04fb7aac">pwm_control_motores</a>[0], 65);</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>            <a class="code hl_function" href="group___p_w_m.html#ga427d00e7908ad5bc30e8a71dd07159ba">PWMSetDutyCycle</a>(<a class="code hl_variable" href="_proyecto__integrador_8c.html#a69b91fd4eda0702c367518ea04fb7aac">pwm_control_motores</a>[1], 65);</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>        <span class="keywordflow">case</span> <span class="charliteral">&#39;I&#39;</span>:</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>            <a class="code hl_function" href="group___p_w_m.html#ga6fe31ebdc570ccdd776a7d4178566062">PWMOn</a>(<a class="code hl_variable" href="_proyecto__integrador_8c.html#a69b91fd4eda0702c367518ea04fb7aac">pwm_control_motores</a>[0]);</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>            <a class="code hl_function" href="group___p_w_m.html#ga6fe31ebdc570ccdd776a7d4178566062">PWMOn</a>(<a class="code hl_variable" href="_proyecto__integrador_8c.html#a69b91fd4eda0702c367518ea04fb7aac">pwm_control_motores</a>[1]);</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>            </div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>            <a class="code hl_function" href="group___p_w_m.html#ga427d00e7908ad5bc30e8a71dd07159ba">PWMSetDutyCycle</a>(<a class="code hl_variable" href="_proyecto__integrador_8c.html#a69b91fd4eda0702c367518ea04fb7aac">pwm_control_motores</a>[0], 90); </div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>            <a class="code hl_function" href="group___p_w_m.html#ga427d00e7908ad5bc30e8a71dd07159ba">PWMSetDutyCycle</a>(<a class="code hl_variable" href="_proyecto__integrador_8c.html#a69b91fd4eda0702c367518ea04fb7aac">pwm_control_motores</a>[1], 30); </div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>        <span class="keywordflow">case</span> <span class="charliteral">&#39;D&#39;</span>:</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>            <a class="code hl_function" href="group___p_w_m.html#ga6fe31ebdc570ccdd776a7d4178566062">PWMOn</a>(<a class="code hl_variable" href="_proyecto__integrador_8c.html#a69b91fd4eda0702c367518ea04fb7aac">pwm_control_motores</a>[0]);</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>            <a class="code hl_function" href="group___p_w_m.html#ga6fe31ebdc570ccdd776a7d4178566062">PWMOn</a>(<a class="code hl_variable" href="_proyecto__integrador_8c.html#a69b91fd4eda0702c367518ea04fb7aac">pwm_control_motores</a>[1]);</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>            </div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>            <a class="code hl_function" href="group___p_w_m.html#ga427d00e7908ad5bc30e8a71dd07159ba">PWMSetDutyCycle</a>(<a class="code hl_variable" href="_proyecto__integrador_8c.html#a69b91fd4eda0702c367518ea04fb7aac">pwm_control_motores</a>[0], 30); </div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>            <a class="code hl_function" href="group___p_w_m.html#ga427d00e7908ad5bc30e8a71dd07159ba">PWMSetDutyCycle</a>(<a class="code hl_variable" href="_proyecto__integrador_8c.html#a69b91fd4eda0702c367518ea04fb7aac">pwm_control_motores</a>[1], 90);    </div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>        <span class="keywordflow">case</span> <span class="charliteral">&#39;F&#39;</span>:</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>            <a class="code hl_function" href="group___p_w_m.html#ga427d00e7908ad5bc30e8a71dd07159ba">PWMSetDutyCycle</a>(<a class="code hl_variable" href="_proyecto__integrador_8c.html#a69b91fd4eda0702c367518ea04fb7aac">pwm_control_motores</a>[0], 100); </div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>            <a class="code hl_function" href="group___p_w_m.html#ga427d00e7908ad5bc30e8a71dd07159ba">PWMSetDutyCycle</a>(<a class="code hl_variable" href="_proyecto__integrador_8c.html#a69b91fd4eda0702c367518ea04fb7aac">pwm_control_motores</a>[1], 100);   </div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span> </div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>        <span class="keywordflow">default</span>:</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>    }</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>}</div>
+</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span> </div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span><span class="keyword">static</span> <span class="keywordtype">void</span> DetectarLinea(<span class="keywordtype">void</span> *pvParameter){ </div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>    <span class="keywordflow">while</span>(1){</div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>        ulTaskNotifyTake(pdTRUE, portMAX_DELAY);     </div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>        <span class="keywordtype">bool</span> det_izq = <a class="code hl_function" href="group___g_i_o_p.html#gab42a477acc6064150000fb4a1bd4305c">GPIORead</a>(<a class="code hl_variable" href="_proyecto__integrador_8c.html#a00b2eacf3f46e79d980dbe7ad2938681">gpio_detector_linea</a>[0].pin);</div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>        <span class="keywordtype">bool</span> det_der = <a class="code hl_function" href="group___g_i_o_p.html#gab42a477acc6064150000fb4a1bd4305c">GPIORead</a>(<a class="code hl_variable" href="_proyecto__integrador_8c.html#a00b2eacf3f46e79d980dbe7ad2938681">gpio_detector_linea</a>[1].pin);</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>        <span class="keywordflow">if</span>(<a class="code hl_variable" href="_proyecto__integrador_8c.html#a5332d02d82dacdfb5c6dc01cb428b013">encendido</a> == <span class="keyword">true</span> &amp;&amp; <a class="code hl_variable" href="_proyecto__integrador_8c.html#afd9a5b1c677d10988c142bb501f34ab4">pausa</a> == <span class="keyword">false</span>){</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>            <span class="keywordflow">if</span>(det_izq==<span class="keyword">true</span> &amp;&amp; det_der==<span class="keyword">true</span>){</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>                <a class="code hl_variable" href="_proyecto__integrador_8c.html#a529c38a9734c03135a92e66546ce69ba">direccion</a> = <span class="charliteral">&#39;A&#39;</span>;</div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>            }</div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>            <span class="keywordflow">else</span> <span class="keywordflow">if</span>(det_izq==<span class="keyword">true</span> &amp;&amp; det_der==<span class="keyword">false</span>){</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>                <a class="code hl_variable" href="_proyecto__integrador_8c.html#a529c38a9734c03135a92e66546ce69ba">direccion</a> = <span class="charliteral">&#39;D&#39;</span>;</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>            }</div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>            <span class="keywordflow">else</span> <span class="keywordflow">if</span>(det_izq==<span class="keyword">false</span> &amp;&amp; det_der==<span class="keyword">true</span>){</div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>                <a class="code hl_variable" href="_proyecto__integrador_8c.html#a529c38a9734c03135a92e66546ce69ba">direccion</a> = <span class="charliteral">&#39;I&#39;</span>;</div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>            }</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>            <span class="keywordflow">else</span> <span class="keywordflow">if</span>(det_izq==<span class="keyword">false</span> &amp;&amp; det_der==<span class="keyword">false</span>){</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>                <a class="code hl_variable" href="_proyecto__integrador_8c.html#a529c38a9734c03135a92e66546ce69ba">direccion</a> = <span class="charliteral">&#39;F&#39;</span>;</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>            }</div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>            <a class="code hl_function" href="_proyecto__integrador_8c.html#af114a13c7434bd555a00d98a2d3578b8">ControlMotores</a>();</div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span> </div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>        }<span class="keywordflow">else</span> <span class="keywordflow">if</span>((<a class="code hl_variable" href="_proyecto__integrador_8c.html#a5332d02d82dacdfb5c6dc01cb428b013">encendido</a>==<span class="keyword">true</span> &amp;&amp; <a class="code hl_variable" href="_proyecto__integrador_8c.html#afd9a5b1c677d10988c142bb501f34ab4">pausa</a>==<span class="keyword">true</span>) || <a class="code hl_variable" href="_proyecto__integrador_8c.html#a5332d02d82dacdfb5c6dc01cb428b013">encendido</a> ==<span class="keyword">false</span>){</div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>            <a class="code hl_variable" href="_proyecto__integrador_8c.html#a529c38a9734c03135a92e66546ce69ba">direccion</a> = <span class="charliteral">&#39;F&#39;</span>;</div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>            <a class="code hl_function" href="_proyecto__integrador_8c.html#af114a13c7434bd555a00d98a2d3578b8">ControlMotores</a>();</div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>        }<span class="keywordflow">else</span> <span class="keywordflow">if</span>(<a class="code hl_variable" href="_proyecto__integrador_8c.html#a5332d02d82dacdfb5c6dc01cb428b013">encendido</a>==<span class="keyword">false</span>){</div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>            <a class="code hl_variable" href="_proyecto__integrador_8c.html#a529c38a9734c03135a92e66546ce69ba">direccion</a> = <span class="charliteral">&#39;F&#39;</span>;</div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>            <a class="code hl_function" href="_proyecto__integrador_8c.html#af114a13c7434bd555a00d98a2d3578b8">ControlMotores</a>();</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>        }</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>        </div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>    }</div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>}</div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span> </div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span><span class="keyword">static</span> <span class="keywordtype">void</span> ControlBateria(<span class="keywordtype">void</span> *pvParameter){ </div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>    uint16_t nivel_bat_analog, nivel_bat_dig;</div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>    <span class="keywordtype">char</span> niv_bateria[50];</div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>    niv_bateria[0] = <span class="charliteral">&#39;\0&#39;</span>;</div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>    <span class="keywordtype">char</span> aux_bat[200];</div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>    aux_bat[0] = <span class="charliteral">&#39;\0&#39;</span>;</div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>    <span class="keywordflow">while</span>(1){</div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>        <span class="keywordflow">if</span>(<a class="code hl_variable" href="_proyecto__integrador_8c.html#a5332d02d82dacdfb5c6dc01cb428b013">encendido</a> == <span class="keyword">true</span>){</div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>            <a class="code hl_function" href="group___analog___i_o.html#gab5ae00a35744f407072230979e593fd9">AnalogInputReadSingle</a>(<a class="code hl_enumvalue" href="group___analog___i_o.html#gga4ebdf50515e5d73c58c24fd1491770dca703cf81b7a9530ba8650e0ee2f29d68e">CH1</a>, &amp;nivel_bat_analog);</div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>            nivel_bat_dig = (nivel_bat_analog*100/2100); </div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>            sprintf(niv_bateria, <span class="stringliteral">&quot;%u&quot;</span>, nivel_bat_dig);</div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span> </div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>            <span class="keywordflow">if</span>(nivel_bat_dig &gt;=0 &amp;&amp; nivel_bat_dig&lt;=10){</div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>                sprintf(aux_bat,<span class="stringliteral">&quot;*BEl nivel de bateria es de: %s%% \n NIVEL BATERIA CRITICO! Cambie las baterias...\n\n*&quot;</span>, niv_bateria);</div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>            }<span class="keywordflow">else</span> <span class="keywordflow">if</span>(nivel_bat_dig &gt;10 &amp;&amp; nivel_bat_dig &lt;=20){</div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>                sprintf(aux_bat,<span class="stringliteral">&quot;*BEl nivel de bateria es de: %s%% \n NIVEL DE BATERIA BAJO!\n\n*&quot;</span>, niv_bateria);</div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>            }<span class="keywordflow">else</span> <span class="keywordflow">if</span>(nivel_bat_dig &gt;20 &amp;&amp; nivel_bat_dig&lt;=50){</div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>                sprintf(aux_bat,<span class="stringliteral">&quot;*BEl nivel de bateria es de: %s%% \n NIVEL DE BATERIA MEDIO\n\n*&quot;</span>, niv_bateria);</div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>            }<span class="keywordflow">else</span> <span class="keywordflow">if</span>(nivel_bat_dig&gt;50 &amp;&amp; nivel_bat_dig &lt;=100){</div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>                sprintf(aux_bat,<span class="stringliteral">&quot;*BEl nivel de bateria es de: %s%% \n NIVEL DE BATERIA BUENO\n\n*&quot;</span>, niv_bateria);   </div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>            }</div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>            <a class="code hl_function" href="group___b_l_e.html#ga68083cec5599456e78a536031e3b61b8">BleSendString</a>(aux_bat);</div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>        }</div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>        vTaskDelay(<a class="code hl_define" href="_proyecto__integrador_8c.html#a3536d853690dcc3b63b3eb2651f6a771">PERIODO_BAT</a>/portTICK_PERIOD_MS);</div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>    }       </div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>}</div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span> </div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span><span class="comment">/*==================[external functions definition]==========================*/</span></div>
+<div class="foldopen" id="foldopen00279" data-start="{" data-end="}">
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno"><a class="line" href="_proyecto__integrador_8c.html#a630544a7f0a2cc40d8a7fefab7e2fe70">  279</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="_proyecto__integrador_8c.html#a630544a7f0a2cc40d8a7fefab7e2fe70">app_main</a>(<span class="keywordtype">void</span>){</div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span> </div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>    <a class="code hl_function" href="group___l_e_d.html#gacba669c3e8f52e45d1bea50c2e63b250">LedsInit</a>();</div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span> </div>
+<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>    <a class="code hl_struct" href="structble__config__t.html">ble_config_t</a> ble_configuration = {</div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>        <span class="stringliteral">&quot;ROBOT_SEG_LINEA&quot;</span>,</div>
+<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>        <a class="code hl_function" href="_proyecto__integrador_8c.html#ab56e1ff0f71e003f2e08c6ec294528b1">read_data</a></div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>    };</div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>    <a class="code hl_function" href="group___b_l_e.html#ga8001369ce247b2413afd6d8a14fe8d82">BleInit</a>(&amp;ble_configuration);</div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span> </div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>    <a class="code hl_variable" href="_proyecto__integrador_8c.html#a00b2eacf3f46e79d980dbe7ad2938681">gpio_detector_linea</a>[0].<a class="code hl_variable" href="structgpio_conf__t.html#aca3d4c5920a3f389dfded4a9726473a9">pin</a>=<a class="code hl_define" href="_proyecto__integrador_8c.html#a7265c95115c8bd3e069b047b7bfb12ff">DETECTOR_IZQ</a>; </div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>    <a class="code hl_variable" href="_proyecto__integrador_8c.html#a00b2eacf3f46e79d980dbe7ad2938681">gpio_detector_linea</a>[1].<a class="code hl_variable" href="structgpio_conf__t.html#aca3d4c5920a3f389dfded4a9726473a9">pin</a>=<a class="code hl_define" href="_proyecto__integrador_8c.html#a6c7973db2c0f9ed66d9efa1bbdead2f5">DETECTOR_DER</a>;</div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0; i&lt;2;i++){</div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>        <a class="code hl_variable" href="_proyecto__integrador_8c.html#a00b2eacf3f46e79d980dbe7ad2938681">gpio_detector_linea</a>[i].<a class="code hl_variable" href="structgpio_conf__t.html#a8f9801ec3144d1e53252a902330c58a1">dir</a>=<a class="code hl_enumvalue" href="group___g_i_o_p.html#gga423620ef7d69894833f70cfc395caaa9aa1ea38ffc304a6c32480a65b5fec7302">GPIO_INPUT</a>; </div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>    }</div>
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0; i&lt;2;i++){</div>
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>        <a class="code hl_function" href="group___g_i_o_p.html#ga10240d283f64bd1b09fca664fda27964">GPIOInit</a>(<a class="code hl_variable" href="_proyecto__integrador_8c.html#a00b2eacf3f46e79d980dbe7ad2938681">gpio_detector_linea</a>[i].pin, <a class="code hl_variable" href="_proyecto__integrador_8c.html#a00b2eacf3f46e79d980dbe7ad2938681">gpio_detector_linea</a>[i].dir);</div>
+<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>    }</div>
+<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span> </div>
+<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span>    <a class="code hl_struct" href="structgpio_conf__t.html">gpioConf_t</a> gpio_control_motores[4]; </div>
+<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>    gpio_control_motores[0].<a class="code hl_variable" href="structgpio_conf__t.html#aca3d4c5920a3f389dfded4a9726473a9">pin</a>=<a class="code hl_define" href="_proyecto__integrador_8c.html#a9d11258d2beb9cc8297f7c4eff586868">MIB</a>; </div>
+<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>    gpio_control_motores[1].<a class="code hl_variable" href="structgpio_conf__t.html#aca3d4c5920a3f389dfded4a9726473a9">pin</a>=<a class="code hl_define" href="_proyecto__integrador_8c.html#ab3409bba9f64c9215f4c457d0f565adc">MDB</a>; </div>
+<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>    gpio_control_motores[2].<a class="code hl_variable" href="structgpio_conf__t.html#aca3d4c5920a3f389dfded4a9726473a9">pin</a>=<a class="code hl_define" href="_proyecto__integrador_8c.html#a1e1b4b157642a13cca9d61f800520470">MIA</a>; </div>
+<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>    gpio_control_motores[3].<a class="code hl_variable" href="structgpio_conf__t.html#aca3d4c5920a3f389dfded4a9726473a9">pin</a>=<a class="code hl_define" href="_proyecto__integrador_8c.html#a1da5c1a44b6868aec79aa054b2590671">MDA</a>;    </div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span> </div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0; i&lt;4;i++){</div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>        gpio_control_motores[i].<a class="code hl_variable" href="structgpio_conf__t.html#a8f9801ec3144d1e53252a902330c58a1">dir</a>=<a class="code hl_enumvalue" href="group___g_i_o_p.html#gga423620ef7d69894833f70cfc395caaa9aa248e73c1faee9c6f072fd91569cf516">GPIO_OUTPUT</a>; </div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>    }   </div>
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0; i&lt;4;i++){</div>
+<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>        <a class="code hl_function" href="group___g_i_o_p.html#ga10240d283f64bd1b09fca664fda27964">GPIOInit</a>(gpio_control_motores[i].pin, gpio_control_motores[i].dir);</div>
+<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span>    }</div>
+<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span> </div>
+<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span>    <a class="code hl_variable" href="_proyecto__integrador_8c.html#a69b91fd4eda0702c367518ea04fb7aac">pwm_control_motores</a>[0]=<a class="code hl_enumvalue" href="group___p_w_m.html#gga5800a2bada92ba802e1cbdb0307f0c7ba857e21e20c27df92dec4574fcddfd740">PWM_0</a>;</div>
+<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span>    <a class="code hl_variable" href="_proyecto__integrador_8c.html#a69b91fd4eda0702c367518ea04fb7aac">pwm_control_motores</a>[1]=<a class="code hl_enumvalue" href="group___p_w_m.html#gga5800a2bada92ba802e1cbdb0307f0c7baea3b5b1dcb8647c430bc9391799f4703">PWM_1</a>;</div>
+<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span>    <a class="code hl_function" href="group___p_w_m.html#ga50ba8fd6442b4799b8fb9b2e2b859bbd">PWMInit</a>(<a class="code hl_variable" href="_proyecto__integrador_8c.html#a69b91fd4eda0702c367518ea04fb7aac">pwm_control_motores</a>[0], <a class="code hl_define" href="_proyecto__integrador_8c.html#a1e1b4b157642a13cca9d61f800520470">MIA</a>, 50);</div>
+<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span>    <a class="code hl_function" href="group___p_w_m.html#ga50ba8fd6442b4799b8fb9b2e2b859bbd">PWMInit</a>(<a class="code hl_variable" href="_proyecto__integrador_8c.html#a69b91fd4eda0702c367518ea04fb7aac">pwm_control_motores</a>[1], <a class="code hl_define" href="_proyecto__integrador_8c.html#a1da5c1a44b6868aec79aa054b2590671">MDA</a>, 50);</div>
+<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span> </div>
+<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>    <a class="code hl_struct" href="structanalog__input__config__t.html">analog_input_config_t</a> senal_analogica_bat = {           </div>
+<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>        .<a class="code hl_variable" href="structanalog__input__config__t.html#a16d10b35d778a5d4fdbda4d75981d310">input</a>= <a class="code hl_enumvalue" href="group___analog___i_o.html#gga4ebdf50515e5d73c58c24fd1491770dca703cf81b7a9530ba8650e0ee2f29d68e">CH1</a>,            </div>
+<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span>        .mode= <a class="code hl_enumvalue" href="group___analog___i_o.html#gga51acd785c14953090a3507d4fa8e5939a3b0a8cf9a7759ea8b7c9494eb7fb3dd4">ADC_SINGLE</a>,      </div>
+<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span>        .func_p= <a class="code hl_define" href="ili9341_8c.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>,          </div>
+<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span>        .param_p=<a class="code hl_define" href="ili9341_8c.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>   </div>
+<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span>    };  </div>
+<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span>    <a class="code hl_function" href="group___analog___i_o.html#ga24ce5556aa4682468220b982f151cdfe">AnalogInputInit</a>(&amp;senal_analogica_bat);</div>
+<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span> </div>
+<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span>    <a class="code hl_struct" href="structtimer__config__t.html">timer_config_t</a> timer_detector = {</div>
+<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span>        .<a class="code hl_variable" href="structtimer__config__t.html#ab83043b8038c5e630f6a2a05ea007e49">timer</a> = <a class="code hl_enumvalue" href="group___timer.html#ggacc4e64394d03a6e790f8e52c674534d9a179b1231f027eba52fa4ef94ec174598">TIMER_A</a>,</div>
+<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span>        .period = <a class="code hl_define" href="_proyecto__integrador_8c.html#aee9fe6e2300c9b7f83db166efc84ce20">CONFIG_PERIOD_DET</a>,</div>
+<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span>        .func_p = <a class="code hl_function" href="_proyecto__integrador_8c.html#a398c931fdd8a2f8130e4f216c562c875">FuncTimerA_Detector</a>,</div>
+<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span>        .param_p = <a class="code hl_define" href="ili9341_8c.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>  </div>
+<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>    };</div>
+<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span>    <a class="code hl_function" href="group___timer.html#gae8617c0d176463a60441464ad26563f6">TimerInit</a>(&amp;timer_detector);</div>
+<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span>    </div>
+<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span>    xTaskCreate(&amp;DetectarLinea, <span class="stringliteral">&quot;DetectarLinea&quot;</span>, 2048, <a class="code hl_define" href="ili9341_8c.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>, 5, &amp;<a class="code hl_variable" href="_proyecto__integrador_8c.html#a6d7c87e1d8055dd96e32542a9a1cd629">detectar_linea_handle</a>); </div>
+<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span>    xTaskCreate(&amp;ControlBateria, <span class="stringliteral">&quot;ControlBateria&quot;</span>, 2048, <a class="code hl_define" href="ili9341_8c.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>, 5, <a class="code hl_define" href="ili9341_8c.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>);</div>
+<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span> </div>
+<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span>    <a class="code hl_function" href="group___timer.html#ga0b1779c5b8f91cc83c8bfd127071ea2f">TimerStart</a>(timer_detector.<a class="code hl_variable" href="structtimer__config__t.html#ab83043b8038c5e630f6a2a05ea007e49">timer</a>);</div>
+<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span> </div>
+<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span>    <span class="keywordflow">while</span>(1){</div>
+<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span>        vTaskDelay(<a class="code hl_define" href="_proyecto__integrador_8c.html#a3df1b4cad09974bfc68858fad7cdc054">CONFIG_BLINK_PERIOD</a> / portTICK_PERIOD_MS);</div>
+<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span>        <span class="keywordflow">switch</span>(<a class="code hl_function" href="group___b_l_e.html#ga45f64ecb9f703ecc50b85b6967e85bd5">BleStatus</a>()){</div>
+<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="group___b_l_e.html#ggab13ed63d3b157b93f1e6d98e3d6a7b47ad30434da7f78bb14ef8e28591b5a03f4">BLE_OFF</a>:</div>
+<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span>                <a class="code hl_function" href="group___l_e_d.html#ga4fd07c9f7fab15d0d07389a38f4a39d8">LedOff</a>(<a class="code hl_enumvalue" href="group___l_e_d.html#ggab6831a7d06c0a2bc69f9b024f6445a80a11a9adb9054de1fe01d6a6750075f57b">LED_1</a>);</div>
+<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span>                <a class="code hl_function" href="group___l_e_d.html#ga4fd07c9f7fab15d0d07389a38f4a39d8">LedOff</a>(<a class="code hl_enumvalue" href="group___l_e_d.html#ggab6831a7d06c0a2bc69f9b024f6445a80a00af6b2437d9982f1f125d2cc2537c41">LED_2</a>);</div>
+<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span>                <a class="code hl_function" href="group___l_e_d.html#ga883021aaef65f080a52b1852172ecbc3">LedOn</a>(<a class="code hl_enumvalue" href="group___l_e_d.html#ggab6831a7d06c0a2bc69f9b024f6445a80a3e1b1af0f74f675e4eb7bd18229adfd3">LED_3</a>);</div>
+<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span>                <a class="code hl_variable" href="_proyecto__integrador_8c.html#a5332d02d82dacdfb5c6dc01cb428b013">encendido</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span>                <a class="code hl_variable" href="_proyecto__integrador_8c.html#afd9a5b1c677d10988c142bb501f34ab4">pausa</a>=<span class="keyword">false</span>;</div>
+<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="group___b_l_e.html#ggab13ed63d3b157b93f1e6d98e3d6a7b47abe3828521b028796e567225bfbc5a978">BLE_DISCONNECTED</a>:</div>
+<div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span>                <a class="code hl_function" href="group___l_e_d.html#ga4fd07c9f7fab15d0d07389a38f4a39d8">LedOff</a>(<a class="code hl_enumvalue" href="group___l_e_d.html#ggab6831a7d06c0a2bc69f9b024f6445a80a11a9adb9054de1fe01d6a6750075f57b">LED_1</a>);</div>
+<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span>                <a class="code hl_function" href="group___l_e_d.html#ga787ec5815e0eb2680bf1845562731beb">LedToggle</a>(<a class="code hl_enumvalue" href="group___l_e_d.html#ggab6831a7d06c0a2bc69f9b024f6445a80a00af6b2437d9982f1f125d2cc2537c41">LED_2</a>);</div>
+<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span>                <a class="code hl_function" href="group___l_e_d.html#ga4fd07c9f7fab15d0d07389a38f4a39d8">LedOff</a>(<a class="code hl_enumvalue" href="group___l_e_d.html#ggab6831a7d06c0a2bc69f9b024f6445a80a3e1b1af0f74f675e4eb7bd18229adfd3">LED_3</a>);</div>
+<div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span>                <a class="code hl_variable" href="_proyecto__integrador_8c.html#a5332d02d82dacdfb5c6dc01cb428b013">encendido</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span>                <a class="code hl_variable" href="_proyecto__integrador_8c.html#afd9a5b1c677d10988c142bb501f34ab4">pausa</a>=<span class="keyword">false</span>;</div>
+<div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="group___b_l_e.html#ggab13ed63d3b157b93f1e6d98e3d6a7b47a6622372da21e5c0e32cf5c4445145399">BLE_CONNECTED</a>:</div>
+<div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span>                <a class="code hl_function" href="group___l_e_d.html#ga883021aaef65f080a52b1852172ecbc3">LedOn</a>(<a class="code hl_enumvalue" href="group___l_e_d.html#ggab6831a7d06c0a2bc69f9b024f6445a80a11a9adb9054de1fe01d6a6750075f57b">LED_1</a>);</div>
+<div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span>                <a class="code hl_function" href="group___l_e_d.html#ga4fd07c9f7fab15d0d07389a38f4a39d8">LedOff</a>(<a class="code hl_enumvalue" href="group___l_e_d.html#ggab6831a7d06c0a2bc69f9b024f6445a80a00af6b2437d9982f1f125d2cc2537c41">LED_2</a>);</div>
+<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span>                <a class="code hl_function" href="group___l_e_d.html#ga4fd07c9f7fab15d0d07389a38f4a39d8">LedOff</a>(<a class="code hl_enumvalue" href="group___l_e_d.html#ggab6831a7d06c0a2bc69f9b024f6445a80a3e1b1af0f74f675e4eb7bd18229adfd3">LED_3</a>);</div>
+<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span>        }</div>
+<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span>    }</div>
+<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span> </div>
+<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span>}</div>
+</div>
+<div class="ttc" id="a_proyecto__integrador_8c_html_a00b2eacf3f46e79d980dbe7ad2938681"><div class="ttname"><a href="_proyecto__integrador_8c.html#a00b2eacf3f46e79d980dbe7ad2938681">gpio_detector_linea</a></div><div class="ttdeci">gpioConf_t gpio_detector_linea[2]</div><div class="ttdoc">arreglo del tipo gpioConf_t almacena los pines de los detectores de linea y si son salida o entrada</div><div class="ttdef"><b>Definition</b> <a href="#l00113">Proyecto_integrador.c:113</a></div></div>
+<div class="ttc" id="a_proyecto__integrador_8c_html_a1da5c1a44b6868aec79aa054b2590671"><div class="ttname"><a href="_proyecto__integrador_8c.html#a1da5c1a44b6868aec79aa054b2590671">MDA</a></div><div class="ttdeci">#define MDA</div><div class="ttdoc">definicion GPIO del motor DC derecho a controlar con PWM</div><div class="ttdef"><b>Definition</b> <a href="#l00092">Proyecto_integrador.c:92</a></div></div>
+<div class="ttc" id="a_proyecto__integrador_8c_html_a1e1b4b157642a13cca9d61f800520470"><div class="ttname"><a href="_proyecto__integrador_8c.html#a1e1b4b157642a13cca9d61f800520470">MIA</a></div><div class="ttdeci">#define MIA</div><div class="ttdoc">definicion GPIO del motor DC izquierdo a controlar con PWM</div><div class="ttdef"><b>Definition</b> <a href="#l00084">Proyecto_integrador.c:84</a></div></div>
+<div class="ttc" id="a_proyecto__integrador_8c_html_a3536d853690dcc3b63b3eb2651f6a771"><div class="ttname"><a href="_proyecto__integrador_8c.html#a3536d853690dcc3b63b3eb2651f6a771">PERIODO_BAT</a></div><div class="ttdeci">#define PERIODO_BAT</div><div class="ttdoc">periodo en milisegundos, para el control de la bateria</div><div class="ttdef"><b>Definition</b> <a href="#l00070">Proyecto_integrador.c:70</a></div></div>
+<div class="ttc" id="a_proyecto__integrador_8c_html_a398c931fdd8a2f8130e4f216c562c875"><div class="ttname"><a href="_proyecto__integrador_8c.html#a398c931fdd8a2f8130e4f216c562c875">FuncTimerA_Detector</a></div><div class="ttdeci">void FuncTimerA_Detector(void *param)</div><div class="ttdoc">Timer que envia una notificacion cada 0,15 seg a DetectarLinea.</div><div class="ttdef"><b>Definition</b> <a href="#l00126">Proyecto_integrador.c:126</a></div></div>
+<div class="ttc" id="a_proyecto__integrador_8c_html_a3df1b4cad09974bfc68858fad7cdc054"><div class="ttname"><a href="_proyecto__integrador_8c.html#a3df1b4cad09974bfc68858fad7cdc054">CONFIG_BLINK_PERIOD</a></div><div class="ttdeci">#define CONFIG_BLINK_PERIOD</div><div class="ttdoc">periodo en milisegundos, para el parpadeo de los leds segun la conexion del BLE</div><div class="ttdef"><b>Definition</b> <a href="#l00066">Proyecto_integrador.c:66</a></div></div>
+<div class="ttc" id="a_proyecto__integrador_8c_html_a529c38a9734c03135a92e66546ce69ba"><div class="ttname"><a href="_proyecto__integrador_8c.html#a529c38a9734c03135a92e66546ce69ba">direccion</a></div><div class="ttdeci">char direccion</div><div class="ttdef"><b>Definition</b> <a href="#l00121">Proyecto_integrador.c:121</a></div></div>
+<div class="ttc" id="a_proyecto__integrador_8c_html_a5332d02d82dacdfb5c6dc01cb428b013"><div class="ttname"><a href="_proyecto__integrador_8c.html#a5332d02d82dacdfb5c6dc01cb428b013">encendido</a></div><div class="ttdeci">bool encendido</div><div class="ttdef"><b>Definition</b> <a href="#l00120">Proyecto_integrador.c:120</a></div></div>
+<div class="ttc" id="a_proyecto__integrador_8c_html_a630544a7f0a2cc40d8a7fefab7e2fe70"><div class="ttname"><a href="_proyecto__integrador_8c.html#a630544a7f0a2cc40d8a7fefab7e2fe70">app_main</a></div><div class="ttdeci">void app_main(void)</div><div class="ttdef"><b>Definition</b> <a href="#l00279">Proyecto_integrador.c:279</a></div></div>
+<div class="ttc" id="a_proyecto__integrador_8c_html_a69b91fd4eda0702c367518ea04fb7aac"><div class="ttname"><a href="_proyecto__integrador_8c.html#a69b91fd4eda0702c367518ea04fb7aac">pwm_control_motores</a></div><div class="ttdeci">pwm_out_t pwm_control_motores[2]</div><div class="ttdoc">arreglo del tipo pwm_out_t almacena cual sera salida PWM</div><div class="ttdef"><b>Definition</b> <a href="#l00118">Proyecto_integrador.c:118</a></div></div>
+<div class="ttc" id="a_proyecto__integrador_8c_html_a6c7973db2c0f9ed66d9efa1bbdead2f5"><div class="ttname"><a href="_proyecto__integrador_8c.html#a6c7973db2c0f9ed66d9efa1bbdead2f5">DETECTOR_DER</a></div><div class="ttdeci">#define DETECTOR_DER</div><div class="ttdoc">definicion GPIO del detector de linea derecho</div><div class="ttdef"><b>Definition</b> <a href="#l00079">Proyecto_integrador.c:79</a></div></div>
+<div class="ttc" id="a_proyecto__integrador_8c_html_a6d7c87e1d8055dd96e32542a9a1cd629"><div class="ttname"><a href="_proyecto__integrador_8c.html#a6d7c87e1d8055dd96e32542a9a1cd629">detectar_linea_handle</a></div><div class="ttdeci">TaskHandle_t detectar_linea_handle</div><div class="ttdef"><b>Definition</b> <a href="#l00107">Proyecto_integrador.c:107</a></div></div>
+<div class="ttc" id="a_proyecto__integrador_8c_html_a7265c95115c8bd3e069b047b7bfb12ff"><div class="ttname"><a href="_proyecto__integrador_8c.html#a7265c95115c8bd3e069b047b7bfb12ff">DETECTOR_IZQ</a></div><div class="ttdeci">#define DETECTOR_IZQ</div><div class="ttdoc">definicion GPIO del detector de linea izquierdo</div><div class="ttdef"><b>Definition</b> <a href="#l00075">Proyecto_integrador.c:75</a></div></div>
+<div class="ttc" id="a_proyecto__integrador_8c_html_a9d11258d2beb9cc8297f7c4eff586868"><div class="ttname"><a href="_proyecto__integrador_8c.html#a9d11258d2beb9cc8297f7c4eff586868">MIB</a></div><div class="ttdeci">#define MIB</div><div class="ttdoc">definicion GPIO del motor DC izquierdo</div><div class="ttdef"><b>Definition</b> <a href="#l00088">Proyecto_integrador.c:88</a></div></div>
+<div class="ttc" id="a_proyecto__integrador_8c_html_ab3409bba9f64c9215f4c457d0f565adc"><div class="ttname"><a href="_proyecto__integrador_8c.html#ab3409bba9f64c9215f4c457d0f565adc">MDB</a></div><div class="ttdeci">#define MDB</div><div class="ttdoc">definicion GPIO del motor DC derecho</div><div class="ttdef"><b>Definition</b> <a href="#l00096">Proyecto_integrador.c:96</a></div></div>
+<div class="ttc" id="a_proyecto__integrador_8c_html_ab56e1ff0f71e003f2e08c6ec294528b1"><div class="ttname"><a href="_proyecto__integrador_8c.html#ab56e1ff0f71e003f2e08c6ec294528b1">read_data</a></div><div class="ttdeci">void read_data(uint8_t *data, uint8_t length)</div><div class="ttdoc">Función a ejecutarse ante un interrupción de recepción a través de la conexión BLE....</div><div class="ttdef"><b>Definition</b> <a href="#l00138">Proyecto_integrador.c:138</a></div></div>
+<div class="ttc" id="a_proyecto__integrador_8c_html_aee9fe6e2300c9b7f83db166efc84ce20"><div class="ttname"><a href="_proyecto__integrador_8c.html#aee9fe6e2300c9b7f83db166efc84ce20">CONFIG_PERIOD_DET</a></div><div class="ttdeci">#define CONFIG_PERIOD_DET</div><div class="ttdoc">periodo en microsegundos, para detectar la linea</div><div class="ttdef"><b>Definition</b> <a href="#l00062">Proyecto_integrador.c:62</a></div></div>
+<div class="ttc" id="a_proyecto__integrador_8c_html_af114a13c7434bd555a00d98a2d3578b8"><div class="ttname"><a href="_proyecto__integrador_8c.html#af114a13c7434bd555a00d98a2d3578b8">ControlMotores</a></div><div class="ttdeci">void ControlMotores()</div><div class="ttdoc">Funcion que controla los motores DC y modifica su velocidad utilizando PWM MIB y MDB deben estar en H...</div><div class="ttdef"><b>Definition</b> <a href="#l00177">Proyecto_integrador.c:177</a></div></div>
+<div class="ttc" id="a_proyecto__integrador_8c_html_afd9a5b1c677d10988c142bb501f34ab4"><div class="ttname"><a href="_proyecto__integrador_8c.html#afd9a5b1c677d10988c142bb501f34ab4">pausa</a></div><div class="ttdeci">bool pausa</div><div class="ttdef"><b>Definition</b> <a href="#l00120">Proyecto_integrador.c:120</a></div></div>
+<div class="ttc" id="aanalog__io__mcu_8h_html"><div class="ttname"><a href="analog__io__mcu_8h.html">analog_io_mcu.h</a></div></div>
+<div class="ttc" id="able__mcu_8h_html"><div class="ttname"><a href="ble__mcu_8h.html">ble_mcu.h</a></div></div>
+<div class="ttc" id="agpio__mcu_8h_html"><div class="ttname"><a href="gpio__mcu_8h.html">gpio_mcu.h</a></div></div>
+<div class="ttc" id="agroup___analog___i_o_html_ga24ce5556aa4682468220b982f151cdfe"><div class="ttname"><a href="group___analog___i_o.html#ga24ce5556aa4682468220b982f151cdfe">AnalogInputInit</a></div><div class="ttdeci">void AnalogInputInit(analog_input_config_t *config)</div><div class="ttdoc">Analog input initialization.</div><div class="ttdef"><b>Definition</b> <a href="analog__io__mcu_8c_source.html#l00045">analog_io_mcu.c:45</a></div></div>
+<div class="ttc" id="agroup___analog___i_o_html_gab5ae00a35744f407072230979e593fd9"><div class="ttname"><a href="group___analog___i_o.html#gab5ae00a35744f407072230979e593fd9">AnalogInputReadSingle</a></div><div class="ttdeci">void AnalogInputReadSingle(adc_ch_t channel, uint16_t *value)</div><div class="ttdoc">Read single channel.</div><div class="ttdef"><b>Definition</b> <a href="analog__io__mcu_8c_source.html#l00105">analog_io_mcu.c:105</a></div></div>
+<div class="ttc" id="agroup___analog___i_o_html_gga4ebdf50515e5d73c58c24fd1491770dca703cf81b7a9530ba8650e0ee2f29d68e"><div class="ttname"><a href="group___analog___i_o.html#gga4ebdf50515e5d73c58c24fd1491770dca703cf81b7a9530ba8650e0ee2f29d68e">CH1</a></div><div class="ttdeci">@ CH1</div><div class="ttdef"><b>Definition</b> <a href="analog__io__mcu_8h_source.html#l00032">analog_io_mcu.h:32</a></div></div>
+<div class="ttc" id="agroup___analog___i_o_html_gga51acd785c14953090a3507d4fa8e5939a3b0a8cf9a7759ea8b7c9494eb7fb3dd4"><div class="ttname"><a href="group___analog___i_o.html#gga51acd785c14953090a3507d4fa8e5939a3b0a8cf9a7759ea8b7c9494eb7fb3dd4">ADC_SINGLE</a></div><div class="ttdeci">@ ADC_SINGLE</div><div class="ttdef"><b>Definition</b> <a href="analog__io__mcu_8h_source.html#l00038">analog_io_mcu.h:38</a></div></div>
+<div class="ttc" id="agroup___b_l_e_html_ga45f64ecb9f703ecc50b85b6967e85bd5"><div class="ttname"><a href="group___b_l_e.html#ga45f64ecb9f703ecc50b85b6967e85bd5">BleStatus</a></div><div class="ttdeci">ble_status_t BleStatus(void)</div><div class="ttdoc">Gets BLE connection status.</div><div class="ttdef"><b>Definition</b> <a href="ble__mcu_8c_source.html#l00530">ble_mcu.c:530</a></div></div>
+<div class="ttc" id="agroup___b_l_e_html_ga68083cec5599456e78a536031e3b61b8"><div class="ttname"><a href="group___b_l_e.html#ga68083cec5599456e78a536031e3b61b8">BleSendString</a></div><div class="ttdeci">void BleSendString(const char *msg)</div><div class="ttdoc">Send a string trough BLE (if connected)</div><div class="ttdef"><b>Definition</b> <a href="ble__mcu_8c_source.html#l00544">ble_mcu.c:544</a></div></div>
+<div class="ttc" id="agroup___b_l_e_html_ga8001369ce247b2413afd6d8a14fe8d82"><div class="ttname"><a href="group___b_l_e.html#ga8001369ce247b2413afd6d8a14fe8d82">BleInit</a></div><div class="ttdeci">void BleInit(ble_config_t *ble_device)</div><div class="ttdoc">Bluetooth initialization.</div><div class="ttdef"><b>Definition</b> <a href="ble__mcu_8c_source.html#l00452">ble_mcu.c:452</a></div></div>
+<div class="ttc" id="agroup___b_l_e_html_ggab13ed63d3b157b93f1e6d98e3d6a7b47a6622372da21e5c0e32cf5c4445145399"><div class="ttname"><a href="group___b_l_e.html#ggab13ed63d3b157b93f1e6d98e3d6a7b47a6622372da21e5c0e32cf5c4445145399">BLE_CONNECTED</a></div><div class="ttdeci">@ BLE_CONNECTED</div><div class="ttdef"><b>Definition</b> <a href="ble__mcu_8h_source.html#l00055">ble_mcu.h:54</a></div></div>
+<div class="ttc" id="agroup___b_l_e_html_ggab13ed63d3b157b93f1e6d98e3d6a7b47abe3828521b028796e567225bfbc5a978"><div class="ttname"><a href="group___b_l_e.html#ggab13ed63d3b157b93f1e6d98e3d6a7b47abe3828521b028796e567225bfbc5a978">BLE_DISCONNECTED</a></div><div class="ttdeci">@ BLE_DISCONNECTED</div><div class="ttdef"><b>Definition</b> <a href="ble__mcu_8h_source.html#l00053">ble_mcu.h:53</a></div></div>
+<div class="ttc" id="agroup___b_l_e_html_ggab13ed63d3b157b93f1e6d98e3d6a7b47ad30434da7f78bb14ef8e28591b5a03f4"><div class="ttname"><a href="group___b_l_e.html#ggab13ed63d3b157b93f1e6d98e3d6a7b47ad30434da7f78bb14ef8e28591b5a03f4">BLE_OFF</a></div><div class="ttdeci">@ BLE_OFF</div><div class="ttdef"><b>Definition</b> <a href="ble__mcu_8h_source.html#l00052">ble_mcu.h:52</a></div></div>
+<div class="ttc" id="agroup___g_i_o_p_html_ga10240d283f64bd1b09fca664fda27964"><div class="ttname"><a href="group___g_i_o_p.html#ga10240d283f64bd1b09fca664fda27964">GPIOInit</a></div><div class="ttdeci">void GPIOInit(gpio_t pin, io_t io)</div><div class="ttdoc">GPIO initialization.</div><div class="ttdef"><b>Definition</b> <a href="gpio__mcu_8c_source.html#l00067">gpio_mcu.c:67</a></div></div>
+<div class="ttc" id="agroup___g_i_o_p_html_ga423620ef7d69894833f70cfc395caaa9"><div class="ttname"><a href="group___g_i_o_p.html#ga423620ef7d69894833f70cfc395caaa9">io_t</a></div><div class="ttdeci">io_t</div><div class="ttdoc">GPIO driver for the ESP-EDU Board.</div><div class="ttdef"><b>Definition</b> <a href="gpio__mcu_8h_source.html#l00042">gpio_mcu.h:42</a></div></div>
+<div class="ttc" id="agroup___g_i_o_p_html_gab42a477acc6064150000fb4a1bd4305c"><div class="ttname"><a href="group___g_i_o_p.html#gab42a477acc6064150000fb4a1bd4305c">GPIORead</a></div><div class="ttdeci">bool GPIORead(gpio_t pin)</div><div class="ttdoc">Reads GPIO state.</div><div class="ttdef"><b>Definition</b> <a href="gpio__mcu_8c_source.html#l00101">gpio_mcu.c:101</a></div></div>
+<div class="ttc" id="agroup___g_i_o_p_html_gaba62250f2b0e73a98b6f35fb6078fdb1"><div class="ttname"><a href="group___g_i_o_p.html#gaba62250f2b0e73a98b6f35fb6078fdb1">GPIOOn</a></div><div class="ttdeci">void GPIOOn(gpio_t pin)</div><div class="ttdoc">Change GPIO state to high.</div><div class="ttdef"><b>Definition</b> <a href="gpio__mcu_8c_source.html#l00081">gpio_mcu.c:81</a></div></div>
+<div class="ttc" id="agroup___g_i_o_p_html_gac6f7bd4f7ee306a4519f04641cbf2d67"><div class="ttname"><a href="group___g_i_o_p.html#gac6f7bd4f7ee306a4519f04641cbf2d67">gpio_t</a></div><div class="ttdeci">enum gpio_list gpio_t</div><div class="ttdoc">ESP32-C6 available GPIOs (not all of them are available in ESP-EDU)</div></div>
+<div class="ttc" id="agroup___g_i_o_p_html_gga423620ef7d69894833f70cfc395caaa9aa1ea38ffc304a6c32480a65b5fec7302"><div class="ttname"><a href="group___g_i_o_p.html#gga423620ef7d69894833f70cfc395caaa9aa1ea38ffc304a6c32480a65b5fec7302">GPIO_INPUT</a></div><div class="ttdeci">@ GPIO_INPUT</div><div class="ttdef"><b>Definition</b> <a href="gpio__mcu_8h_source.html#l00043">gpio_mcu.h:43</a></div></div>
+<div class="ttc" id="agroup___g_i_o_p_html_gga423620ef7d69894833f70cfc395caaa9aa248e73c1faee9c6f072fd91569cf516"><div class="ttname"><a href="group___g_i_o_p.html#gga423620ef7d69894833f70cfc395caaa9aa248e73c1faee9c6f072fd91569cf516">GPIO_OUTPUT</a></div><div class="ttdeci">@ GPIO_OUTPUT</div><div class="ttdef"><b>Definition</b> <a href="gpio__mcu_8h_source.html#l00045">gpio_mcu.h:44</a></div></div>
+<div class="ttc" id="agroup___l_e_d_html_ga4fd07c9f7fab15d0d07389a38f4a39d8"><div class="ttname"><a href="group___l_e_d.html#ga4fd07c9f7fab15d0d07389a38f4a39d8">LedOff</a></div><div class="ttdeci">uint8_t LedOff(led_t led)</div><div class="ttdoc">Turn off a specific LED.</div><div class="ttdef"><b>Definition</b> <a href="led_8c_source.html#l00065">led.c:65</a></div></div>
+<div class="ttc" id="agroup___l_e_d_html_ga787ec5815e0eb2680bf1845562731beb"><div class="ttname"><a href="group___l_e_d.html#ga787ec5815e0eb2680bf1845562731beb">LedToggle</a></div><div class="ttdeci">uint8_t LedToggle(led_t led)</div><div class="ttdoc">Invert a specific LED state.</div><div class="ttdef"><b>Definition</b> <a href="led_8c_source.html#l00084">led.c:84</a></div></div>
+<div class="ttc" id="agroup___l_e_d_html_ga883021aaef65f080a52b1852172ecbc3"><div class="ttname"><a href="group___l_e_d.html#ga883021aaef65f080a52b1852172ecbc3">LedOn</a></div><div class="ttdeci">uint8_t LedOn(led_t led)</div><div class="ttdoc">Turn on a specific LED.</div><div class="ttdef"><b>Definition</b> <a href="led_8c_source.html#l00046">led.c:46</a></div></div>
+<div class="ttc" id="agroup___l_e_d_html_gacba669c3e8f52e45d1bea50c2e63b250"><div class="ttname"><a href="group___l_e_d.html#gacba669c3e8f52e45d1bea50c2e63b250">LedsInit</a></div><div class="ttdeci">uint8_t LedsInit(void)</div><div class="ttdoc">ESP-EDU LEDs initialization.</div><div class="ttdef"><b>Definition</b> <a href="led_8c_source.html#l00031">led.c:31</a></div></div>
+<div class="ttc" id="agroup___l_e_d_html_ggab6831a7d06c0a2bc69f9b024f6445a80a00af6b2437d9982f1f125d2cc2537c41"><div class="ttname"><a href="group___l_e_d.html#ggab6831a7d06c0a2bc69f9b024f6445a80a00af6b2437d9982f1f125d2cc2537c41">LED_2</a></div><div class="ttdeci">@ LED_2</div><div class="ttdef"><b>Definition</b> <a href="led_8h_source.html#l00033">led.h:33</a></div></div>
+<div class="ttc" id="agroup___l_e_d_html_ggab6831a7d06c0a2bc69f9b024f6445a80a11a9adb9054de1fe01d6a6750075f57b"><div class="ttname"><a href="group___l_e_d.html#ggab6831a7d06c0a2bc69f9b024f6445a80a11a9adb9054de1fe01d6a6750075f57b">LED_1</a></div><div class="ttdeci">@ LED_1</div><div class="ttdef"><b>Definition</b> <a href="led_8h_source.html#l00034">led.h:34</a></div></div>
+<div class="ttc" id="agroup___l_e_d_html_ggab6831a7d06c0a2bc69f9b024f6445a80a3e1b1af0f74f675e4eb7bd18229adfd3"><div class="ttname"><a href="group___l_e_d.html#ggab6831a7d06c0a2bc69f9b024f6445a80a3e1b1af0f74f675e4eb7bd18229adfd3">LED_3</a></div><div class="ttdeci">@ LED_3</div><div class="ttdef"><b>Definition</b> <a href="led_8h_source.html#l00032">led.h:32</a></div></div>
+<div class="ttc" id="agroup___p_w_m_html_ga1d363970f0a2cf766d46868c4e88c41a"><div class="ttname"><a href="group___p_w_m.html#ga1d363970f0a2cf766d46868c4e88c41a">pwm_out_t</a></div><div class="ttdeci">enum pwm_out pwm_out_t</div><div class="ttdoc">PWM driver for ESP-EDU board.</div></div>
+<div class="ttc" id="agroup___p_w_m_html_ga427d00e7908ad5bc30e8a71dd07159ba"><div class="ttname"><a href="group___p_w_m.html#ga427d00e7908ad5bc30e8a71dd07159ba">PWMSetDutyCycle</a></div><div class="ttdeci">void PWMSetDutyCycle(pwm_out_t out, uint8_t duty_cycle)</div><div class="ttdoc">Change PWM duty cycle of an PWM output.</div><div class="ttdef"><b>Definition</b> <a href="pwm__mcu_8c_source.html#l00115">pwm_mcu.c:115</a></div></div>
+<div class="ttc" id="agroup___p_w_m_html_ga50ba8fd6442b4799b8fb9b2e2b859bbd"><div class="ttname"><a href="group___p_w_m.html#ga50ba8fd6442b4799b8fb9b2e2b859bbd">PWMInit</a></div><div class="ttdeci">uint8_t PWMInit(pwm_out_t out, gpio_t gpio, uint16_t freq)</div><div class="ttdoc">Single PWM output inicialization in selected GPIO.</div><div class="ttdef"><b>Definition</b> <a href="pwm__mcu_8c_source.html#l00039">pwm_mcu.c:39</a></div></div>
+<div class="ttc" id="agroup___p_w_m_html_ga6fe31ebdc570ccdd776a7d4178566062"><div class="ttname"><a href="group___p_w_m.html#ga6fe31ebdc570ccdd776a7d4178566062">PWMOn</a></div><div class="ttdeci">void PWMOn(pwm_out_t out)</div><div class="ttdoc">Resume PWM output.</div><div class="ttdef"><b>Definition</b> <a href="pwm__mcu_8c_source.html#l00081">pwm_mcu.c:81</a></div></div>
+<div class="ttc" id="agroup___p_w_m_html_gga5800a2bada92ba802e1cbdb0307f0c7ba857e21e20c27df92dec4574fcddfd740"><div class="ttname"><a href="group___p_w_m.html#gga5800a2bada92ba802e1cbdb0307f0c7ba857e21e20c27df92dec4574fcddfd740">PWM_0</a></div><div class="ttdeci">@ PWM_0</div><div class="ttdef"><b>Definition</b> <a href="pwm__mcu_8h_source.html#l00034">pwm_mcu.h:34</a></div></div>
+<div class="ttc" id="agroup___p_w_m_html_gga5800a2bada92ba802e1cbdb0307f0c7baea3b5b1dcb8647c430bc9391799f4703"><div class="ttname"><a href="group___p_w_m.html#gga5800a2bada92ba802e1cbdb0307f0c7baea3b5b1dcb8647c430bc9391799f4703">PWM_1</a></div><div class="ttdeci">@ PWM_1</div><div class="ttdef"><b>Definition</b> <a href="pwm__mcu_8h_source.html#l00035">pwm_mcu.h:35</a></div></div>
+<div class="ttc" id="agroup___timer_html_ga0b1779c5b8f91cc83c8bfd127071ea2f"><div class="ttname"><a href="group___timer.html#ga0b1779c5b8f91cc83c8bfd127071ea2f">TimerStart</a></div><div class="ttdeci">void TimerStart(timer_mcu_t timer)</div><div class="ttdoc">Start timer count.</div><div class="ttdef"><b>Definition</b> <a href="timer__mcu_8c_source.html#l00110">timer_mcu.c:110</a></div></div>
+<div class="ttc" id="agroup___timer_html_gae8617c0d176463a60441464ad26563f6"><div class="ttname"><a href="group___timer.html#gae8617c0d176463a60441464ad26563f6">TimerInit</a></div><div class="ttdeci">void TimerInit(timer_config_t *timer_ini)</div><div class="ttdoc">Timer initialization.</div><div class="ttdef"><b>Definition</b> <a href="timer__mcu_8c_source.html#l00055">timer_mcu.c:55</a></div></div>
+<div class="ttc" id="agroup___timer_html_ggacc4e64394d03a6e790f8e52c674534d9a179b1231f027eba52fa4ef94ec174598"><div class="ttname"><a href="group___timer.html#ggacc4e64394d03a6e790f8e52c674534d9a179b1231f027eba52fa4ef94ec174598">TIMER_A</a></div><div class="ttdeci">@ TIMER_A</div><div class="ttdef"><b>Definition</b> <a href="timer__mcu_8h_source.html#l00032">timer_mcu.h:32</a></div></div>
+<div class="ttc" id="aili9341_8c_html_a070d2ce7b6bb7e5c05602aa8c308d0c4"><div class="ttname"><a href="ili9341_8c.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a></div><div class="ttdeci">#define NULL</div><div class="ttdef"><b>Definition</b> <a href="ili9341_8c_source.html#l00019">ili9341.c:19</a></div></div>
+<div class="ttc" id="aled_8h_html"><div class="ttname"><a href="led_8h.html">led.h</a></div></div>
+<div class="ttc" id="apwm__mcu_8h_html"><div class="ttname"><a href="pwm__mcu_8h.html">pwm_mcu.h</a></div></div>
+<div class="ttc" id="astructanalog__input__config__t_html"><div class="ttname"><a href="structanalog__input__config__t.html">analog_input_config_t</a></div><div class="ttdoc">Analog inputs config structure.</div><div class="ttdef"><b>Definition</b> <a href="analog__io__mcu_8h_source.html#l00048">analog_io_mcu.h:48</a></div></div>
+<div class="ttc" id="astructanalog__input__config__t_html_a16d10b35d778a5d4fdbda4d75981d310"><div class="ttname"><a href="structanalog__input__config__t.html#a16d10b35d778a5d4fdbda4d75981d310">analog_input_config_t::input</a></div><div class="ttdeci">adc_ch_t input</div><div class="ttdef"><b>Definition</b> <a href="analog__io__mcu_8h_source.html#l00049">analog_io_mcu.h:49</a></div></div>
+<div class="ttc" id="astructble__config__t_html"><div class="ttname"><a href="structble__config__t.html">ble_config_t</a></div><div class="ttdoc">BLE configuration struct.</div><div class="ttdef"><b>Definition</b> <a href="ble__mcu_8h_source.html#l00043">ble_mcu.h:43</a></div></div>
+<div class="ttc" id="astructgpio_conf__t_html"><div class="ttname"><a href="structgpio_conf__t.html">gpioConf_t</a></div><div class="ttdoc">estructura del tipo gpioConf_t asigna el numero de pin y establece si es entrada o salida con 0 o 1,...</div><div class="ttdef"><b>Definition</b> <a href="#l00102">Proyecto_integrador.c:103</a></div></div>
+<div class="ttc" id="astructgpio_conf__t_html_a8f9801ec3144d1e53252a902330c58a1"><div class="ttname"><a href="structgpio_conf__t.html#a8f9801ec3144d1e53252a902330c58a1">gpioConf_t::dir</a></div><div class="ttdeci">io_t dir</div><div class="ttdef"><b>Definition</b> <a href="#l00104">Proyecto_integrador.c:104</a></div></div>
+<div class="ttc" id="astructgpio_conf__t_html_aca3d4c5920a3f389dfded4a9726473a9"><div class="ttname"><a href="structgpio_conf__t.html#aca3d4c5920a3f389dfded4a9726473a9">gpioConf_t::pin</a></div><div class="ttdeci">gpio_t pin</div><div class="ttdef"><b>Definition</b> <a href="#l00103">Proyecto_integrador.c:103</a></div></div>
+<div class="ttc" id="astructtimer__config__t_html"><div class="ttname"><a href="structtimer__config__t.html">timer_config_t</a></div><div class="ttdoc">Timer configuration struct.</div><div class="ttdef"><b>Definition</b> <a href="timer__mcu_8h_source.html#l00039">timer_mcu.h:39</a></div></div>
+<div class="ttc" id="astructtimer__config__t_html_ab83043b8038c5e630f6a2a05ea007e49"><div class="ttname"><a href="structtimer__config__t.html#ab83043b8038c5e630f6a2a05ea007e49">timer_config_t::timer</a></div><div class="ttdeci">timer_mcu_t timer</div><div class="ttdef"><b>Definition</b> <a href="timer__mcu_8h_source.html#l00040">timer_mcu.h:40</a></div></div>
+<div class="ttc" id="atimer__mcu_8h_html"><div class="ttname"><a href="timer__mcu_8h.html">timer_mcu.h</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_76557cd4a0608cd174cb3d5100c20ce4.html">Sacks-1C-2024</a></li><li class="navelem"><a class="el" href="dir_4a875605755f3e307511815f0cde7761.html">firmware</a></li><li class="navelem"><a class="el" href="dir_7afb78551d3697caf76e3998a36c8e3e.html">projects</a></li><li class="navelem"><a class="el" href="dir_10e52368101984714bd666a6ea8e9e60.html">Proyecto_integrador</a></li><li class="navelem"><a class="el" href="dir_6574dd23e72a77fa70c80b77651bda63.html">main</a></li><li class="navelem"><a class="el" href="_proyecto__integrador_8c.html">Proyecto_integrador.c</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
+  </ul>
+</div>
+</body>
+</html>

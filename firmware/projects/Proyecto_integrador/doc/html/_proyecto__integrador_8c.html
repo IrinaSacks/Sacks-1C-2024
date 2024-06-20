@@ -1,0 +1,601 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.10.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Robot seguidor de linea: Referencia del archivo C:/Repositorio/Sacks-1C-2024/firmware/projects/Proyecto_integrador/main/Proyecto_integrador.c</title>
+<link rel="icon" href="icon.ico" type="image/x-icon" />
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+  $(function() { init_search(); });
+/* @license-end */
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="fiuner.png"/></td>
+  <td id="projectalign">
+   <div id="projectname">Robot seguidor de linea<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Robot de guiado automatico activado por bluetooth, que sigue el trayecto de una linea</div>
+  </td>
+    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect"                onmouseover="return searchBox.OnSearchSelectShow()"                onmouseout="return searchBox.OnSearchSelectHide()">&#160;</span>
+          <input type="text" id="MSearchField" value="" placeholder="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.10.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('_proyecto__integrador_8c.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Estructuras de datos</a> &#124;
+<a href="#define-members">defines</a> &#124;
+<a href="#func-members">Funciones</a> &#124;
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle"><div class="title">Referencia del archivo Proyecto_integrador.c</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdint.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+<code>#include &quot;freertos/FreeRTOS.h&quot;</code><br />
+<code>#include &quot;freertos/task.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="led_8h_source.html">led.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="ble__mcu_8h_source.html">ble_mcu.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="pwm__mcu_8h_source.html">pwm_mcu.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="gpio__mcu_8h_source.html">gpio_mcu.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="timer__mcu_8h_source.html">timer_mcu.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="analog__io__mcu_8h_source.html">analog_io_mcu.h</a>&quot;</code><br />
+</div>
+<p><a href="_proyecto__integrador_8c_source.html">Ir al código fuente de este archivo.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Estructuras de datos</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgpio_conf__t.html">gpioConf_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">estructura del tipo <a class="el" href="structgpio_conf__t.html" title="estructura del tipo gpioConf_t asigna el numero de pin y establece si es entrada o salida con 0 o 1,...">gpioConf_t</a> asigna el numero de pin y establece si es entrada o salida con 0 o 1, respectivamente.  <a href="structgpio_conf__t.html#details">Más...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+defines</h2></td></tr>
+<tr class="memitem:aee9fe6e2300c9b7f83db166efc84ce20" id="r_aee9fe6e2300c9b7f83db166efc84ce20"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aee9fe6e2300c9b7f83db166efc84ce20">CONFIG_PERIOD_DET</a>&#160;&#160;&#160;150000</td></tr>
+<tr class="memdesc:aee9fe6e2300c9b7f83db166efc84ce20"><td class="mdescLeft">&#160;</td><td class="mdescRight">periodo en microsegundos, para detectar la linea  <br /></td></tr>
+<tr class="separator:aee9fe6e2300c9b7f83db166efc84ce20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3df1b4cad09974bfc68858fad7cdc054" id="r_a3df1b4cad09974bfc68858fad7cdc054"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3df1b4cad09974bfc68858fad7cdc054">CONFIG_BLINK_PERIOD</a>&#160;&#160;&#160;500</td></tr>
+<tr class="memdesc:a3df1b4cad09974bfc68858fad7cdc054"><td class="mdescLeft">&#160;</td><td class="mdescRight">periodo en milisegundos, para el parpadeo de los leds segun la conexion del BLE  <br /></td></tr>
+<tr class="separator:a3df1b4cad09974bfc68858fad7cdc054"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3536d853690dcc3b63b3eb2651f6a771" id="r_a3536d853690dcc3b63b3eb2651f6a771"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3536d853690dcc3b63b3eb2651f6a771">PERIODO_BAT</a>&#160;&#160;&#160;5000</td></tr>
+<tr class="memdesc:a3536d853690dcc3b63b3eb2651f6a771"><td class="mdescLeft">&#160;</td><td class="mdescRight">periodo en milisegundos, para el control de la bateria  <br /></td></tr>
+<tr class="separator:a3536d853690dcc3b63b3eb2651f6a771"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7265c95115c8bd3e069b047b7bfb12ff" id="r_a7265c95115c8bd3e069b047b7bfb12ff"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7265c95115c8bd3e069b047b7bfb12ff">DETECTOR_IZQ</a>&#160;&#160;&#160;<a class="el" href="group___g_i_o_p.html#ggaf65604147d0244c9b13cfdc865ad5393a0e8bab7ea873c22eb90aa81116208917">GPIO_18</a></td></tr>
+<tr class="memdesc:a7265c95115c8bd3e069b047b7bfb12ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">definicion GPIO del detector de linea izquierdo  <br /></td></tr>
+<tr class="separator:a7265c95115c8bd3e069b047b7bfb12ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c7973db2c0f9ed66d9efa1bbdead2f5" id="r_a6c7973db2c0f9ed66d9efa1bbdead2f5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6c7973db2c0f9ed66d9efa1bbdead2f5">DETECTOR_DER</a>&#160;&#160;&#160;<a class="el" href="group___g_i_o_p.html#ggaf65604147d0244c9b13cfdc865ad5393aa2918c94bcf473e7ff31138b6333f847">GPIO_19</a></td></tr>
+<tr class="memdesc:a6c7973db2c0f9ed66d9efa1bbdead2f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">definicion GPIO del detector de linea derecho  <br /></td></tr>
+<tr class="separator:a6c7973db2c0f9ed66d9efa1bbdead2f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e1b4b157642a13cca9d61f800520470" id="r_a1e1b4b157642a13cca9d61f800520470"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1e1b4b157642a13cca9d61f800520470">MIA</a>&#160;&#160;&#160;<a class="el" href="group___g_i_o_p.html#ggaf65604147d0244c9b13cfdc865ad5393af5c2b7f44743385580550aa81e4b4f31">GPIO_16</a></td></tr>
+<tr class="memdesc:a1e1b4b157642a13cca9d61f800520470"><td class="mdescLeft">&#160;</td><td class="mdescRight">definicion GPIO del motor DC izquierdo a controlar con PWM  <br /></td></tr>
+<tr class="separator:a1e1b4b157642a13cca9d61f800520470"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d11258d2beb9cc8297f7c4eff586868" id="r_a9d11258d2beb9cc8297f7c4eff586868"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9d11258d2beb9cc8297f7c4eff586868">MIB</a>&#160;&#160;&#160;<a class="el" href="group___g_i_o_p.html#ggaf65604147d0244c9b13cfdc865ad5393aca7c5f2acf755d61b35d05ea921c79eb">GPIO_22</a></td></tr>
+<tr class="memdesc:a9d11258d2beb9cc8297f7c4eff586868"><td class="mdescLeft">&#160;</td><td class="mdescRight">definicion GPIO del motor DC izquierdo  <br /></td></tr>
+<tr class="separator:a9d11258d2beb9cc8297f7c4eff586868"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1da5c1a44b6868aec79aa054b2590671" id="r_a1da5c1a44b6868aec79aa054b2590671"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1da5c1a44b6868aec79aa054b2590671">MDA</a>&#160;&#160;&#160;<a class="el" href="group___g_i_o_p.html#ggaf65604147d0244c9b13cfdc865ad5393a272b8d60ca888339e5095000b50ba5b1">GPIO_17</a></td></tr>
+<tr class="memdesc:a1da5c1a44b6868aec79aa054b2590671"><td class="mdescLeft">&#160;</td><td class="mdescRight">definicion GPIO del motor DC derecho a controlar con PWM  <br /></td></tr>
+<tr class="separator:a1da5c1a44b6868aec79aa054b2590671"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3409bba9f64c9215f4c457d0f565adc" id="r_ab3409bba9f64c9215f4c457d0f565adc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab3409bba9f64c9215f4c457d0f565adc">MDB</a>&#160;&#160;&#160;<a class="el" href="group___g_i_o_p.html#ggaf65604147d0244c9b13cfdc865ad5393a4f3bac8a4733f9e96aa952fb1d9b0a7f">GPIO_23</a></td></tr>
+<tr class="memdesc:ab3409bba9f64c9215f4c457d0f565adc"><td class="mdescLeft">&#160;</td><td class="mdescRight">definicion GPIO del motor DC derecho  <br /></td></tr>
+<tr class="separator:ab3409bba9f64c9215f4c457d0f565adc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Funciones</h2></td></tr>
+<tr class="memitem:a398c931fdd8a2f8130e4f216c562c875" id="r_a398c931fdd8a2f8130e4f216c562c875"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a398c931fdd8a2f8130e4f216c562c875">FuncTimerA_Detector</a> (void *param)</td></tr>
+<tr class="memdesc:a398c931fdd8a2f8130e4f216c562c875"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timer que envia una notificacion cada 0,15 seg a DetectarLinea.  <br /></td></tr>
+<tr class="separator:a398c931fdd8a2f8130e4f216c562c875"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab56e1ff0f71e003f2e08c6ec294528b1" id="r_ab56e1ff0f71e003f2e08c6ec294528b1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab56e1ff0f71e003f2e08c6ec294528b1">read_data</a> (uint8_t *data, uint8_t length)</td></tr>
+<tr class="memdesc:ab56e1ff0f71e003f2e08c6ec294528b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Función a ejecutarse ante un interrupción de recepción a través de la conexión BLE. Si recibe 'O' enciende el sistema y un led verde, 'o' apaga el sistema y enciende led verde Si el sistema esta encendido y recibe 'P' detiene el robot y enciende led amarillo, 'p' reanuda el robot y apaga el led amarillo. Para ambos casos se informa por puerto serie el estado de la marcha del robot.  <br /></td></tr>
+<tr class="separator:ab56e1ff0f71e003f2e08c6ec294528b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af114a13c7434bd555a00d98a2d3578b8" id="r_af114a13c7434bd555a00d98a2d3578b8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af114a13c7434bd555a00d98a2d3578b8">ControlMotores</a> ()</td></tr>
+<tr class="memdesc:af114a13c7434bd555a00d98a2d3578b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funcion que controla los motores DC y modifica su velocidad utilizando PWM MIB y MDB deben estar en HIGH para que el robot vaya hacia adelante.  <br /></td></tr>
+<tr class="separator:af114a13c7434bd555a00d98a2d3578b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a630544a7f0a2cc40d8a7fefab7e2fe70" id="r_a630544a7f0a2cc40d8a7fefab7e2fe70"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a630544a7f0a2cc40d8a7fefab7e2fe70">app_main</a> (void)</td></tr>
+<tr class="separator:a630544a7f0a2cc40d8a7fefab7e2fe70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a6d7c87e1d8055dd96e32542a9a1cd629" id="r_a6d7c87e1d8055dd96e32542a9a1cd629"><td class="memItemLeft" align="right" valign="top">TaskHandle_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6d7c87e1d8055dd96e32542a9a1cd629">detectar_linea_handle</a> = <a class="el" href="ili9341_8c.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a></td></tr>
+<tr class="separator:a6d7c87e1d8055dd96e32542a9a1cd629"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00b2eacf3f46e79d980dbe7ad2938681" id="r_a00b2eacf3f46e79d980dbe7ad2938681"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgpio_conf__t.html">gpioConf_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a00b2eacf3f46e79d980dbe7ad2938681">gpio_detector_linea</a> [2]</td></tr>
+<tr class="memdesc:a00b2eacf3f46e79d980dbe7ad2938681"><td class="mdescLeft">&#160;</td><td class="mdescRight">arreglo del tipo <a class="el" href="structgpio_conf__t.html" title="estructura del tipo gpioConf_t asigna el numero de pin y establece si es entrada o salida con 0 o 1,...">gpioConf_t</a> almacena los pines de los detectores de linea y si son salida o entrada  <br /></td></tr>
+<tr class="separator:a00b2eacf3f46e79d980dbe7ad2938681"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69b91fd4eda0702c367518ea04fb7aac" id="r_a69b91fd4eda0702c367518ea04fb7aac"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___p_w_m.html#ga1d363970f0a2cf766d46868c4e88c41a">pwm_out_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a69b91fd4eda0702c367518ea04fb7aac">pwm_control_motores</a> [2]</td></tr>
+<tr class="memdesc:a69b91fd4eda0702c367518ea04fb7aac"><td class="mdescLeft">&#160;</td><td class="mdescRight">arreglo del tipo pwm_out_t almacena cual sera salida PWM  <br /></td></tr>
+<tr class="separator:a69b91fd4eda0702c367518ea04fb7aac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5332d02d82dacdfb5c6dc01cb428b013" id="r_a5332d02d82dacdfb5c6dc01cb428b013"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5332d02d82dacdfb5c6dc01cb428b013">encendido</a></td></tr>
+<tr class="separator:a5332d02d82dacdfb5c6dc01cb428b013"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd9a5b1c677d10988c142bb501f34ab4" id="r_afd9a5b1c677d10988c142bb501f34ab4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afd9a5b1c677d10988c142bb501f34ab4">pausa</a> = false</td></tr>
+<tr class="separator:afd9a5b1c677d10988c142bb501f34ab4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a529c38a9734c03135a92e66546ce69ba" id="r_a529c38a9734c03135a92e66546ce69ba"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a529c38a9734c03135a92e66546ce69ba">direccion</a> ='X'</td></tr>
+<tr class="separator:a529c38a9734c03135a92e66546ce69ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Documentación de «define»</h2>
+<a id="a3df1b4cad09974bfc68858fad7cdc054" name="a3df1b4cad09974bfc68858fad7cdc054"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3df1b4cad09974bfc68858fad7cdc054">&#9670;&#160;</a></span>CONFIG_BLINK_PERIOD</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CONFIG_BLINK_PERIOD&#160;&#160;&#160;500</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>periodo en milisegundos, para el parpadeo de los leds segun la conexion del BLE </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_proyecto__integrador_8c_source.html#l00066">66</a> del archivo <a class="el" href="_proyecto__integrador_8c_source.html">Proyecto_integrador.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_proyecto__integrador_8c_source.html#l00279">app_main()</a>.</p>
+
+</div>
+</div>
+<a id="aee9fe6e2300c9b7f83db166efc84ce20" name="aee9fe6e2300c9b7f83db166efc84ce20"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee9fe6e2300c9b7f83db166efc84ce20">&#9670;&#160;</a></span>CONFIG_PERIOD_DET</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CONFIG_PERIOD_DET&#160;&#160;&#160;150000</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>periodo en microsegundos, para detectar la linea </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_proyecto__integrador_8c_source.html#l00062">62</a> del archivo <a class="el" href="_proyecto__integrador_8c_source.html">Proyecto_integrador.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_proyecto__integrador_8c_source.html#l00279">app_main()</a>.</p>
+
+</div>
+</div>
+<a id="a6c7973db2c0f9ed66d9efa1bbdead2f5" name="a6c7973db2c0f9ed66d9efa1bbdead2f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c7973db2c0f9ed66d9efa1bbdead2f5">&#9670;&#160;</a></span>DETECTOR_DER</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DETECTOR_DER&#160;&#160;&#160;<a class="el" href="group___g_i_o_p.html#ggaf65604147d0244c9b13cfdc865ad5393aa2918c94bcf473e7ff31138b6333f847">GPIO_19</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>definicion GPIO del detector de linea derecho </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_proyecto__integrador_8c_source.html#l00079">79</a> del archivo <a class="el" href="_proyecto__integrador_8c_source.html">Proyecto_integrador.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_proyecto__integrador_8c_source.html#l00279">app_main()</a>.</p>
+
+</div>
+</div>
+<a id="a7265c95115c8bd3e069b047b7bfb12ff" name="a7265c95115c8bd3e069b047b7bfb12ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7265c95115c8bd3e069b047b7bfb12ff">&#9670;&#160;</a></span>DETECTOR_IZQ</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DETECTOR_IZQ&#160;&#160;&#160;<a class="el" href="group___g_i_o_p.html#ggaf65604147d0244c9b13cfdc865ad5393a0e8bab7ea873c22eb90aa81116208917">GPIO_18</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>definicion GPIO del detector de linea izquierdo </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_proyecto__integrador_8c_source.html#l00075">75</a> del archivo <a class="el" href="_proyecto__integrador_8c_source.html">Proyecto_integrador.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_proyecto__integrador_8c_source.html#l00279">app_main()</a>.</p>
+
+</div>
+</div>
+<a id="a1da5c1a44b6868aec79aa054b2590671" name="a1da5c1a44b6868aec79aa054b2590671"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1da5c1a44b6868aec79aa054b2590671">&#9670;&#160;</a></span>MDA</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MDA&#160;&#160;&#160;<a class="el" href="group___g_i_o_p.html#ggaf65604147d0244c9b13cfdc865ad5393a272b8d60ca888339e5095000b50ba5b1">GPIO_17</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>definicion GPIO del motor DC derecho a controlar con PWM </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_proyecto__integrador_8c_source.html#l00092">92</a> del archivo <a class="el" href="_proyecto__integrador_8c_source.html">Proyecto_integrador.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_proyecto__integrador_8c_source.html#l00279">app_main()</a>.</p>
+
+</div>
+</div>
+<a id="ab3409bba9f64c9215f4c457d0f565adc" name="ab3409bba9f64c9215f4c457d0f565adc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3409bba9f64c9215f4c457d0f565adc">&#9670;&#160;</a></span>MDB</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MDB&#160;&#160;&#160;<a class="el" href="group___g_i_o_p.html#ggaf65604147d0244c9b13cfdc865ad5393a4f3bac8a4733f9e96aa952fb1d9b0a7f">GPIO_23</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>definicion GPIO del motor DC derecho </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_proyecto__integrador_8c_source.html#l00096">96</a> del archivo <a class="el" href="_proyecto__integrador_8c_source.html">Proyecto_integrador.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_proyecto__integrador_8c_source.html#l00279">app_main()</a> y <a class="el" href="_proyecto__integrador_8c_source.html#l00177">ControlMotores()</a>.</p>
+
+</div>
+</div>
+<a id="a1e1b4b157642a13cca9d61f800520470" name="a1e1b4b157642a13cca9d61f800520470"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e1b4b157642a13cca9d61f800520470">&#9670;&#160;</a></span>MIA</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MIA&#160;&#160;&#160;<a class="el" href="group___g_i_o_p.html#ggaf65604147d0244c9b13cfdc865ad5393af5c2b7f44743385580550aa81e4b4f31">GPIO_16</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>definicion GPIO del motor DC izquierdo a controlar con PWM </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_proyecto__integrador_8c_source.html#l00084">84</a> del archivo <a class="el" href="_proyecto__integrador_8c_source.html">Proyecto_integrador.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_proyecto__integrador_8c_source.html#l00279">app_main()</a>.</p>
+
+</div>
+</div>
+<a id="a9d11258d2beb9cc8297f7c4eff586868" name="a9d11258d2beb9cc8297f7c4eff586868"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d11258d2beb9cc8297f7c4eff586868">&#9670;&#160;</a></span>MIB</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MIB&#160;&#160;&#160;<a class="el" href="group___g_i_o_p.html#ggaf65604147d0244c9b13cfdc865ad5393aca7c5f2acf755d61b35d05ea921c79eb">GPIO_22</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>definicion GPIO del motor DC izquierdo </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_proyecto__integrador_8c_source.html#l00088">88</a> del archivo <a class="el" href="_proyecto__integrador_8c_source.html">Proyecto_integrador.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_proyecto__integrador_8c_source.html#l00279">app_main()</a> y <a class="el" href="_proyecto__integrador_8c_source.html#l00177">ControlMotores()</a>.</p>
+
+</div>
+</div>
+<a id="a3536d853690dcc3b63b3eb2651f6a771" name="a3536d853690dcc3b63b3eb2651f6a771"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3536d853690dcc3b63b3eb2651f6a771">&#9670;&#160;</a></span>PERIODO_BAT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PERIODO_BAT&#160;&#160;&#160;5000</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>periodo en milisegundos, para el control de la bateria </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_proyecto__integrador_8c_source.html#l00070">70</a> del archivo <a class="el" href="_proyecto__integrador_8c_source.html">Proyecto_integrador.c</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentación de funciones</h2>
+<a id="a630544a7f0a2cc40d8a7fefab7e2fe70" name="a630544a7f0a2cc40d8a7fefab7e2fe70"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a630544a7f0a2cc40d8a7fefab7e2fe70">&#9670;&#160;</a></span>app_main()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void app_main </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="_proyecto__integrador_8c_source.html#l00279">279</a> del archivo <a class="el" href="_proyecto__integrador_8c_source.html">Proyecto_integrador.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="analog__io__mcu_8h_source.html#l00038">ADC_SINGLE</a>, <a class="el" href="analog__io__mcu_8c_source.html#l00045">AnalogInputInit()</a>, <a class="el" href="ble__mcu_8h_source.html#l00054">BLE_CONNECTED</a>, <a class="el" href="ble__mcu_8h_source.html#l00053">BLE_DISCONNECTED</a>, <a class="el" href="ble__mcu_8h_source.html#l00052">BLE_OFF</a>, <a class="el" href="ble__mcu_8c_source.html#l00452">BleInit()</a>, <a class="el" href="ble__mcu_8c_source.html#l00530">BleStatus()</a>, <a class="el" href="analog__io__mcu_8h_source.html#l00032">CH1</a>, <a class="el" href="_proyecto__integrador_8c_source.html#l00066">CONFIG_BLINK_PERIOD</a>, <a class="el" href="_proyecto__integrador_8c_source.html#l00062">CONFIG_PERIOD_DET</a>, <a class="el" href="_proyecto__integrador_8c_source.html#l00107">detectar_linea_handle</a>, <a class="el" href="_proyecto__integrador_8c_source.html#l00079">DETECTOR_DER</a>, <a class="el" href="_proyecto__integrador_8c_source.html#l00075">DETECTOR_IZQ</a>, <a class="el" href="_proyecto__integrador_8c_source.html#l00104">gpioConf_t::dir</a>, <a class="el" href="_proyecto__integrador_8c_source.html#l00120">encendido</a>, <a class="el" href="_proyecto__integrador_8c_source.html#l00126">FuncTimerA_Detector()</a>, <a class="el" href="_proyecto__integrador_8c_source.html#l00113">gpio_detector_linea</a>, <a class="el" href="gpio__mcu_8h_source.html#l00043">GPIO_INPUT</a>, <a class="el" href="gpio__mcu_8h_source.html#l00044">GPIO_OUTPUT</a>, <a class="el" href="gpio__mcu_8c_source.html#l00067">GPIOInit()</a>, <a class="el" href="analog__io__mcu_8h_source.html#l00049">analog_input_config_t::input</a>, <a class="el" href="led_8h_source.html#l00034">LED_1</a>, <a class="el" href="led_8h_source.html#l00033">LED_2</a>, <a class="el" href="led_8h_source.html#l00032">LED_3</a>, <a class="el" href="led_8c_source.html#l00065">LedOff()</a>, <a class="el" href="led_8c_source.html#l00046">LedOn()</a>, <a class="el" href="led_8c_source.html#l00031">LedsInit()</a>, <a class="el" href="led_8c_source.html#l00084">LedToggle()</a>, <a class="el" href="_proyecto__integrador_8c_source.html#l00092">MDA</a>, <a class="el" href="_proyecto__integrador_8c_source.html#l00096">MDB</a>, <a class="el" href="_proyecto__integrador_8c_source.html#l00084">MIA</a>, <a class="el" href="_proyecto__integrador_8c_source.html#l00088">MIB</a>, <a class="el" href="ili9341_8c_source.html#l00019">NULL</a>, <a class="el" href="_proyecto__integrador_8c_source.html#l00120">pausa</a>, <a class="el" href="_proyecto__integrador_8c_source.html#l00103">gpioConf_t::pin</a>, <a class="el" href="pwm__mcu_8h_source.html#l00034">PWM_0</a>, <a class="el" href="pwm__mcu_8h_source.html#l00035">PWM_1</a>, <a class="el" href="_proyecto__integrador_8c_source.html#l00118">pwm_control_motores</a>, <a class="el" href="pwm__mcu_8c_source.html#l00039">PWMInit()</a>, <a class="el" href="_proyecto__integrador_8c_source.html#l00138">read_data()</a>, <a class="el" href="timer__mcu_8h_source.html#l00040">timer_config_t::timer</a>, <a class="el" href="timer__mcu_8h_source.html#l00032">TIMER_A</a>, <a class="el" href="timer__mcu_8c_source.html#l00055">TimerInit()</a> y <a class="el" href="timer__mcu_8c_source.html#l00110">TimerStart()</a>.</p>
+
+</div>
+</div>
+<a id="af114a13c7434bd555a00d98a2d3578b8" name="af114a13c7434bd555a00d98a2d3578b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af114a13c7434bd555a00d98a2d3578b8">&#9670;&#160;</a></span>ControlMotores()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ControlMotores </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Funcion que controla los motores DC y modifica su velocidad utilizando PWM MIB y MDB deben estar en HIGH para que el robot vaya hacia adelante. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_proyecto__integrador_8c_source.html#l00177">177</a> del archivo <a class="el" href="_proyecto__integrador_8c_source.html">Proyecto_integrador.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_proyecto__integrador_8c_source.html#l00121">direccion</a>, <a class="el" href="gpio__mcu_8c_source.html#l00081">GPIOOn()</a>, <a class="el" href="_proyecto__integrador_8c_source.html#l00096">MDB</a>, <a class="el" href="_proyecto__integrador_8c_source.html#l00088">MIB</a>, <a class="el" href="_proyecto__integrador_8c_source.html#l00118">pwm_control_motores</a>, <a class="el" href="pwm__mcu_8c_source.html#l00081">PWMOn()</a> y <a class="el" href="pwm__mcu_8c_source.html#l00115">PWMSetDutyCycle()</a>.</p>
+
+</div>
+</div>
+<a id="a398c931fdd8a2f8130e4f216c562c875" name="a398c931fdd8a2f8130e4f216c562c875"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a398c931fdd8a2f8130e4f216c562c875">&#9670;&#160;</a></span>FuncTimerA_Detector()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FuncTimerA_Detector </td>
+          <td>(</td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>param</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Timer que envia una notificacion cada 0,15 seg a DetectarLinea. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>void </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="_proyecto__integrador_8c_source.html#l00126">126</a> del archivo <a class="el" href="_proyecto__integrador_8c_source.html">Proyecto_integrador.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_proyecto__integrador_8c_source.html#l00107">detectar_linea_handle</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_proyecto__integrador_8c_source.html#l00279">app_main()</a>.</p>
+
+</div>
+</div>
+<a id="ab56e1ff0f71e003f2e08c6ec294528b1" name="ab56e1ff0f71e003f2e08c6ec294528b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab56e1ff0f71e003f2e08c6ec294528b1">&#9670;&#160;</a></span>read_data()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void read_data </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>data</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>length</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Función a ejecutarse ante un interrupción de recepción a través de la conexión BLE. Si recibe 'O' enciende el sistema y un led verde, 'o' apaga el sistema y enciende led verde Si el sistema esta encendido y recibe 'P' detiene el robot y enciende led amarillo, 'p' reanuda el robot y apaga el led amarillo. Para ambos casos se informa por puerto serie el estado de la marcha del robot. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>Puntero a array de datos recibidos </td></tr>
+    <tr><td class="paramname">length</td><td>Longitud del array de datos recibidos </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definición en la línea <a class="el" href="_proyecto__integrador_8c_source.html#l00138">138</a> del archivo <a class="el" href="_proyecto__integrador_8c_source.html">Proyecto_integrador.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="ble__mcu_8c_source.html#l00544">BleSendString()</a>, <a class="el" href="_proyecto__integrador_8c_source.html#l00120">encendido</a> y <a class="el" href="_proyecto__integrador_8c_source.html#l00120">pausa</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_proyecto__integrador_8c_source.html#l00279">app_main()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentación de variables</h2>
+<a id="a6d7c87e1d8055dd96e32542a9a1cd629" name="a6d7c87e1d8055dd96e32542a9a1cd629"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d7c87e1d8055dd96e32542a9a1cd629">&#9670;&#160;</a></span>detectar_linea_handle</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TaskHandle_t detectar_linea_handle = <a class="el" href="ili9341_8c.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="_proyecto__integrador_8c_source.html#l00107">107</a> del archivo <a class="el" href="_proyecto__integrador_8c_source.html">Proyecto_integrador.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_proyecto__integrador_8c_source.html#l00279">app_main()</a> y <a class="el" href="_proyecto__integrador_8c_source.html#l00126">FuncTimerA_Detector()</a>.</p>
+
+</div>
+</div>
+<a id="a529c38a9734c03135a92e66546ce69ba" name="a529c38a9734c03135a92e66546ce69ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a529c38a9734c03135a92e66546ce69ba">&#9670;&#160;</a></span>direccion</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char direccion ='X'</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="_proyecto__integrador_8c_source.html#l00121">121</a> del archivo <a class="el" href="_proyecto__integrador_8c_source.html">Proyecto_integrador.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_proyecto__integrador_8c_source.html#l00177">ControlMotores()</a>.</p>
+
+</div>
+</div>
+<a id="a5332d02d82dacdfb5c6dc01cb428b013" name="a5332d02d82dacdfb5c6dc01cb428b013"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5332d02d82dacdfb5c6dc01cb428b013">&#9670;&#160;</a></span>encendido</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool encendido</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="_proyecto__integrador_8c_source.html#l00120">120</a> del archivo <a class="el" href="_proyecto__integrador_8c_source.html">Proyecto_integrador.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_proyecto__integrador_8c_source.html#l00279">app_main()</a> y <a class="el" href="_proyecto__integrador_8c_source.html#l00138">read_data()</a>.</p>
+
+</div>
+</div>
+<a id="a00b2eacf3f46e79d980dbe7ad2938681" name="a00b2eacf3f46e79d980dbe7ad2938681"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a00b2eacf3f46e79d980dbe7ad2938681">&#9670;&#160;</a></span>gpio_detector_linea</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structgpio_conf__t.html">gpioConf_t</a> gpio_detector_linea[2]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>arreglo del tipo <a class="el" href="structgpio_conf__t.html" title="estructura del tipo gpioConf_t asigna el numero de pin y establece si es entrada o salida con 0 o 1,...">gpioConf_t</a> almacena los pines de los detectores de linea y si son salida o entrada </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_proyecto__integrador_8c_source.html#l00113">113</a> del archivo <a class="el" href="_proyecto__integrador_8c_source.html">Proyecto_integrador.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_proyecto__integrador_8c_source.html#l00279">app_main()</a>.</p>
+
+</div>
+</div>
+<a id="afd9a5b1c677d10988c142bb501f34ab4" name="afd9a5b1c677d10988c142bb501f34ab4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd9a5b1c677d10988c142bb501f34ab4">&#9670;&#160;</a></span>pausa</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool pausa = false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="_proyecto__integrador_8c_source.html#l00120">120</a> del archivo <a class="el" href="_proyecto__integrador_8c_source.html">Proyecto_integrador.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_proyecto__integrador_8c_source.html#l00279">app_main()</a> y <a class="el" href="_proyecto__integrador_8c_source.html#l00138">read_data()</a>.</p>
+
+</div>
+</div>
+<a id="a69b91fd4eda0702c367518ea04fb7aac" name="a69b91fd4eda0702c367518ea04fb7aac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a69b91fd4eda0702c367518ea04fb7aac">&#9670;&#160;</a></span>pwm_control_motores</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group___p_w_m.html#ga1d363970f0a2cf766d46868c4e88c41a">pwm_out_t</a> pwm_control_motores[2]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>arreglo del tipo pwm_out_t almacena cual sera salida PWM </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_proyecto__integrador_8c_source.html#l00118">118</a> del archivo <a class="el" href="_proyecto__integrador_8c_source.html">Proyecto_integrador.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_proyecto__integrador_8c_source.html#l00279">app_main()</a> y <a class="el" href="_proyecto__integrador_8c_source.html#l00177">ControlMotores()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_76557cd4a0608cd174cb3d5100c20ce4.html">Sacks-1C-2024</a></li><li class="navelem"><a class="el" href="dir_4a875605755f3e307511815f0cde7761.html">firmware</a></li><li class="navelem"><a class="el" href="dir_7afb78551d3697caf76e3998a36c8e3e.html">projects</a></li><li class="navelem"><a class="el" href="dir_10e52368101984714bd666a6ea8e9e60.html">Proyecto_integrador</a></li><li class="navelem"><a class="el" href="dir_6574dd23e72a77fa70c80b77651bda63.html">main</a></li><li class="navelem"><a class="el" href="_proyecto__integrador_8c.html">Proyecto_integrador.c</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
+  </ul>
+</div>
+</body>
+</html>
