@@ -10,7 +10,7 @@
  *
  * @section hardConn Hardware Connection
  *
- * |    Peripheral  |   ESP32   	|
+ * |   	L9110	    |   ESP32   	|
  * |:--------------:|:--------------|
  * | 	B-1A	 	| 	GPIO_16		|
  * | 	B-1B	 	| 	GPIO_17		|
@@ -19,13 +19,13 @@
  * | 	VCC	 		| 	+5V			|
  * | 	GND	 		| 	GND			|
  * 
- * |    Peripheral  |   ESP32   	|
+ * |   TCRT5000-I   |   ESP32   	|
  * |:--------------:|:--------------|
  * | 	OUT	 		| 	GPIO_18		|
  * | 	VCC	 		| 	+5V			|
  * | 	GND	 		| 	GND			|
  * 
- * |    Peripheral  |   ESP32   	|
+ * |   TCRT5000-D   |   ESP32   	|
  * |:--------------:|:--------------|
  * | 	OUT	 		| 	GPIO_19		|
  * | 	VCC	 		| 	+5V			|
@@ -56,286 +56,262 @@
 #include "timer_mcu.h"
 #include "analog_io_mcu.h"
 /*==================[macros and definitions]=================================*/
+/*!
+	@brief periodo en microsegundos, para detectar la linea
+*/
+#define CONFIG_PERIOD_DET 150000 
+/*!
+	@brief periodo en milisegundos, para el parpadeo de los leds segun la conexion del BLE
+*/
 #define CONFIG_BLINK_PERIOD 500
-#define DETECTOR_IZQ GPIO_18 //CABLE AZUL
-#define DETECTOR_DER GPIO_19 //CABLE AMARILLO
-#define CONFIG_PERIOD_DET 150000 // 0,25 seg, capaz deberia ser mas chico el tiempo
-#define CONFIG_PERIOD_BAT 20000000 //esta en microseg asi que seria 30 seg, esto es para probar, pero cada cuanto deberia ser 30 000 000
+/*!
+	@brief periodo en milisegundos, para el control de la bateria
+*/
+#define PERIODO_BAT 5000 
 
-//Motor izquierdo B
-#define MIA GPIO_16 //Cable amarillo
-#define	MIB GPIO_22 //Cable blanco
+/*!
+	@brief definicion GPIO del detector de linea izquierdo
+*/
+#define DETECTOR_IZQ GPIO_18 
+/*!
+	@brief definicion GPIO del detector de linea derecho
+*/
+#define DETECTOR_DER GPIO_19 
 
-//Motor derecho A
-#define	MDA GPIO_17 //Cable violeta
-#define MDB	GPIO_23 //Cable gris
+/*!
+	@brief definicion GPIO del motor DC izquierdo a controlar con PWM
+*/
+#define MIA GPIO_16 
+/*!
+	@brief definicion GPIO del motor DC izquierdo
+*/
+#define	MIB GPIO_22 
+/*!
+	@brief definicion GPIO del motor DC derecho a controlar con PWM
+*/
+#define	MDA GPIO_17 
+/*!
+	@brief definicion GPIO del motor DC derecho
+*/
+#define MDB	GPIO_23 
 /*==================[internal data definition]===============================*/
+/**
+ * @brief estructura del tipo gpioConf_t
+ * 	asigna el numero de pin y establece si es entrada o salida con 0 o 1, respectivamente.
+*/
 typedef struct 
-{   gpio_t pin;			/*!< GPIO pin number */
-	io_t dir;			/*!< GPIO digection '0' IN;  '1' OUT*/
+{   gpio_t pin;			
+	io_t dir;			
 } gpioConf_t;
 
 TaskHandle_t detectar_linea_handle = NULL;
-TaskHandle_t control_bateria_handle = NULL;
-TaskHandle_t mostrar_bateria_handle = NULL;
 
-char direccion_robot; //Creo que es innecesaria
-gpioConf_t gpio_detector_linea[2]; //NUEVA LINEA PROBAR !! SI NO FUNCIONA DESCOMENTAR ABAJO LA LINEA CON EL MISMO CODIGO
-pwm_out_t pwm_control_motores[2]; //IDEM ARRIBA
+/**
+ * @brief arreglo del tipo gpioConf_t
+ * 	almacena los pines de los detectores de linea y si son salida o entrada
+*/
+gpioConf_t gpio_detector_linea[2]; 
+/**
+ * @brief arreglo del tipo pwm_out_t
+ * 	almacena cual sera salida PWM
+*/
+pwm_out_t pwm_control_motores[2]; 
 
 bool encendido, pausa = false;
-char niv_bateria[50];
-uint16_t nivel_bat_dig;
-bool alerta=false;
+char direccion='X';
 /*==================[internal functions declaration]=========================*/
+/** @brief Timer que envia una notificacion cada 0,15 seg a DetectarLinea
+ * @return void
+*/
 void FuncTimerA_Detector (void* param){
 	vTaskNotifyGiveFromISR(detectar_linea_handle, pdFALSE);
 }
 
-void FuncTimerB_AD (void* param){
-	vTaskNotifyGiveFromISR(control_bateria_handle, pdFALSE);
-	vTaskNotifyGiveFromISR(mostrar_bateria_handle, pdFALSE);
-}
-
+/**
+ * @brief Función a ejecutarse ante un interrupción de recepción a través de la conexión BLE.
+ * Si recibe 'O' enciende el sistema y un led verde, 'o' apaga el sistema y enciende led verde
+ * Si el sistema esta encendido y recibe 'P' detiene el robot y enciende led amarillo, 'p' reanuda el robot y apaga el led amarillo.
+ * Para ambos casos se informa por puerto serie el estado de la marcha del robot.
+ * @param data      Puntero a array de datos recibidos
+ * @param length    Longitud del array de datos recibidos
+ */
 void read_data(uint8_t * data, uint8_t length){
-	//Si el boton esta en On ('O') el robot debe andar (encendido es True)
-	//Si el boton esta en Off ('o') el robot no debe andar (encendido es False)
-	//Al apretar boton de pausa ('P') el robot debe frenar (pausa = true)
-	//Si el boton pausa es soltado ('p') el robot debe continuar normal (pausa = false)
 	switch(data[0]){
         case 'O':
-			//char nivel_bateria[50]="5";
             encendido = true;
-			BleSendString("RR0G0B0*"); //Apaga el led rojo en la app del celular
-            BleSendString("AR0G0B0*"); //Apaga el led amarillo en la app del celular
-			BleSendString("*VR0G255B0*"); //Enciende led verde en la app del celular
-			BleSendString("*MRobot en marcha\n*"); //Envio mensaje al monitor del estado robot en la app del celular
-
+			BleSendString("RR0G0B0*"); 
+            BleSendString("AR0G0B0*"); 
+			BleSendString("*VR0G255B0*"); 
+			BleSendString("*MRobot en marcha\n*"); 
 		break;
         case 'o':
             encendido = false;
-			BleSendString("VR0G0B0*"); //Apaga el led verde en la app del celular
-            BleSendString("AR0G0B0*"); //Apaga el led amarillo en la app del celular
-			BleSendString("*RR255G0B0*"); //Enciende led rojo en la app del celular
-			BleSendString("*MRobot estacionado\n*"); //Envio mensaje al monitor del estado robot en la app del celular
+			BleSendString("VR0G0B0*"); 
+            BleSendString("AR0G0B0*"); 
+			BleSendString("*RR255G0B0*"); 
+			BleSendString("*MRobot estacionado\n*"); 
 		break;
-		//El mecanismo de la pausa deberia funcionar solo si el robot fue encendido, deberia ir abajo creo
 		case 'P':
             if(encendido == true){
 			    pausa = true;
-			    BleSendString("*AR222G206B42*"); //Enciende led amarillo en la app del celular
-			    BleSendString("*MRobot pausado\n*"); //Envio mensaje al monitor del estado robot en la app del celular
-			    //Control_motores('F'); //Freno el robot
+			    BleSendString("*AR222G206B42*"); 
+			    BleSendString("*MRobot pausado\n*"); 
             }
 		break;
 		case 'p':
             if(encendido == true){
 			    pausa = false;
-			    BleSendString("AR0G0B0*"); //Apaga el led amarillo en la app del celular
-			    //Aca no deberia de llamar a ninguna funcion porque deberian reanudarse el control de los detectores de linea
+			    BleSendString("AR0G0B0*"); 
 				BleSendString("*MRobot reanudado\n*");
 			}
-        break;
-		
+        break;		
 		default:
 		break;
     }
 }
 
-void ControlMotores(char direccion_robot){ 
-//Supuestamente va para adelante con pines 22 y 23 en ALTO - Osea las entradas B van en ALTO
-	switch(direccion_robot){
+/**
+ * @brief Funcion que controla los motores DC y modifica su velocidad utilizando PWM 
+ * MIB y MDB deben estar en HIGH para que el robot vaya hacia adelante.
+ */
+void ControlMotores(){ 
+	GPIOOn(MIB);
+	GPIOOn(MDB);
+	switch(direccion){
 		case 'A':
-			//Defino A1B y B1B como HIGH para que vaya para adelante
-			GPIOOn(MIB);
-			GPIOOn(MDB);
-			
-			//Defino que tienen 
 			PWMOn(pwm_control_motores[0]);
 			PWMOn(pwm_control_motores[1]);
 			
-			//Seteo la velocidad
-			PWMSetDutyCycle(pwm_control_motores[0], 80);
-			PWMSetDutyCycle(pwm_control_motores[1], 80);
+			PWMSetDutyCycle(pwm_control_motores[0], 65);
+			PWMSetDutyCycle(pwm_control_motores[1], 65);
 			break;
 		case 'I':
-			//Defino A1B y B1B como HIGH para que vaya para adelante
-			GPIOOn(MIB);
-			GPIOOn(MDB);
-			
-			//Defino que tienen 
 			PWMOn(pwm_control_motores[0]);
 			PWMOn(pwm_control_motores[1]);
 			
-			//Seteo la velocidad, el motor izquierdo tiene que girar mas lento y el derecho mas rapido
-			// y asi logra girar a la izquierda
-			PWMSetDutyCycle(pwm_control_motores[0], 90); //rueda izq
-			PWMSetDutyCycle(pwm_control_motores[1], 30); //rueda der	
+			PWMSetDutyCycle(pwm_control_motores[0], 90); 
+			PWMSetDutyCycle(pwm_control_motores[1], 30); 
 			break;
 		case 'D':
-			//Defino A1B y B1B como HIGH para que vaya para adelante
-			GPIOOn(MIB);
-			GPIOOn(MDB);
-			
-			//Defino que tienen 
 			PWMOn(pwm_control_motores[0]);
 			PWMOn(pwm_control_motores[1]);
 			
-			//Seteo la velocidad, el motor izquierdo tiene que girar mas rapido y el derecho mas lento
-			// y asi logra girar a la derecha
-			PWMSetDutyCycle(pwm_control_motores[0], 30); //rueda izq
-			PWMSetDutyCycle(pwm_control_motores[1], 90); //rueda der	
+			PWMSetDutyCycle(pwm_control_motores[0], 30); 
+			PWMSetDutyCycle(pwm_control_motores[1], 90); 	
 			break;
 		case 'F':
-			//Defino A1B y B1B como HIGH para que vaya para adelante
-			GPIOOn(MIB);
-			GPIOOn(MDB);
-			
-			PWMSetDutyCycle(pwm_control_motores[0], 100); //rueda izq
-			PWMSetDutyCycle(pwm_control_motores[1], 100); //rueda der	
-            
+			PWMSetDutyCycle(pwm_control_motores[0], 100); 
+			PWMSetDutyCycle(pwm_control_motores[1], 100); 	
 			break;
+
 		default:
 			break;
 	}
 }
 
+/** @brief Recibe una notificiacion cada 0,15 seg, lee la salida de los detectores de linea y llama a la funcion ControlMotores y le pasa
+ * un caracter con la direccion que debe tomar el robot.
+ * @return void
+*/
 static void DetectarLinea(void *pvParameter){ 
 	while(1){
 		ulTaskNotifyTake(pdTRUE, portMAX_DELAY);     
-		//bool det_izq  = GPIORead(DETECTOR_IZQ); //true GPIO input high
-		//bool det_der  = GPIORead(DETECTOR_DER);	
-		//NUEVA LINEA, SI NO FUNCIONA DESCOMENTAR LAS DOS DE ARRIBA !!
 		bool det_izq = GPIORead(gpio_detector_linea[0].pin);
 		bool det_der = GPIORead(gpio_detector_linea[1].pin);
-		//Agregar la linea de abajo para que funcione si se encendio desde el bt
 		if(encendido == true && pausa == false){
 			if(det_izq==true && det_der==true){
-				//si eso significa que estan en la linea blanca, entonces el auto sigue derecho
-				direccion_robot = 'A';
-				//LedsOffAll();
-				//LedOn(LED_1);
+				direccion = 'A';
 			}
 			else if(det_izq==true && det_der==false){
-				//si eso significa que el detector izquierdo esta sobre linea blanca y el derecho en la negra
-				//entonces llamar funcion que DOBLE A LA DERECHA (gira la rueda izquierda y la derecha mas o menos quieta)
-				direccion_robot = 'D';
-				//LedsOffAll();
-				//LedOn(LED_2);
+				direccion = 'D';
 			}
 			else if(det_izq==false && det_der==true){
-				//si eso significa que el detector izquierdo esta sobre linea negra y el derecho en la blanca
-				//entonces llamar funcion que DOBLE A LA IZQUIERDA (gira la rueda derecha y la izquierda mas o menos quieta)
-				direccion_robot = 'I';
-				//LedsOffAll();
-				//LedOn(LED_3);
+				direccion = 'I';
 			}
 			else if(det_izq==false && det_der==false){
-				//si eso significa que el detector izquierdo y derecho estan sobre la linea negra
-				//entonces llamar funcion que FRENE EL AUTO
-				direccion_robot = 'F';
+				direccion = 'F';
 			}
-			
-			ControlMotores(direccion_robot);
-		}else if(encendido==true && pausa==true){
-			ControlMotores('F');
+			ControlMotores();
+
+		}else if((encendido==true && pausa==true) || encendido ==false){
+			direccion = 'F';
+			ControlMotores();
 		}else if(encendido==false){
-			ControlMotores('F');
+			direccion = 'F';
+			ControlMotores();
 		}
 		
 	}
 }
 
+/** @brief Funcion llamada cada 5 seg, si el sistema esta encendido convierte la salida analogica del CH1 en digital y a mV, 
+ * la representa en porcentaje y envia un mensaje por el puerto serie sobre el estado de la bateria.
+ * @return void
+*/
 static void ControlBateria(void *pvParameter){ 
-	uint16_t nivel_bat_analog;//, nivel_bat_dig; 
-	while(1){
-		ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
-		//Agregar linea cuando este con el codigo de bt
-		if(encendido == true){
-			AnalogInputReadSingle(CH1, &nivel_bat_analog);
-			nivel_bat_dig = (AnalogRaw2mV(nivel_bat_analog))*2;
-			nivel_bat_dig = (nivel_bat_dig*100/4000); 
-			sprintf(niv_bateria, "%hu", nivel_bat_dig);
-		}
-	}		
-}
-static void MostrarBateria(void *pvParameter){ 
-	char aux_bat[100];
+	uint16_t nivel_bat_analog, nivel_bat_dig;
+	char niv_bateria[50];
+	niv_bateria[0] = '\0';
+	char aux_bat[200];
 	aux_bat[0] = '\0';
 	while(1){
-		ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
 		if(encendido == true){
-			strcat(aux_bat, "*B");
-			strcat(aux_bat, "El nivel de bateria es de: ");
-			strcat(aux_bat, niv_bateria);
+			AnalogInputReadSingle(CH1, &nivel_bat_analog);
+			nivel_bat_dig = (nivel_bat_analog*100/2100); 
+			sprintf(niv_bateria, "%u", nivel_bat_dig);
+
 			if(nivel_bat_dig >=0 && nivel_bat_dig<=10){
-				strcat(aux_bat, "% \n¡NIVEL BATERIA CRITICO! Cambie las baterias...");
+				sprintf(aux_bat,"*BEl nivel de bateria es de: %s%% \n NIVEL BATERIA CRITICO! Cambie las baterias...\n\n*", niv_bateria);
 			}else if(nivel_bat_dig >10 && nivel_bat_dig <=20){
-				strcat(aux_bat, "% \n¡NIVEL DE BATERIA BAJO!");			
+				sprintf(aux_bat,"*BEl nivel de bateria es de: %s%% \n NIVEL DE BATERIA BAJO!\n\n*", niv_bateria);
 			}else if(nivel_bat_dig >20 && nivel_bat_dig<=50){
-				strcat(aux_bat, "% \nNIVEL DE BATERIA MEDIO");	
+				sprintf(aux_bat,"*BEl nivel de bateria es de: %s%% \n NIVEL DE BATERIA MEDIO\n\n*", niv_bateria);
 			}else if(nivel_bat_dig>50 && nivel_bat_dig <=100){
-				strcat(aux_bat, "% \nNIVEL DE BATERIA BUENO");	
+				sprintf(aux_bat,"*BEl nivel de bateria es de: %s%% \n NIVEL DE BATERIA BUENO\n\n*", niv_bateria);	
 			}
-			strcat(aux_bat, "\n*");
-			BleSendString(aux_bat); //Envio el nivel de la bateria en porcentaje al monitor en la app del celular
+			BleSendString(aux_bat);
 		}
+		vTaskDelay(PERIODO_BAT/portTICK_PERIOD_MS);
 	}		
 }
 
 /*==================[external functions definition]==========================*/
 void app_main(void){
-    //Inicializo los LEDS
+
     LedsInit();
 
-    //Inicializo Bluetooth
     ble_config_t ble_configuration = {
-        "ROBOT_LINEA_IRINA",
+        "ROBOT_SEG_LINEA",
         read_data
     };
     BleInit(&ble_configuration);
 
-	//GPIO PARA PUENTE H Y CONTROL MOTORES
-    gpioConf_t gpio_control_motores[4]; 
-	//MIB (B1B) y MDB (A1B) no son PWM porque el auto solo va para adelante - tienen que tener ambos LOW para ser asi-
-    gpio_control_motores[0].pin=MIB; // GPIO_22; 
-    gpio_control_motores[1].pin=MDB; // GPIO_23; 
-	
-	//GPIO a usar como PWM -para control motores-
-	gpio_control_motores[2].pin=MIA; // GPIO_16 
-	gpio_control_motores[3].pin=MDA; // GPIO_17 
-	
-    //DEFINO GPIO COMO SALIDA
-    for(int i=0; i<4;i++){
-		gpio_control_motores[i].dir=GPIO_OUTPUT; /*!< GPIO direction '0' IN;  '1' OUT*/
+	gpio_detector_linea[0].pin=DETECTOR_IZQ; 
+    gpio_detector_linea[1].pin=DETECTOR_DER;
+	for(int i=0; i<2;i++){
+		gpio_detector_linea[i].dir=GPIO_INPUT; 
 	}
-	
-    //INICIALIZO GPIO para control de motores por puente H
+	for(int i=0; i<2;i++){
+		GPIOInit(gpio_detector_linea[i].pin, gpio_detector_linea[i].dir);
+	}
+
+    gpioConf_t gpio_control_motores[4]; 
+    gpio_control_motores[0].pin=MIB; 
+    gpio_control_motores[1].pin=MDB; 
+	gpio_control_motores[2].pin=MIA; 
+	gpio_control_motores[3].pin=MDA;  	
+
+    for(int i=0; i<4;i++){
+		gpio_control_motores[i].dir=GPIO_OUTPUT; 
+	}	
     for(int i=0; i<4;i++){
 		GPIOInit(gpio_control_motores[i].pin, gpio_control_motores[i].dir);
 	}
 
-	//PWM PARA LAS ENTRADAS DEL PUENTE H PARA CONTROL MOTORES
 	pwm_control_motores[0]=PWM_0;
 	pwm_control_motores[1]=PWM_1;
-
-	//Inicializo los PWM para control motores a una frecuencia de 50
 	PWMInit(pwm_control_motores[0], MIA, 50);
 	PWMInit(pwm_control_motores[1], MDA, 50);
-
-	//GPIO PARA DETECTORES DE LINEA TCRT5000
-    gpio_detector_linea[0].pin=DETECTOR_IZQ; 
-    gpio_detector_linea[1].pin=DETECTOR_DER;
-	
-    //DEFINO GPIO COMO ENTRADA
-    for(int i=0; i<2;i++){
-		gpio_detector_linea[i].dir=GPIO_INPUT; /*!< GPIO digection '0' IN;  '1' OUT*/
-	}
-	
-    //INICIALIZO GPIO para detectores linea
-    for(int i=0; i<2;i++){
-		GPIOInit(gpio_detector_linea[i].pin, gpio_detector_linea[i].dir);
-	}
 
 	analog_input_config_t senal_analogica_bat = {			
 		.input= CH1,			
@@ -345,33 +321,19 @@ void app_main(void){
 	};	
 	AnalogInputInit(&senal_analogica_bat);
 
-        //Inicializo el timer para los detectores de linea
     timer_config_t timer_detector = {
         .timer = TIMER_A,
         .period = CONFIG_PERIOD_DET,
         .func_p = FuncTimerA_Detector,
         .param_p = NULL  
     };
-	// //Inicializo el timer para el control de la bateria y conversion a digital
-    timer_config_t timer_bateria = {
-        .timer = TIMER_B,
-        .period = CONFIG_PERIOD_BAT,
-        .func_p = FuncTimerB_AD,
-        .param_p = NULL  
-    };
-
 	TimerInit(&timer_detector);
-	//TimerInit(&timer_bateria);
 	
 	xTaskCreate(&DetectarLinea, "DetectarLinea", 2048, NULL, 5, &detectar_linea_handle); 
-	xTaskCreate(&ControlBateria, "ControlBateria", 2048, NULL, 5, &control_bateria_handle); 
-	xTaskCreate(&MostrarBateria, "MostrarBateria", 2048, NULL, 5, &mostrar_bateria_handle); 
+	xTaskCreate(&ControlBateria, "ControlBateria", 2048, NULL, 5, NULL);
 
 	TimerStart(timer_detector.timer);
-	TimerStart(timer_bateria.timer);
 
-    //Leds cambian segun el estado del BLE: 
-	//Conectado prende led verde, si se desconecta parpadea el led amarillo y si se apaga el led rojo
     while(1){
         vTaskDelay(CONFIG_BLINK_PERIOD / portTICK_PERIOD_MS);
         switch(BleStatus()){
